@@ -1,6 +1,6 @@
 # Your Project Title
 
-One Paragraph of project description goes here
+Our webise talks about places to visit, the admin can add/edit or delete places with details. Users can view, write reviews also add to section want to visit
 
 ## Description
 
@@ -9,17 +9,16 @@ A description of your project. Explain what is the project about and what is the
 ### Technical Used
 What technologies you used that helped you build this project. 
 
-```
-Example:
-
 - MongoDB, Mongoose
 - Express
 - REACT
 - Node.js
-- Redux
-- 
-- custom API
-```
+- boostrap
+- Ajax (axios) for API
+- HTML
+- JS
+- CSS
+
 
 ### Wireframes
 
@@ -29,7 +28,7 @@ Your step by step planning sketch of your project, that you can post them as an 
 
 A story of the project user, that explains the use of the project.
 
-```
+
 Admin must be able to:
 
 - create a place to visit
@@ -42,7 +41,7 @@ User must be able to:
 - User can add the place to their favorit, to visit it later.
 - User can remove the favorit.
 
-```
+
 
 ---
 
