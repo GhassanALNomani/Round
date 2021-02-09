@@ -47,7 +47,11 @@ User must be able to:
 
 ## Planning and Development Process
 
-A basic story of your planning and developing this project.
+### Day 1: TO DO LIST 9/10 FEB
+- Readme
+- ERD
+- User story
+- Wireframe
 
 ### Problem-Solving Strategy
 
@@ -59,7 +63,7 @@ List unsolved problems which would be fixed in future iterations.
 
 ## APIs Used
 
-List your APIs you have used in this project and explain why did you use it.
+- Internal API from DB
 
 ## Live link
 
@@ -70,4 +74,11 @@ List your APIs you have used in this project and explain why did you use it.
 
 ---
 
- ## References
+## References
+
+- [Imgur](https://imgur.com/signin?redirect=https%3A%2F%2Fapi.imgur.com%2Foauth2%2Faddclient)
+- [React Bootstrap](https://react-bootstrap.github.io/)
+- [React](https://reactjs.org/)
+- [w3schools](https://www.w3schools.com/)
+- [Express](https://www.npmjs.com/package/express)
+- [MDN](https://developer.mozilla.org/en-US/)
