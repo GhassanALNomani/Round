@@ -30,15 +30,17 @@ Your step by step planning sketch of your project, that you can post them as an 
 A story of the project user, that explains the use of the project.
 
 ```
-Example:
+Admin must be able to:
+
+- create a place to visit
 
 User must be able to:
 
-- View Example
-- Blablabla
-- Search Example
-- Fine Example
-- etc..
+- User can search for a place to go 
+- User can view each other 
+- User can write a comment inside the page of the place
+- User can add the place to their favorit, to visit it later
+- User can remove the favorit 
 
 ```
 
