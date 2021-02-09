@@ -36,11 +36,11 @@ Admin must be able to:
 
 User must be able to:
 
-- User can search for a place to go 
-- User can view each other 
-- User can write a comment inside the page of the place
-- User can add the place to their favorit, to visit it later
-- User can remove the favorit 
+- User can search for a place to go.
+- User can view each other.
+- User can write a comment inside the page of the place.
+- User can add the place to their favorit, to visit it later.
+- User can remove the favorit.
 
 ```
 
