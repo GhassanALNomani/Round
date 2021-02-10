@@ -1,6 +1,6 @@
 
 .classicformpage .view {
-  background-image: url('https://www.pexels.com/photo/four-women-chatting-while-sitting-on-bench-1267697/');
+  background-image: url('http://mdbootstrap.com/img/Photos/Others/images/91.jpg');
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center center;
@@ -13,10 +13,10 @@
     rgba(0, 0, 0, 0.7),
     rgba(72, 15, 144, 0.4) 100%
   );
-  background: -webkit-gradient(
+  background: (
     linear,
     45deg,
-    from(rgba(0, 0, 0, 0.7), rgba(72, 15, 144, 0.4) 100%)
+    (rgba(0, 0, 0, 0.7), rgba(72, 15, 144, 0.4) 100%)
   );
   background: linear-gradient(
     45deg,
