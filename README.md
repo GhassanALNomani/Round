@@ -52,6 +52,14 @@ User must be able to:
 - ERD
 - User story
 - Wireframe
+### Day 2: TO DO LIST 10/11 FEB
+#### Backend: Ghassan / Dalya
+- Models
+- Routes Users
+#### Frontend: Ahlam/ Huda
+- landing page
+- sign up page
+- log in page
 
 ### Problem-Solving Strategy
 
@@ -82,3 +90,4 @@ List unsolved problems which would be fixed in future iterations.
 - [w3schools](https://www.w3schools.com/)
 - [Express](https://www.npmjs.com/package/express)
 - [MDN](https://developer.mozilla.org/en-US/)
+- [mdbootstrap](https://mdbootstrap.com/docs/react/forms/basic/)
