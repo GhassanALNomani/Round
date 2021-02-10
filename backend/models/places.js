@@ -9,7 +9,8 @@ const placeSchema = new mongoose.Schema({
     reviews: {
         type: Array,
         default: []
-    }
+    },
+    location: String
 })
 
 const Place = mongoose.model('place', placeSchema)

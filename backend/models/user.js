@@ -19,7 +19,7 @@ const userSchema = new mongoose.Schema({
     userType: String,
     
     comment: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Comment' }],
-    place: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Place' }]
+    favoritPlaces: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Place' }]
     
 }, {timestamps : true})
 
