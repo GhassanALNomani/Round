@@ -22,7 +22,7 @@ What technologies you used that helped you build this project.
 
 ### Wireframes
 
-Your step by step planning sketch of your project, that you can post them as an image in here.
+![wireframe](https://media.git.generalassemb.ly/user/32762/files/4c252280-6bca-11eb-8b09-e9dd770e8c9e)
 
 ### User Stories
 
