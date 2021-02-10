@@ -10,7 +10,8 @@ const placeSchema = new mongoose.Schema({
         type: Array,
         default: []
     },
-    location: String
+    // location: String
+    comment: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Comment' }],
 })
 
 const Place = mongoose.model('place', placeSchema)
