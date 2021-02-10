@@ -17,12 +17,13 @@ router.get("/", (req, res) => {
 
 
 // post user
-router.post('/register', (req, res) => {
+router.post(('/signup'), (req, res) => {
 
     const newUser = {
         email: req.body.email,
         password: req.body.password,
         name: req.body.name,
+        // photo: req.file.filename
     };
     newUser.email = newUser.email.toLowerCase();
     User.findOne({ email: newUser.email })
@@ -43,7 +44,7 @@ router.post('/register', (req, res) => {
                 });
             }
         })
-        .catch((err) => res.json({ msg: err }));
+        .catch((err) => res.json({ msg1: err }));
 });
 
 router.post("/login", async (req, res) => {
