@@ -34,7 +34,7 @@ export default function home() {
     return (
         <div>
               
-              
+              <br />
                 <br />
 
                 <div className="placeContainer">
