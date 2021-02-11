@@ -1,26 +1,35 @@
-import React from 'react';
- import Login from './components/Login';
- import { BrowserRouter as Router, Route } from "react-router-dom";
+import './App.css';
+import Signup from './components/Signup';
+import Login from './components/Login';
+import Landing from './components/Landing';
 
+import ShowPage from './components/ShowPage';
 
-
-
-
- 
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 function App() {
   return (
-    <>
-<Router>
+    <div className="classicformpage">
+    <Router>
+      <Switch>
+      <Route path="/landing">
+                <Landing />
+              </Route>
 
-<Route exact path="/login">
-            <Login />
-          </Route>
+              <Route path="/login">
+                <Login />
+              </Route>
 
-</Router>
 
-      </>
+      <Route path="/signup">
+                <Signup />
+              </Route>
+              <Route path="/show">
+                <ShowPage />
+              </Route>
 
+      </Switch>
+    </Router>
+    </div>
   );
 }
-
 export default App;
