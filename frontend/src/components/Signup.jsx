@@ -64,6 +64,7 @@ export default function Signup() {
                         iconClass='white-text' */
                         label='Enter your name'
                         icon='user'
+                        name = "name"
                         onChange={(e) => onChangeInput(e)}
                       />
                       <MDBInput
@@ -71,11 +72,13 @@ export default function Signup() {
                         iconClass='white-text' */
                         label='Enter your email'
                         icon='envelope'
+                        name = "email"
                         onChange={(e) => onChangeInput(e)}/>
                       <MDBInput
                         label='Enter your password'
                         icon='lock'
                         type='password'
+                        name = "password"
                         onChange={(e) => onChangeInput(e)}/>
                       <div className='text-center mt-4 black-text'>
                         <MDBBtn color='indigo' onClick={(e) => onSubmit(e)}>Sign Up</MDBBtn>
@@ -92,4 +95,8 @@ export default function Signup() {
 
       
     )
+
 }
+
+
+
