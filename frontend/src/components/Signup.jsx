@@ -3,17 +3,26 @@ import { useHistory } from 'react-router-dom'
 import {MDBAnimation, MDBBtn, MDBCard, MDBCardBody, MDBCol, MDBContainer, MDBIcon, MDBInput,  MDBView  } from 'mdbreact';
 import axios from "axios";
 //import signup from '../assets/signup.jpg'
+
+
 export default function Signup() {
+
+
+
     const history = useHistory();
     const [register, setRegister] = useState(true);
     const [user, setUser] = useState({});
+
     const onChangeInput = ({ target: { name, value } }) => {
         setUser({ ...user, [name]: value });
         console.log(user);
     };
-    const onSubmit = (event) => {
+
+
+     const onSubmit = (event) => {
         console.log(user)
         event.preventDefault();
+
         axios
         .post("http://localhost:5000/api/user/signup", user)
         .then((res) => {
@@ -28,10 +37,14 @@ export default function Signup() {
           }
         })
         .catch((err) => console.log(err));
+
     }
+ 
+
     return (
         
         <div className='classicformpage'>
+
 <MDBView>
 <MDBContainer
             style={{ height: '100%', width: '100%', paddingTop: '10rem' }}
@@ -51,6 +64,7 @@ export default function Signup() {
                         iconClass='white-text' */
                         label='Enter your name'
                         icon='user'
+                        name = "name"
                         onChange={(e) => onChangeInput(e)}
                       />
                       <MDBInput
@@ -58,11 +72,13 @@ export default function Signup() {
                         iconClass='white-text' */
                         label='Enter your email'
                         icon='envelope'
+                        name = "email"
                         onChange={(e) => onChangeInput(e)}/>
                       <MDBInput
                         label='Enter your password'
                         icon='lock'
                         type='password'
+                        name = "password"
                         onChange={(e) => onChangeInput(e)}/>
                       <div className='text-center mt-4 black-text'>
                         <MDBBtn color='indigo' onClick={(e) => onSubmit(e)}>Sign Up</MDBBtn>
@@ -74,7 +90,10 @@ export default function Signup() {
         
               </MDBContainer>
               </MDBView>
+
 </div>
+
       
     )
 }
+
