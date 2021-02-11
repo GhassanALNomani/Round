@@ -22,11 +22,9 @@ mongoose.connect(
 
 
 
-
-
 app.use("/api/user", require("./routes/user"))
-// app.use("/api/place", require("./routes/place"))
-// app.use("/api/comment", require("./routes/comment"))
+app.use("/api/place", require("./routes/place"))
+app.use("/api/comment", require("./routes/comment"))
  
 
 app.listen(PORT, () => console.log(`server running in ${PORT}`));
