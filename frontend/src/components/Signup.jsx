@@ -19,12 +19,12 @@ export default function Signup() {
     };
 
 
-    const onSubmit = (event) => {
+     const onSubmit = (event) => {
         console.log(user)
         event.preventDefault();
 
         axios
-        .post("http://localhost:5000/api/user/signup", user)
+        .post("http://localhost:5000/user/signup", user)
         .then((res) => {
           const user = res.data.user;
           if (user) {
@@ -39,7 +39,7 @@ export default function Signup() {
         .catch((err) => console.log(err));
 
     }
-
+ 
 
     return (
         
@@ -55,7 +55,6 @@ export default function Signup() {
                 <MDBAnimation type='fadeInRight' delay='.3s'>
                   <MDBCard id='classic-card'>
                     <MDBCardBody className='white-text'>
-
                       <h3 className='text-center'> <MDBIcon icon='user' /> Register: </h3>
                      
                       <hr className='hr-light' />
@@ -78,7 +77,6 @@ export default function Signup() {
                         icon='lock'
                         type='password'
                         onChange={(e) => onChangeInput(e)}/>
-
                       <div className='text-center mt-4 black-text'>
                         <MDBBtn color='indigo' onClick={(e) => onSubmit(e)}>Sign Up</MDBBtn>
                       </div>
