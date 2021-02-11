@@ -33,9 +33,9 @@ let allSelect = types.map(ele => <option value={ele}>{ele}</option>)
 const onChangeHandler = (e) =>{
     let value = e.target.value
 
-    if (value == "All") { // if the select all show all the places 
+    if (value == "All") { 
         setSelectPlace(places)
-    }else { // if not show only the place type amd we use filter method ! 
+    }else {
         setSelectPlace(places.filter(place => place.type == value))
     }
 
