@@ -11,7 +11,7 @@ export default function Home() {
     const [selectPlaces , setSelectPlace] = useState([])
 
     useEffect(() => {
-        Axios.get("http://localhost:5000/place")
+        Axios.get("http://localhost:5000/api/place")
         .then(res =>{     
             setPlaces(res.data)
             setSelectPlace(res.data) 

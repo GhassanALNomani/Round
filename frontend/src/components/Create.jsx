@@ -7,20 +7,24 @@ import { MDBBtn, MDBCol, MDBContainer, MDBIcon, MDBInput, MDBCard, MDBAnimation,
 
 
 export default function Create(props) {
+
     const history = useHistory();
+
     const [place, setPlace] = useState({});
 
 
     const onSubmit = (e) => {
-       // console.log(place);
+        console.log(place);
         e.preventDefault();
 
         axios
-            .post("http://localhost:5000/api/place", place)
+            .post("http://localhost:5000/api/place/create", place)
             .then((res) => {
 
                 const place = res.data;
+
                 console.log("response data: ", res.data)
+
                 if (place) {
                     if (place.placeType === "Coffee") {
                         history.push("/coffee");
@@ -37,7 +41,7 @@ export default function Create(props) {
 
     const onChangeInput = ({ target: { name, value } }) => {
         setPlace({ ...place, [name]: value });
-       // console.log(place);
+       console.log(place);
     };
 
 
@@ -69,19 +73,19 @@ export default function Create(props) {
                         /* className='white-text'
                         iconClass='white-text' */
                         label='name'
-                        
+                        name = "name"
                         onChange={(e) => onChangeInput(e)}
                       />
                       <MDBInput
                      /*    className='white-text'
                         iconClass='white-text' */
                         label='Description'
-                       
+                        name = "description"
                         onChange={(e) => onChangeInput(e)}/>
 
                       <MDBInput
                         label='Image Url'
-                       
+                        name = "image"
                         onChange={(e) => onChangeInput(e)}/>
 
                   <select className="browser-default custom-select"  onChange={(e) => onChangeSelect(e)}>   
