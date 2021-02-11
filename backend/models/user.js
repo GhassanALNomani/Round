@@ -15,11 +15,10 @@ const userSchema = new mongoose.Schema({
         type: String,
         required: true
     },
-    image: String,
-    userType: String,
+    userType: String, // check later if neede
     
     comment: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Comment' }],
-    favoritPlaces: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Place' }]
+    placesToVisit: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Place' }]
     
 }, {timestamps : true})
 
