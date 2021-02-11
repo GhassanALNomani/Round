@@ -33,7 +33,7 @@ export default function home() {
 
     return (
         <div>
-              <div className="logo relative centerText">
+              
               
                 <br />
 
@@ -45,6 +45,6 @@ export default function home() {
 
             </div>
 
-        </div>
+       
     )
 }
