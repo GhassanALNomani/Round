@@ -16,7 +16,7 @@ export default function Create(props) {
         e.preventDefault();
 
         axios
-            .post("http://localhost:5000/place/create", place)
+            .post("http://localhost:5000/api/place", place)
             .then((res) => {
 
                 const place = res.data;

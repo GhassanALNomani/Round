@@ -25,7 +25,7 @@ router.post(('/signup'), (req, res) => {
         name: req.body.name,
         // photo: req.file.filename
     };
-    newUser.email = newUser.email.toLowerCase();
+     newUser.email = newUser.email.toLowerCase(); 
     User.findOne({ email: newUser.email })
         .then((user) => {
             // if the email in the database !
