@@ -48,7 +48,7 @@ style={{ height: '100%', width: '100%', paddingTop: '10rem' }}
 className='mt-5  d-flex justify-content-center align-items-center'
 >
       <MDBDropdownToggle caret color="primary" className="mt-5" >
-        Where 2 Go 
+        Where -2 -Go 
       </MDBDropdownToggle>
       <MDBDropdownMenu basic>
         <MDBDropdownItem header>Jeddah Places</MDBDropdownItem>
