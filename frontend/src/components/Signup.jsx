@@ -24,7 +24,7 @@ export default function Signup() {
         event.preventDefault();
 
         axios
-        .post("http://localhost:5000/user/signup", user)
+        .post("http://localhost:5000/api/user/signup", user)
         .then((res) => {
           const user = res.data.user;
           if (user) {
@@ -95,8 +95,5 @@ export default function Signup() {
 
       
     )
-
 }
-
-
 

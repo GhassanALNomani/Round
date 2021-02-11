@@ -3,7 +3,8 @@ import Signup from './components/Signup';
 import Login from './components/Login';
 import Landing from './components/Landing';
 // import AuthRoute from"./components/AuthRoute"
-
+import Create from './components/Create';
+import Home from './components/Home';
 import ShowPage from './components/ShowPage';
 import jwt_decode from "jwt-decode";
 
@@ -58,7 +59,9 @@ function App() {
             <Route path="/landing">
               <Landing />
             </Route>
-
+            <Route path="/home">
+                <Home />
+            </Route>
             <Route path="/login">
               <Login/>
             </Route>
@@ -68,7 +71,9 @@ function App() {
                
             </Route>
 
-
+            <Route path="/create">
+                <Create />
+            </Route>
 
             <Route path="/signup">
               <Signup />
