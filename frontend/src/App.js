@@ -9,10 +9,17 @@ import ShowPage from './components/ShowPage';
 import AuthRoute from './components/AuthRoute';
 import {AboutUs} from './components/AboutUs';
 import {Footer} from './components/Footer'
+import NavBar from './components/NavBar'
 import jwt_decode from "jwt-decode";
 import React, { useState, useEffect } from "react";
+
+
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
+
+
+
 function App() {
+
   const [auth, setAuth] = useState({ currentUser: null, isLoggedIn: false });
   const [userProfile , setUserProfile] = useState({})
   // const userLogin = () => {

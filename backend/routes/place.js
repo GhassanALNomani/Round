@@ -26,7 +26,7 @@ router.get("/:placeId", (req, res) => {
 
 
 // Add a place
-router.post("/", (req, res) => {
+router.post("/create", (req, res) => {
   // need to be checked
 
   var addPlace = {

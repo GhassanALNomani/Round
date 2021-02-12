@@ -134,7 +134,6 @@ export default function Login(props) {
             </MDBCard>
           </MDBAnimation>
         </MDBCol>
-
       </MDBContainer>
     </div>
     </>
