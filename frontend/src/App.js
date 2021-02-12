@@ -7,6 +7,8 @@ import Create from './components/Create';
 import Home from './components/Home';
 import ShowPage from './components/ShowPage';
 import AuthRoute from './components/AuthRoute';
+import {AboutUs} from './components/AboutUs';
+import {Footer} from './components/Footer'
 import jwt_decode from "jwt-decode";
 import React, { useState, useEffect } from "react";
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
@@ -103,11 +105,14 @@ function App() {
             <Route path="/signup">
               <Signup />
             </Route>
-
+            <Route path="/aboutus">
+              <AboutUs />
+            </Route>
 
 
           </Switch>
-        </Router> 
+        </Router>
+        <Footer />
         {/* : <Spinner animation="border" />
       } */}
     </div>
