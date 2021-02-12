@@ -3,6 +3,7 @@ import Signup from './components/Signup';
 import Login from './components/Login';
 import Home from './components/Home';
 import Create from './components/Create';
+import NavBar from './components/NavBar';
 
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 
@@ -25,6 +26,10 @@ function App() {
 
               <Route path="/create">
                 <Create />
+              </Route>
+
+              <Route path="/navbar">
+                <NavBar />
               </Route>
       </Switch>
     </Router>

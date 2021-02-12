@@ -26,8 +26,8 @@ export default function Create(props) {
                 console.log("response data: ", res.data)
 
                 if (place) {
-                    if (place.placeType === "Coffee") {
-                        history.push("/coffee");
+                    if (place.category === "cafe") {
+                        history.push("/cafe");
                     } else {
                         history.push("/restaurant");
                     }
@@ -88,15 +88,15 @@ export default function Create(props) {
                         name = "image"
                         onChange={(e) => onChangeInput(e)}/>
 
-                  <select className="browser-default custom-select"  onChange={(e) => onChangeSelect(e)}>   
-                    <option>Choose the place</option>
-                    <option value="1">Coffee</option>
+                  <select className="browser-default custom-select" name="category" onChange={(e) => onChangeSelect(e)}>   
+                    <option >Choose the place</option>
+                    <option value="1">cafe</option>
                     <option value="2">restaurant</option>
                   
                  </select>
 
                       <div className='text-center mt-4 black-text'>
-                        <MDBBtn color='indigo' onClick={(e) => onSubmit(e)}>Submit</MDBBtn>
+                        <MDBBtn color='indigo' type="submit" onClick={(e) => onSubmit(e)}>Submit</MDBBtn>
                       </div>
                     </MDBCardBody>
                   </MDBCard>
