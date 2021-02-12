@@ -1,4 +1,5 @@
 const express = require("express");
+const Place = require("../models/places");
 const router = express.Router();
 const Places = require("../models/places");
 const User = require("../models/user");
@@ -11,6 +12,32 @@ router.get("/", (req, res) => {
       res.json({ result });
     })
     .catch((err) => res.json({ msg: err }));
+});
+
+// get all cafe
+router.get("/cafe", (req, res) => {
+
+
+  Place.find({ category: "cafe" })
+      .then(cafe => {
+
+          res.json(cafe);
+
+      }).catch((err) => res.json({ msg: err }));
+
+});
+
+// get all restaurant
+router.get("/restaurant", (req, res) => {
+
+
+  Place.find({ category: "restaurant" })
+      .then(restaurant => {
+
+          res.json(restaurant);
+
+      }).catch((err) => res.json({ msg: err }));
+
 });
 
 

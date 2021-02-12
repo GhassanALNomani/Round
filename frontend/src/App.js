@@ -4,6 +4,9 @@ import Login from './components/Login';
 import Landing from './components/Landing';
 // import AuthRoute from"./components/AuthRoute"
 import Create from './components/Create';
+
+import NavBar from './components/NavBar';
+
 import Home from './components/Home';
 import ShowPage from './components/ShowPage';
 import AuthRoute from './components/AuthRoute';
@@ -107,21 +110,25 @@ function App() {
 
             <Route path="/create">
                 <Create />
-            </Route>
 
+              </Route>
             <Route path="/signup">
               <Signup />
             </Route>
-            <Route path="/aboutus">
+              <Route path="/aboutus">
               <AboutUs />
             </Route>
 
 
-          </Switch>
-        </Router>
+            
+      </Switch>
+    
+
+          
         <Footer />
         {/* : <Spinner animation="border" />
       } */}
+
     </div>
   );
 }

@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { useHistory } from 'react-router-dom'
 import {MDBAnimation, MDBBtn, MDBCard, MDBCardBody, MDBCol, MDBContainer, MDBIcon, MDBInput,  MDBView  } from 'mdbreact';
 import axios from "axios";
+import NavBar from './NavBar'
 //import signup from '../assets/signup.jpg'
 
 
