@@ -21,7 +21,7 @@ export default function Login(props) {
 
     event.preventDefault();
     axios
-      .post("http://localhost:5000/users/login", credentials)
+      .post("http://localhost:5000/api/user/login", credentials)
       .then((res) => {
         console.log("Express backend /login response", res);
 
