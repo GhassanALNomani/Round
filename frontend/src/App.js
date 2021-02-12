@@ -71,7 +71,7 @@ function App() {
 
     <div className="classicformpage">
       {/* { dataLoaded ? */}
-
+        <NavBar />
         <Router>
           <Switch>
           <Route path="/editprofile">
