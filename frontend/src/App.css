@@ -1,5 +1,31 @@
 
-@import url('https://fonts.googleapis.com/css?family=Montserrat:400,800');
+.classicformpage .view {
+  background-image: url('http://mdbootstrap.com/img/Photos/Others/images/91.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center center;
+  min-height: 100vh;
+}
+
+.classicformpage .gradient {
+  background: -webkit-linear-gradient(
+    45deg,
+    rgba(0, 0, 0, 0.7),
+    rgba(72, 15, 144, 0.4) 100%
+  );
+  background: (
+    linear,
+    45deg,
+    (rgba(0, 0, 0, 0.7), rgba(72, 15, 144, 0.4) 100%)
+  );
+  background: linear-gradient(
+    45deg,
+    rgba(0, 0, 0, 0.7),
+    rgba(72, 15, 144, 0.4) 100%
+  );
+}
+
+
 
 .App {
   text-align: center;
@@ -40,22 +66,6 @@
   }
 }
 
-
-.btn3{
-  
-  height: 30px;
-  width:90px;
-  font-size: 14px;
-  text-align: center;
-  padding: 3px;
-    margin-left:200% ;
-
-}
-
-.backg{
-
-  background: linear-gradient(to right,#F4DAB5, #F0E9E6, #FFFFFF);
-  background-size: cover;
-  color: #fff;
-
+#classicformpage .card {
+  background-color: rgba(126, 123, 215, 0.2);
 }

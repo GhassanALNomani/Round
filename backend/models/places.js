@@ -6,7 +6,7 @@ const placeSchema = new mongoose.Schema({
     category: String,
     name: String,
     description: String,
-    reviews: {
+    rating: {
         type: Array,
         default: []
     },
