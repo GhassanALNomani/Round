@@ -31,6 +31,8 @@ function App() {
               <Route path="/navbar">
                 <NavBar />
               </Route>
+
+            
       </Switch>
     </Router>
     </div>

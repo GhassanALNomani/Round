@@ -28,7 +28,7 @@ export default function NavBar(props) {
                         </MDBNavItem>
 
                         <MDBNavItem>
-                            <MDBNavLink to="#">Features</MDBNavLink>
+                            <MDBNavLink to="/about">About us</MDBNavLink>
                         </MDBNavItem>
 
                     </MDBNavbarNav>
@@ -61,8 +61,8 @@ export default function NavBar(props) {
                                     <MDBNavLink to="/profile"><MDBIcon far icon="user" /> Profile</MDBNavLink>
                                 </MDBNavItem>
 
-                                <MDBNavItem>
-                                    <MDBNavLink to="/logout"> <MDBIcon icon="sign-out-alt" />Logout</MDBNavLink>
+                                <MDBNavItem onClick={() => logOut()}>
+                                    <MDBNavLink to="/logout" > <MDBIcon icon="sign-out-alt" />Logout</MDBNavLink>
                                 </MDBNavItem>
 
                             </MDBNavbarNav>

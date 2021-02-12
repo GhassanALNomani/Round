@@ -3,8 +3,8 @@ import { MDBCard, MDBCardBody, MDBCardImage, MDBCardTitle, MDBIcon , MDBRow, MDB
 
 export default function CafeCard(props) {
 
-    let cafee = props.cafe.image
-    let image = <img src={cafee} className="cafe" alt="card" />
+    let restaurantt = props.restaurant.image
+    let image = <img src={restaurantt} className="cafe" alt="card" />
 
     return (
         <div>
@@ -17,7 +17,7 @@ export default function CafeCard(props) {
                         <MDBCard reverse>
                             <MDBCardImage cascade style={{ height: '20rem' }} src={image} />
                             <MDBCardBody cascade className="text-center">
-                                <MDBCardTitle>{props.cafe.name}</MDBCardTitle>
+                                <MDBCardTitle>{props.restaurant.name}</MDBCardTitle>
                              
                                 <a href='#!' className='black-text d-flex justify-content-end'>
                                     <h5>

@@ -2,6 +2,10 @@ import { MDBAnimation, MDBCard, MDBCardBody, MDBCol, MDBIcon, MDBInput, MDBConta
 import axios from "axios";
 import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
+import NavBar from './NavBar'
+
+
+
 export default function Login(props) {
   const history = useHistory();
   const [credentials, setCredentials] = useState({ email: "", password: "" });
