@@ -12,7 +12,7 @@ import ShowPage from './components/ShowPage';
 import AuthRoute from './components/AuthRoute';
 import {AboutUs} from './components/AboutUs';
 import {Footer} from './components/Footer'
-import NavBar from './components/NavBar'
+
 import jwt_decode from "jwt-decode";
 import React, { useState, useEffect } from "react";
 
@@ -77,59 +77,59 @@ function App() {
   useEffect(userLogin, []);
 
 
-  return (
-
+  return(
+    <>
     <div className="classicformpage">
       {/* { dataLoaded ? */}
-        <NavBar />
+        
         <Router>
+        {/* <NavBar /> */}
           <Switch>
-          <Route path="/editprofile">
-            <AuthRoute
-              auth={auth}
-              userProfile={userProfile}
-              setUserProfile={setUserProfile}
-            />
-          </Route>
-            <Route path="/landing">
-              <Landing />
+
+            <Route path="/editprofile">
+              <AuthRoute
+                auth={auth}
+                userProfile={userProfile}
+                setUserProfile={setUserProfile}
+              />
             </Route>
 
-            <Route path="/home">
-                <Home />
-            </Route>
-
-            <Route path="/login">
-              <Login loginCallback={userLogin}/>
-            </Route>
-
-            <Route path="/Show/:id">
-              <ShowPage/>
-               
-            </Route>
-
-            <Route path="/create">
-                <Create />
-
+              <Route path="/landing">
+                <Landing />
               </Route>
-            <Route path="/signup">
-              <Signup />
-            </Route>
+
+              <Route path="/home">
+                  <Home />
+              </Route>
+
+              <Route path="/login">
+                <Login loginCallback={userLogin}/>
+              </Route>
+
+              <Route path="/Show/:id">
+                <ShowPage/>
+                
+              </Route>
+
+              <Route path="/create">
+                  <Create />
+              </Route>
+
+              <Route path="/signup">
+                <Signup />
+              </Route>
+
               <Route path="/aboutus">
-              <AboutUs />
-            </Route>
-
-
-            
-      </Switch>
-    
-
-          
-        <Footer />
+                <AboutUs />
+              </Route>
+            </Switch>
+            <Footer />
+            </Router>  
+            {/* <Footer /> */}
         {/* : <Spinner animation="border" />
       } */}
-
     </div>
+    </>
   );
 }
 export default App;

@@ -6,7 +6,7 @@ import { useParams } from 'react-router-dom';
 
 
 export default function ShowPage(props) {
-
+    const [place, setPlaces] = useState({})
     const { id } = useParams()
     const selectPlace = props.selectPlace;
     const [added, setadded] = useState(true);
@@ -20,6 +20,15 @@ export default function ShowPage(props) {
                 console.log(data)
             })
     }
+    // git data
+    useEffect(() => {
+        axios.get(`http://localhost:5000/api/place/${id}`)
+          .then(res => {
+            setPlaces(res.data.pros)
+            console.log("place info", place)
+          })
+    }, [])
+
 
     const add = () => {
         setadded(false);
@@ -42,11 +51,15 @@ export default function ShowPage(props) {
                 <MDBRow>
                     <MDBCol style={{ maxWidth: "40rem" }}>
                         <MDBCard reverse>
-                            <MDBCardImage cascade style={{ height: '20rem' }} src={selectPlace.image} />
+                            <MDBCardImage cascade style={{ height: '20rem' }} src={place.image} />
+
                             <MDBCardBody cascade className="text-center">
-                                <MDBCardTitle>{selectPlace.name}</MDBCardTitle>
-                                <h5 className="indigo-text"><strong>{selectPlace.category}</strong></h5>
-                                <MDBCardText>{selectPlace.description}</MDBCardText>
+                                <MDBCardTitle>{place.name}</MDBCardTitle>
+
+                                <h5 className="indigo-text"><strong>{place.category}</strong></h5>
+
+                                <MDBCardText>{place.description}</MDBCardText>
+
                                 <MDBBtn outline color="dark" onClick ={()=> 
                             { addPlace();
                                 add();}}> Add To List</MDBBtn>

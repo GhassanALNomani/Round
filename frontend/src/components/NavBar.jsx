@@ -33,7 +33,7 @@ export default function NavBar(props) {
 
                     </MDBNavbarNav>
 
-                    {props.auth.isLoggedIn && props.auth.currentUser.userType == "admin" ?
+                    {/* {props.auth.isLoggedIn && props.auth.currentUser.userType == "admin" ?
 
                         <MDBNavbarNav right>
 
@@ -80,7 +80,7 @@ export default function NavBar(props) {
                                 </MDBNavItem>
 
                             </MDBNavbarNav>
-                    }
+                    } */}
                 </MDBNavbar>
             </header>
         </div>
