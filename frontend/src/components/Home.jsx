@@ -22,7 +22,7 @@ export default function Home() {
     }, [])
 
     const  allplaces = selectPlaces.map(place =>{
-
+        
        // return <Show place= {place} setSelectPlace= {props.setSelectPlace} />
       }) 
 
