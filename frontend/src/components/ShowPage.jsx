@@ -17,10 +17,6 @@ import {
   import { useParams } from "react-router-dom";
   import axios from "axios";
   import ReactStars from 'react-stars';
-import { MDBCard, MDBCardBody, MDBBtn, MDBCardImage, MDBCardTitle, MDBCardText, MDBRow, MDBCol, MDBAlert, MDBContainer } from 'mdbreact';
-import React, { useState, useEffect } from 'react'
-import { useParams } from 'react-router-dom';
- import axios from 'axios'
 
 
 
@@ -209,24 +205,7 @@ export default function ShowPage(props) {
                     </form>
                   </MDBCol>
 
-                    <MDBCol style={{ maxWidth: "40rem" }}>
-                        <MDBCard reverse>
-                            <MDBCardImage cascade style={{ height: '20rem' }} src={place.image} />
-
-                            <MDBCardBody cascade className="text-center">
-                                <MDBCardTitle>{place.name}</MDBCardTitle>
-
-                                <h5 className="indigo-text"><strong>{place.category}</strong></h5>
-
-                                <MDBCardText>{place.description}</MDBCardText>
-
-                                <MDBBtn outline color="dark" onClick ={()=> 
-                            { addPlace();
-                                add();}}> Add To List</MDBBtn>
-
-                            </MDBCardBody>
-                        </MDBCard>
-                    </MDBCol>
+                    
 
                 </MDBRow>
               </MDBContainer>

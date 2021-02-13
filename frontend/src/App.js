@@ -7,7 +7,7 @@ import Create from './components/Create';
 
 import NavBar from './components/NavBar';
 
-import Home from './components/Home';
+import Home from "./components/Home";
 import ShowPage from './components/ShowPage';
 import AuthRoute from './components/AuthRoute';
 import {AboutUs} from './components/AboutUs';
