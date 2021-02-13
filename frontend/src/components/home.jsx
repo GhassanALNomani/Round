@@ -1,16 +1,11 @@
 import React, { useEffect, useState } from 'react'
 import Axios from 'axios'
 import { MDBDropdown, MDBDropdownToggle, MDBDropdownMenu, MDBDropdownItem, MDBRow } from "mdbreact";
-import NavBar from './NavBar'
-
-
 
 export default function Home() {
-
     const [places , setPlaces] = useState([])
     const [types , setTypes] = useState([])
     const [selectPlaces , setSelectPlace] = useState([])
-
     // useEffect(() => {
     //     Axios.get("http://localhost:5000/api/place")
     //     .then(res =>{     
@@ -21,25 +16,18 @@ export default function Home() {
     //         setTypes(Array.from(new Set(types))) 
     //     })
     // }, [])
-
     // const  allplaces = selectPlaces.map(place =>{
-
     //    // return <Show place= {place} setSelectPlace= {props.setSelectPlace} />
     //   }) 
-
-
 let allSelect = types.map(ele => <option value={ele}>{ele}</option>)
-
 //function to filtet the place by the type 
 const onChangeHandler = (e) =>{
     let value = e.target.value
-
     if (value == "All") { 
         setSelectPlace(places)
     }else {
         setSelectPlace(places.filter(place => place.type == value))
     }
-
 }
     return (
         <div>
@@ -61,7 +49,6 @@ className='mt-5  d-flex justify-content-center align-items-center'
     <MDBRow>
     {/* {allplaces} */}
         </MDBRow>
-
         </div>
     )
 }
