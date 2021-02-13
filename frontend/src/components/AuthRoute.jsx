@@ -1,7 +1,7 @@
 import React from "react";
 import { Route, Redirect } from "react-router-dom";
 
-import {EditProfile} from "./EditProfile"
+import EditProfile from "./EditProfile"
 
 export default function AuthRoute(props) {
   if (props.auth.isLoggedIn) {

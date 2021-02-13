@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
-import { MDBAnimation, MDBCard, MDBCardUp, MDBRow, MDBCol, MDBLightbox, MDBInput, MDBContainer, MDBBtn, MDBLink, MDBAlert, MDBCardBody, MDBAvatar,MDBSpinner  } from 'mdbreact';
-import { Link } from 'react-router-dom'
+import {  MDBCard , MDBRow,MDBCardImage,MDBCardText,MDBIcon,MDBCardTitle, MDBCol, MDBLightbox, MDBBtn, MDBAlert, MDBCardBody,MDBSpinner  } from 'mdbreact';
+// import { Link } from 'react-router-dom'
 import axios from "axios";
 import { Formik, Form as FormikForm, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
-import API_URL from '../apiConfig.js'
+//  import API_URL from '../apiConfig.js'
 
 const validtionSchima = Yup.object({
     name: Yup.string()
@@ -37,7 +37,7 @@ export default function EditProfile(props) {
     const onSubmit = (values) => {
         let userId = props.userProfile._id
         axios
-            .post(`${API_URL}/api/users/EditProfile/${userId}`, values)
+            .post(`http://localhost:5000/api/user/editprofile/${userId}`, values)
             .then((res) => {
                 console.log("res.data.user from profile update: ", res.data.user)
                 props.setUserProfile(values)
@@ -58,7 +58,7 @@ export default function EditProfile(props) {
             .then(result => console.log(result.data.data.link))
             .catch(error => console.log('error', error));
     }
-    console.log(image)
+    // console.log(image)
 
 
 
@@ -77,26 +77,25 @@ export default function EditProfile(props) {
                     <FormikForm className="mt-5" style={{ color: "black" }}
                     >
 
-                        <MDBLightbox md='4'>
 
                             <MDBRow>
 
                                 <MDBCol lg="4" md="12" className="mb-lg-0 mb-4">
                                     <MDBCard testimonial>
-                                        <MDBCardUp color="info" />
-                                        <MDBAvatar className="mx-auto white">
+
+                                         <MDBCardImage className="mx-auto white"> 
                                             <img
                                                 src={props.userProfile.img} alt=""
                                                 className="rounded-circle img-fluid"
                                             />
-                                        </MDBAvatar>
+                                         </MDBCardImage> 
                                         <MDBCardBody>
-                                            <h4 className="font-weight-bold mb-4">{userInfo.name ? userInfo.name : props.userProfile.name}</h4>
+                                        <MDBCardTitle>  <h4 className="font-weight-bold mb-4">{userInfo.name ? userInfo.name : props.userProfile.name}</h4></MDBCardTitle>
                                             <hr />
-                                            <p className="dark-grey-text mt-4">
+                                            <MDBCardText>  <p className="dark-grey-text mt-4">
                                                 <MDBIcon icon="quote-left" className="pr-2" />
                                                 {userInfo.name ? userInfo.email : props.userProfile.email}
-                                            </p>
+                                            </p></MDBCardText>
                                         </MDBCardBody>
                                     </MDBCard>
                                 </MDBCol>
@@ -180,9 +179,11 @@ export default function EditProfile(props) {
                                 </MDBCol>
                             </MDBRow>
 
-                        </MDBLightbox>
                     </FormikForm>
-                </Formik> : <MDBSpinner />
+                </Formik> 
+                 : <div className="spinner-border" role="status">
+                 <span className="sr-only">Loading...</span>
+               </div>
 
             }
         </>
