@@ -1,4 +1,4 @@
-import { MDBAnimation, MDBCard, MDBCardBody, MDBCol, MDBIcon, MDBInput, MDBContainer, MDBBtn, MDBLink,MDBAlert } from 'mdbreact';
+/* import { MDBAnimation, MDBCard, MDBCardBody, MDBCol, MDBIcon, MDBInput, MDBContainer, MDBBtn, MDBLink,MDBAlert } from 'mdbreact';
 import axios from "axios";
 import React, { useState } from "react";
 
@@ -7,7 +7,7 @@ import NavBar from './NavBar'
 
 
 
-
+import { useHistory,Link } from "react-router-dom";
 
 
 export default function Login(props) {
@@ -109,7 +109,7 @@ export default function Login(props) {
                 <MDBInput
                   /*    className='white-text'
                      iconClass='white-text' */
-                  label='Enter your email'
+                /*   label='Enter your email'
                   icon='envelope'
                   type='email'
                   name="email"
@@ -130,11 +130,11 @@ export default function Login(props) {
                   <MDBLink to='#'  >
                     forget password?
                     </MDBLink>
-                </div> */}
-                <div className='text-center'>
-                
-                <h4>New User?</h4>
+                </div> */
+              /*}
+                 <div className='text-center'>
 
+                  <h4>New User?</h4>
                   <MDBLink to='/signup'  >
                  
                     Sign Up
@@ -152,3 +152,4 @@ export default function Login(props) {
     </>
   )
 }
+  */

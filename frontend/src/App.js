@@ -6,7 +6,7 @@ import Create from './components/Create';
 import NavBar from './components/NavBar';
 import Landing from './components/Landing';
 import ShowPage from './components/ShowPage';
-//import {Footer} from './components/Footer'
+import {Footer} from './components/Footer'
 import {AboutUs} from './components/AboutUs';
 
 

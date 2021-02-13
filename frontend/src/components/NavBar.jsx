@@ -40,10 +40,7 @@ export default function NavBar(props) {
                             <MDBNavLink to="/profile"><MDBIcon far icon="user" /> Profile</MDBNavLink>
                         </MDBNavItem>
 
-                        <MDBNavItem>
-                            <MDBNavLink to="/create"> <MDBIcon icon="plus-circle" /> Create</MDBNavLink>
-                        </MDBNavItem>
-
+                       
                         <MDBNavItem>
                             <MDBNavLink to="/logout"> <MDBIcon icon="sign-out-alt" />Logout</MDBNavLink>
                         </MDBNavItem>

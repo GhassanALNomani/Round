@@ -55,7 +55,7 @@ router.post("/login", async (req, res) => {
     // if email is  not exist
     if (!user) {
         res.json({ msg: "email is not exist" });
-        
+
     }
     // if email is  exist
     else {
