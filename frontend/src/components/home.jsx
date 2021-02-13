@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+/* import React, { useEffect, useState } from 'react'
 import Axios from 'axios'
 import { MDBDropdown, MDBDropdownToggle, MDBDropdownMenu, MDBDropdownItem, MDBRow } from "mdbreact";
 import NavBar from './NavBar'
@@ -42,6 +42,7 @@ const onChangeHandler = (e) =>{
  
 }
 */
+/* 
     return (
         
         <div className="home">
@@ -66,8 +67,9 @@ className='mt-5  d-flex justify-content-center align-items-center '
             
     <MDBRow>
 {/*          {allplaces}
- */}        </MDBRow>
+ *//* }        </MDBRow>
 
         </div>
     )
 }
+  */ 
