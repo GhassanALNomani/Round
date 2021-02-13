@@ -36,13 +36,16 @@ export default function Create(props) {
                         history.push("/cafe");
                     } else if (place.category === "restaurant"){
                         history.push("/restaurant");
-                    }else{
+                    }else if (place.category === "entertainment")
+                    {
                         history.push("/entertainment")
+                    }else
+                    {
+                        history.push("/concert")
                     }
-
-                } else {
+                    } else {
                     alert("Error! check your information and try again")
-                }
+                    }
             })
             .catch((err) => console.log(err));
     }
@@ -107,6 +110,7 @@ export default function Create(props) {
                     <option>cafe</option>
                     <option >restaurant</option>
                     <option >entertainment</option>
+                    <option >concert</option>
                   
                  </select>
 
