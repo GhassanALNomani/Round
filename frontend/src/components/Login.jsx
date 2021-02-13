@@ -1,7 +1,14 @@
 import { MDBAnimation, MDBCard, MDBCardBody, MDBCol, MDBIcon, MDBInput, MDBContainer, MDBBtn, MDBLink,MDBAlert } from 'mdbreact';
 import axios from "axios";
 import React, { useState } from "react";
-import { useHistory,Link } from "react-router-dom";
+
+import { useHistory } from "react-router-dom";
+import NavBar from './NavBar'
+
+
+
+
+
 
 export default function Login(props) {
   // const history = useHistory();
@@ -134,7 +141,6 @@ export default function Login(props) {
             </MDBCard>
           </MDBAnimation>
         </MDBCol>
-
       </MDBContainer>
     </div>
     </>

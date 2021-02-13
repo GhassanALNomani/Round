@@ -1,3 +1,4 @@
+
 import {
     MDBCard,
     MDBCardBody,
@@ -16,9 +17,16 @@ import {
   import { useParams } from "react-router-dom";
   import axios from "axios";
   import ReactStars from 'react-stars';
-  export default function ShowPage(props) {
-    const [place, setPlaces] = useState({});
-    const { id } = useParams();
+import { MDBCard, MDBCardBody, MDBBtn, MDBCardImage, MDBCardTitle, MDBCardText, MDBRow, MDBCol, MDBAlert, MDBContainer } from 'mdbreact';
+import React, { useState, useEffect } from 'react'
+import { useParams } from 'react-router-dom';
+ import axios from 'axios'
+
+
+
+export default function ShowPage(props) {
+    const [place, setPlaces] = useState({})
+    const { id } = useParams()
     const selectPlace = props.selectPlace;
     const [errorRating, setErrorRating] = useState(false)
     const [score, setScore] = useState(5)
@@ -83,10 +91,22 @@ import {
         console.log("Login first");
       }
     }
+
     const ratingChanged = (newRating) => {
       setScore(newRating)
     }
-  
+
+    // git data
+    useEffect(() => {
+        axios.get(`http://localhost:5000/api/place/${id}`)
+          .then(res => {
+            setPlaces(res.data.pros)
+            console.log("place info", place)
+          })
+    }, [])
+
+
+
     const add = () => {
       setadded(false);
       setTimeout(() => {
@@ -174,6 +194,7 @@ import {
                 <h2>Join the Discussion!</h2>
                 <MDBContainer>
                 <MDBRow>
+
                   <MDBCol md="6">
                     <form>
                       <div className="grey-text">
@@ -187,6 +208,26 @@ import {
                       </div>
                     </form>
                   </MDBCol>
+
+                    <MDBCol style={{ maxWidth: "40rem" }}>
+                        <MDBCard reverse>
+                            <MDBCardImage cascade style={{ height: '20rem' }} src={place.image} />
+
+                            <MDBCardBody cascade className="text-center">
+                                <MDBCardTitle>{place.name}</MDBCardTitle>
+
+                                <h5 className="indigo-text"><strong>{place.category}</strong></h5>
+
+                                <MDBCardText>{place.description}</MDBCardText>
+
+                                <MDBBtn outline color="dark" onClick ={()=> 
+                            { addPlace();
+                                add();}}> Add To List</MDBBtn>
+
+                            </MDBCardBody>
+                        </MDBCard>
+                    </MDBCol>
+
                 </MDBRow>
               </MDBContainer>
               </MDBCard>

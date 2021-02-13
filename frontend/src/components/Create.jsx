@@ -2,28 +2,38 @@ import React, { useState } from 'react'
 import axios from 'axios'
 import { useHistory } from 'react-router-dom'
 import { MDBBtn, MDBCol, MDBContainer, MDBIcon, MDBInput, MDBCard, MDBAnimation, MDBCardBody} from 'mdbreact';
+import NavBar from './NavBar'
 
 
 
 
 export default function Create(props) {
+
     const history = useHistory();
-    const [place, setPlace] = useState({});
+
+    const [placetFields, setPlaceFields] = useState({
+      name: "",
+      description: "",
+      image: "",
+      category: "Choose the place"
+  });
 
 
     const onSubmit = (e) => {
-       // console.log(place);
+        console.log(placetFields);
         e.preventDefault();
 
         axios
-            .post("http://localhost:5000/api/place", place)
+            .post("http://localhost:5000/api/place/create", placetFields)
             .then((res) => {
 
                 const place = res.data;
+
                 console.log("response data: ", res.data)
+
                 if (place) {
-                    if (place.placeType === "Coffee") {
-                        history.push("/coffee");
+                    if (place.category === "cafe") {
+                        history.push("/cafe");
                     } else {
                         history.push("/restaurant");
                     }
@@ -35,15 +45,19 @@ export default function Create(props) {
     }
 
 
-    const onChangeInput = ({ target: { name, value } }) => {
-        setPlace({ ...place, [name]: value });
-       // console.log(place);
-    };
+    const onChangeInput = (event) => {
+      const { name, value } = event.target;
+      setPlaceFields({
+          ...placetFields,
+          [name]: value,
+      });
+      console.log(placetFields)
+  };
 
 
     const onChangeSelect = ({ target: { name }, option }) => {
-        setPlace({ ...place, [name]: option });
-        console.log(place);
+      setPlaceFields({ ...placetFields, [name]: option });
+        console.log(placetFields);
 
     };
 
@@ -69,30 +83,30 @@ export default function Create(props) {
                         /* className='white-text'
                         iconClass='white-text' */
                         label='name'
-                        
+                        name = "name"
                         onChange={(e) => onChangeInput(e)}
                       />
                       <MDBInput
                      /*    className='white-text'
                         iconClass='white-text' */
                         label='Description'
-                       
+                        name = "description"
                         onChange={(e) => onChangeInput(e)}/>
 
                       <MDBInput
                         label='Image Url'
-                       
+                        name = "image"
                         onChange={(e) => onChangeInput(e)}/>
 
-                  <select className="browser-default custom-select"  onChange={(e) => onChangeSelect(e)}>   
-                    <option>Choose the place</option>
-                    <option value="1">Coffee</option>
-                    <option value="2">restaurant</option>
+                  <select className="browser-default custom-select" name="category" onChange={(e) => onChangeInput(e)}>   
+                    <option >Choose the place</option>
+                    <option>cafe</option>
+                    <option >restaurant</option>
                   
                  </select>
 
                       <div className='text-center mt-4 black-text'>
-                        <MDBBtn color='indigo' onClick={(e) => onSubmit(e)}>Submit</MDBBtn>
+                        <MDBBtn color='indigo' type="submit" onClick={(e) => onSubmit(e)}>Submit</MDBBtn>
                       </div>
                     </MDBCardBody>
                   </MDBCard>
