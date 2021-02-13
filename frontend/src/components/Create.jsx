@@ -34,9 +34,12 @@ export default function Create(props) {
                 if (place) {
                     if (place.category === "cafe") {
                         history.push("/cafe");
-                    } else {
+                    } else if (place.category === "restaurant"){
                         history.push("/restaurant");
+                    }else{
+                        history.push("/entertainment")
                     }
+
                 } else {
                     alert("Error! check your information and try again")
                 }

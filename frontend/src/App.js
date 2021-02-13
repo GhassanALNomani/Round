@@ -32,7 +32,6 @@ function App() {
                 <NavBar />
 {/*                 {...props} auth={auth} loginCallback={userLogin}
  */}              </Route>
-
             
       </Switch>
     </Router>
