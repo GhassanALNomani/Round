@@ -30,7 +30,8 @@ function App() {
 
               <Route path="/navbar">
                 <NavBar />
-              </Route>
+{/*                 {...props} auth={auth} loginCallback={userLogin}
+ */}              </Route>
 
             
       </Switch>

@@ -1,9 +1,10 @@
 import React from 'react'
 import { MDBNavbar, MDBNavbarBrand, MDBNavbarNav, MDBNavbarToggler, MDBCollapse, MDBNavItem, MDBNavLink, MDBIcon } from 'mdbreact';
-import {useHistory } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
+
 
 export default function NavBar(props) {
-    const bgPink = { backgroundColor: '#a497bd' }
+    const bgPink = { backgroundColor: '' }
     const history = useHistory();
 
     const logOut = () => {
@@ -11,7 +12,7 @@ export default function NavBar(props) {
         console.log("Logging Out!");
         localStorage.removeItem("jwtToken");
         props.loginCallback();
-         history.push('/home');
+        history.push('/home');
 
     }
     return (
@@ -19,21 +20,37 @@ export default function NavBar(props) {
             <header>
                 <MDBNavbar style={bgPink} dark expand="md" scrolling fixed="top">
                     <MDBNavbarBrand href="/">
-                        <strong>Navbar</strong>
+                        <strong></strong>
                     </MDBNavbarBrand>
 
                     <MDBNavbarNav left>
                         <MDBNavItem active>
-                            <MDBNavLink to="/home">Home</MDBNavLink>
+                            <MDBNavLink to="/home"><MDBIcon icon="home" /> Home</MDBNavLink>
                         </MDBNavItem>
 
                         <MDBNavItem>
-                            <MDBNavLink to="/about">About us</MDBNavLink>
+                            <MDBNavLink to="/about"> <MDBIcon icon="info" /> About us</MDBNavLink>
                         </MDBNavItem>
 
                     </MDBNavbarNav>
 
-                    {props.auth.isLoggedIn && props.auth.currentUser.userType == "admin" ?
+                    <MDBNavbarNav right>
+
+                        <MDBNavItem>
+                            <MDBNavLink to="/profile"><MDBIcon far icon="user" /> Profile</MDBNavLink>
+                        </MDBNavItem>
+
+                        <MDBNavItem>
+                            <MDBNavLink to="/create"> <MDBIcon icon="plus-circle" /> Create</MDBNavLink>
+                        </MDBNavItem>
+
+                        <MDBNavItem>
+                            <MDBNavLink to="/logout"> <MDBIcon icon="sign-out-alt" />Logout</MDBNavLink>
+                        </MDBNavItem>
+
+                    </MDBNavbarNav>
+
+                    {/*        {props.auth.isLoggedIn && props.auth.currentUser.userType == "admin" ?
 
                         <MDBNavbarNav right>
 
@@ -80,7 +97,7 @@ export default function NavBar(props) {
                                 </MDBNavItem>
 
                             </MDBNavbarNav>
-                    }
+                    } */}
                 </MDBNavbar>
             </header>
         </div>

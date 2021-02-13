@@ -46,6 +46,7 @@ export default function Signup() {
         
         <div className='classicformpage'>
 
+<NavBar/>
 <MDBView>
 <MDBContainer
             style={{ height: '100%', width: '100%', paddingTop: '10rem' }}
@@ -55,11 +56,13 @@ export default function Signup() {
       <MDBCol md='6' xl='5' className='mb-4'>
                 <MDBAnimation type='fadeInRight' delay='.3s'>
                   <MDBCard id='classic-card'>
+                  <h1 className='text-center mt-5' >
+                   𝕊𝕀𝔾ℕ 𝕌ℙ
+                      </h1>
                     <MDBCardBody className='white-text'>
-                      <h3 className='text-center'> <MDBIcon icon='user' /> Register: </h3>
                      
-                      <hr className='hr-light' />
-                    
+{/*                       <hr className='hr-light' />
+ */}                    
                       <MDBInput
                         /* className='white-text'
                         iconClass='white-text' */
@@ -82,7 +85,7 @@ export default function Signup() {
                         name = "password"
                         onChange={(e) => onChangeInput(e)}/>
                       <div className='text-center mt-4 black-text'>
-                        <MDBBtn color='indigo' onClick={(e) => onSubmit(e)}>Sign Up</MDBBtn>
+                        <MDBBtn gradient="blue" onClick={(e) => onSubmit(e)}>Sign Up</MDBBtn>
                       </div>
                     </MDBCardBody>
                   </MDBCard>

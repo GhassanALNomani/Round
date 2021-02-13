@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import axios from 'axios'
 import { useHistory } from 'react-router-dom'
 import { MDBBtn, MDBCol, MDBContainer, MDBIcon, MDBInput, MDBCard, MDBAnimation, MDBCardBody} from 'mdbreact';
-import NavBar from './NavBar'
+//import NavBar from './components/NavBar';
 
 
 
@@ -55,27 +55,28 @@ export default function Create(props) {
   };
 
 
-    const onChangeSelect = ({ target: { name }, option }) => {
+  /*   const onChangeSelect = ({ target: { name }, option }) => {
       setPlaceFields({ ...placetFields, [name]: option });
         console.log(placetFields);
 
-    };
+    }; */
 
 
    // if (props.auth.currentUser.userType === "admin") {
 
     return (
-        <div>
+        <div className="classicformpage">
             <MDBContainer
             style={{ height: '100%', width: '100%', paddingTop: '10rem' }}
             className='mt-5  d-flex justify-content-center align-items-center'
             >
-             <MDBCol md='6' xl='5' className='mb-4'>
-             <h1 className='text-center'> <MDBIcon icon='' /> Create place</h1>
+             <MDBCol md='6' xl='5' className='mb-4' >
                 <MDBAnimation type='fadeInRight' delay='.3s'>
                   <MDBCard id='classic-card'>
+                  <h1 className='text-center mt-5' ><MDBIcon icon='' />
+                       ℂℝ𝔼𝔸𝕋𝔼
+                      </h1>
                     <MDBCardBody className='white-text'>
-                     
                      
                       <hr className='hr-light' />
                     
@@ -106,7 +107,7 @@ export default function Create(props) {
                  </select>
 
                       <div className='text-center mt-4 black-text'>
-                        <MDBBtn color='indigo' type="submit" onClick={(e) => onSubmit(e)}>Submit</MDBBtn>
+                        <MDBBtn gradient="blue" type="submit" onClick={(e) => onSubmit(e)}>Submit</MDBBtn>
                       </div>
                     </MDBCardBody>
                   </MDBCard>
