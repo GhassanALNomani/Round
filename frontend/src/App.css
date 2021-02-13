@@ -1,6 +1,6 @@
 
 .classicformpage {
-  background-image: url('https://images.pexels.com/photos/853168/pexels-photo-853168.jpeg?auto=compress&cs=tinysrgb&h=650&w=940');
+  background-image: url('https://images.pexels.com/photos/1755087/pexels-photo-1755087.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500');
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center center;
@@ -13,6 +13,9 @@
     rgba(0, 0, 0, 0.7),
     rgba(72, 15, 144, 0.4) 100%
   );
+  https://images.pexels.com/photos/1763075/pexels-photo-1763075.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940
+
+  https://images.pexels.com/photos/853168/pexels-photo-853168.jpeg?auto=compress&cs=tinysrgb&h=650&w=940
   background: (
     linear,
     45deg,

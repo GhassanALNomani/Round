@@ -106,6 +106,7 @@ export default function Create(props) {
                     <option >Choose the place</option>
                     <option>cafe</option>
                     <option >restaurant</option>
+                    <option >entertainment</option>
                   
                  </select>
 

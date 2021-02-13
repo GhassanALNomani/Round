@@ -1,7 +1,7 @@
 import React from 'react'
 import { MDBCard, MDBCardBody, MDBCardImage, MDBCardTitle, MDBIcon , MDBRow, MDBCol, MDBAlert, MDBContainer } from 'mdbreact';
 
-export default function CafeCard(props) {
+export default function RestaurantCard(props) {
 
     let restaurantt = props.restaurant.image
     let image = <img src={restaurantt} className="cafe" alt="card" />
