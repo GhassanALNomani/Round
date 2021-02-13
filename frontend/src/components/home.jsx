@@ -1,4 +1,4 @@
-/* import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import Axios from 'axios'
 import { MDBDropdown, MDBDropdownToggle, MDBDropdownMenu, MDBDropdownItem, MDBRow } from "mdbreact";
 import NavBar from './NavBar'
@@ -42,7 +42,6 @@ const onChangeHandler = (e) =>{
  
 }
 */
-/* 
     return (
         
         <div className="home">
@@ -56,7 +55,7 @@ style={{ height: '100%', width: '100%', paddingTop: '10rem' }}
 className='mt-5  d-flex justify-content-center align-items-center '
 >
       <MDBDropdownToggle caret gradient="blue" className="mt-5" >
-        Where - 2 - Go 
+        Where - 2 -Go 
       </MDBDropdownToggle>
       <MDBDropdownMenu basic>
         <MDBDropdownItem header>Jeddah Places</MDBDropdownItem>
@@ -67,9 +66,8 @@ className='mt-5  d-flex justify-content-center align-items-center '
             
     <MDBRow>
 {/*          {allplaces}
- *//* }        </MDBRow>
+ */}        </MDBRow>
 
         </div>
     )
 }
-  */ 
