@@ -85,7 +85,7 @@ const handleOnChangeDate = (date) => {
     return (
       
         <div className="classicformpage">
-          <NavBar/>
+          
             <MDBContainer
             style={{ height: '100%', width: '100%', paddingTop: '10rem' }}
             className='mt-5  d-flex justify-content-center align-items-center'
