@@ -79,7 +79,7 @@ function App() {
               />
             </Route>
 
-              <Route path="/home">
+              <Route path="/">
                   <Home />
               </Route>
 
