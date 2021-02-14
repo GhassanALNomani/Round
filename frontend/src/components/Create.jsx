@@ -31,7 +31,7 @@ export default function Create(props) {
             ["image"]: data.data.data.link,
         })
         console.log("placetFields: ",placetFields)
-        console.log(data.data.result.image)
+        //console.log(data.data.result.image)
       })
       .catch(err => console.log(err))
 }
@@ -123,7 +123,7 @@ export default function Create(props) {
                       <MDBInput
                         label='Image'
                         name = "image"
-                        onChange={(e) =>uploadImageHundler(e)} type="file"/>
+                        /* onChange={(e) =>uploadImageHundler(e)} type="file" *//>
 
                   <select className="browser-default custom-select" name="category" onChange={(e) => onChangeInput(e)}>   
                     <option >Choose the place</option>

@@ -7,6 +7,20 @@
   min-height: 100vh;
 }
  
+ .placesCard{
+  display: flex;
+  margin: auto;
+  width: 80%;
+  height: 70%;
+  text-align: center;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  
+} 
+
+
+
  /* .classicformpage .gradient {
   background: -webkit-linear-gradient(
     45deg,
@@ -39,7 +53,7 @@
 
 
 
-
+/* 
 .App {
   text-align: center;
 }
@@ -81,4 +95,4 @@
 
 #classicformpage .card {
   background-color: rgba(126, 123, 215, 0.2);
-}
+} */
