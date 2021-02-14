@@ -31,7 +31,7 @@ const onChangeHandler = (e) =>{
 }
     return (
         <div>
-<h1 className='mt-5  d-flex justify-content-center align-items-center'>Welcome</h1>
+{/* <h1 className='mt-5  d-flex justify-content-center align-items-center'>Welcome</h1> */}
 <MDBDropdown 
 style={{ height: '100%', width: '100%', paddingTop: '10rem' }}
 className='mt-5  d-flex justify-content-center align-items-center'

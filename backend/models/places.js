@@ -6,6 +6,9 @@ const placeSchema = new mongoose.Schema({
     category: String,
     name: String,
     description: String,
+    location: String,
+    date: Date,
+    workingHours : String,
     reviews: {
         type: Array,
         default: []

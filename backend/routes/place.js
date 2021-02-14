@@ -61,6 +61,9 @@ router.post("/create", (req, res) => {
     description: req.body.description,
     image: req.body.image,
     category: req.body.category,
+    location: req.body.location,
+    date: req.body.date,
+    workingHours: req.body.workingHours,
   };
 
   Places.create(addPlace)
@@ -114,6 +117,9 @@ router.put("/:placeId", (req, res) => {
     description: req.body.description,
     image: req.body.image,
     category: req.body.category,
+    location: req.body.location,
+    date: req.body.date,
+    workingHours: req.body.workingHours,
   };
 
   Places.findByIdAndUpdate(placeId, updatePlace)
