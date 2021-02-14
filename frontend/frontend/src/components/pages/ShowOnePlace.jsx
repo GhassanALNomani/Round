@@ -115,7 +115,6 @@ export default function ShowPage(props) {
     //handle on click send comment 
     const handleComment = (event) =>{
       event.preventDefault();
-      // axios.post(`http://localhost:5000/api/comment/${place._id}`, comment)
       axios.post(`http://localhost:5000/api/comment/${place._id}/${props.user._id}`, comment)
       .then(res =>{
         console.log(res)
