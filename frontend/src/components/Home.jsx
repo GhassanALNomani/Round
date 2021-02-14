@@ -23,7 +23,7 @@ export default function Home(props) {
         })
     }, []) 
 
-    // console.log("place" , selectPlaces)
+     console.log("place" , selectPlaces)
     const  allplaces = places.map(place =>{
 
         return (

@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import axios from 'axios'
 import { useHistory } from 'react-router-dom'
 import { MDBBtn, MDBCol, MDBContainer, MDBIcon, MDBInput, MDBCard, MDBAnimation, MDBCardBody} from 'mdbreact';
+import NavBar from './NavBar';
 //import NavBar from './components/NavBar';
 
 
@@ -17,6 +18,23 @@ export default function Create(props) {
       image: "",
       category: "Choose the place"
   });
+
+
+  const uploadImageHundler = (e) => {
+    var format = new FormData()
+    format.append("image",  e.target.files[0])
+    axios.post("https://api.imgur.com/3/image/", format, { headers: { "Authorization": "Client-ID 69b46cb86f4a61f" } })
+
+      .then(data => {
+        setPlaceFields({
+            ...placetFields,
+            ["image"]: data.data.data.link,
+        })
+        console.log("placetFields: ",placetFields)
+        console.log(data.data.result.image)
+      })
+      .catch(err => console.log(err))
+}
 
 
     const onSubmit = (e) => {
@@ -71,7 +89,9 @@ export default function Create(props) {
    // if (props.auth.currentUser.userType === "admin") {
 
     return (
+      
         <div className="classicformpage">
+          <NavBar/>
             <MDBContainer
             style={{ height: '100%', width: '100%', paddingTop: '10rem' }}
             className='mt-5  d-flex justify-content-center align-items-center'
@@ -101,9 +121,9 @@ export default function Create(props) {
                         onChange={(e) => onChangeInput(e)}/>
 
                       <MDBInput
-                        label='Image Url'
+                        label='Image'
                         name = "image"
-                        onChange={(e) => onChangeInput(e)}/>
+                        onChange={(e) =>uploadImageHundler(e)} type="file"/>
 
                   <select className="browser-default custom-select" name="category" onChange={(e) => onChangeInput(e)}>   
                     <option >Choose the place</option>
