@@ -6,14 +6,21 @@ import EditProfile from "./EditProfile"
 export default function AuthRoute(props) {
   if (props.auth.isLoggedIn) {
     return (
+      <Route>
         <EditProfile
-        auth = {props.auth} 
+        setAuth = {props.setAuth}
+        auth = {props.auth}
+        user={props.user}
         userProfile={props.userProfile}
-        setUserProfile={props.setUserProfile}/>
+        setUserProfile={props.setUserProfile}
+        />
+      </Route>
     );
   } else {
     return (
-        <Redirect to="/" />
+      <Route>
+        <Redirect to="/home" />
+      </Route>
     );
   }
 }
