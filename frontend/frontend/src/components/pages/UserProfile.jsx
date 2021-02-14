@@ -21,43 +21,43 @@ const validtionSchima = Yup.object({
 
 export default function UserProfile(props) {
     const history = useHistory();
-    const [userInfo, setUserInfo] = useState({})
+    const [userInfo, setUserInfo] = useState(props.user)
 
 
-
-    useEffect(() =>{
-        axios.get(`http://localhost:5000/api/user/${props.user._id}`)
-        .then(data =>{
-            setUserInfo(data.data);
-            console.log("data: ", data)
-            console.log("give me data:", userInfo)
-        })
-        .catch(err => console.log(err))
-    },[])
-    // const user = {
-    //     name: userInfo.name,
-    //     email: userInfo.email,
-    //     password: '',
-    //     confirmPassword: "",
-    //     img: userInfo.img
-    // }
-    // console.log('User const ==>', user)
-    // // to add the user info to database
-    // const onSubmit = (values) => {
-    //     // let userId = props.userProfile._id
-    //     axios
-    //         .post(`http://localhost:5000/api/user/editprofile/${props.user._id}`, values)
-    //         .then((res) => {
-    //             console.log("res.data.user from profile update: ", res.data.user)
-    //             props.setUserProfile(values)
-    //             let userdetails = {
-    //                 name: values.name,
-    //                 email: values.email
-    //             }
-    //             setUserInfo(userdetails)
-    //         })
-    //         .catch((err) => console.log(err));
-    // };
+    console.log(props)
+    // useEffect(() =>{
+    //     axios.get(`http://localhost:5000/api/user/${props.user._id}`)
+    //     .then(data =>{
+    //         setUserInfo(data.data);
+    //         console.log("data: ", data)
+    //         console.log("give me data:", userInfo)
+    //     })
+    //     .catch(err => console.log(err))
+    // },[])
+    const user = {
+        name: userInfo.name,
+        email: userInfo.email,
+        password: '',
+        confirmPassword: "",
+        img: userInfo.img
+    }
+    console.log('User const ==>', user)
+    // to add the user info to database
+    const onSubmit = (values) => {
+        // let userId = props.userProfile._id
+        axios
+            .post(`http://localhost:5000/api/user/Editprofile/${props.user._id}`, values)
+            .then((res) => {
+                console.log("res.data.user from profile update: ", res.data.user)
+                props.setUserProfile(values)
+                let userdetails = {
+                    name: values.name,
+                    email: values.email
+                }
+                setUserInfo(userdetails)
+            })
+            .catch((err) => console.log(err));
+    };
     // const uploadImagefunc = (e) => {
     //     var formdata = new FormData();
     //     formdata.append("image", e.target.files[0]);
@@ -69,10 +69,11 @@ export default function UserProfile(props) {
     return (
         <>
             {userInfo.name ?
+
                 <Formik
                     initialValues={userInfo}
-                    validationSchema={validtionSchima}
-                    // onSubmit={(values) => onSubmit(values)}
+                    // validationSchema={validtionSchima}
+                    onSubmit={(values) => onSubmit(values)}
                 >
                     <FormikForm className="mt-5" style={{ color: "black" }}
                     >
@@ -100,9 +101,9 @@ export default function UserProfile(props) {
                             <MDBCol lg="4" md="12" className="mb-lg-0 mb-4">
                                 <div className="form-group">
                                     <label htmlFor="formGroupExampleInput">Name</label>
-                                    <input
+                                    <Field
                                         type="text"
-                                        as={Field}
+                                        
                                         name="name"
                                         className="form-control"
                                         id="formGroupExampleInput"
@@ -111,9 +112,9 @@ export default function UserProfile(props) {
                                         {msg}
                                     </MDBAlert>} />
                                     <label htmlFor="formGroupExampleInput">Email</label>
-                                    <input
+                                    <Field
                                         type="text"
-                                        as={Field}
+                                        
                                         name="email"
                                         className="form-control"
                                         id="formGroupExampleInput"
@@ -122,9 +123,9 @@ export default function UserProfile(props) {
                                         {msg}
                                     </MDBAlert>} />
                                     <label htmlFor="formGroupExampleInput">password</label>
-                                    <input
+                                    <Field
                                         type="Password"
-                                        as={Field}
+                                        
                                         name="password"
                                         className="form-control"
                                         id="formGroupExampleInput"
@@ -133,9 +134,9 @@ export default function UserProfile(props) {
                                         {msg}
                                     </MDBAlert>} />
                                     <label htmlFor="formGroupExampleInput">Confirm Password</label>
-                                    <input
+                                    <Field
                                         type="Password"
-                                        as={Field}
+                                        
                                         name="confirmPassword"
                                         className="form-control"
                                         id="formGroupExampleInput"

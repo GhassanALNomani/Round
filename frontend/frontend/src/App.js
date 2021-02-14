@@ -79,7 +79,7 @@ function App() {
               />
             </Route>
 
-              <Route path="/">
+              <Route exact path="/">
                   <Home />
               </Route>
 
@@ -88,12 +88,12 @@ function App() {
               </Route>
 
               <Route path="/show/:id">
-                <ShowOnePlace/>
+                <ShowOnePlace user={auth.currentUser}/>
               </Route>
 
-              <Route path="/profile">
+              {/* <Route path="/profile">
                 <UserProfile />
-              </Route> 
+              </Route>  */}
               <Route path="/create">
                   <Create />
               </Route>
