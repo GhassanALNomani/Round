@@ -12,7 +12,7 @@ export default function NavBar(props) {
         console.log("Logging Out!");
         localStorage.removeItem("jwtToken");
         props.loginCallback();
-        history.push('/home');
+        history.push('/');
     }
 
 

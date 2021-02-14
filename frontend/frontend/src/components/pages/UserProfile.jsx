@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useHistory } from "react-router-dom";
+import { useHistory, Link, BrowserRouter } from "react-router-dom";
 import { MDBCard, MDBRow, MDBCardImage, MDBCardText, MDBIcon, MDBCardTitle, MDBCol, MDBLightbox, MDBBtn, MDBAlert, MDBCardBody, MDBSpinner } from 'mdbreact';
 // import { Link } from 'react-router-dom'
 import axios from "axios";
@@ -68,9 +68,11 @@ export default function UserProfile(props) {
     // console.log(image)
     return (
         <>
-            {userInfo.name ?
-
-                <Formik
+            {userInfo.name && userInfo.email == "admin@admin.com"?
+                <Link to={`/create`}>
+                    ℂℝ𝔼𝔸𝕋𝔼
+                    </Link>
+                :<Formik
                     initialValues={userInfo}
                     // validationSchema={validtionSchima}
                     onSubmit={(values) => onSubmit(values)}
@@ -166,9 +168,11 @@ export default function UserProfile(props) {
                         </MDBRow>
                     </FormikForm>
                 </Formik>
-                 : <div className="spinner-border" role="status">
-                    <span className="sr-only">Loading...</span>
-                </div> 
+                //  <div className="spinner-border" role="status">
+                //     <span className="sr-only">Loading...</span>
+                // </div> 
+
+                
              } 
         </>
         // <>
