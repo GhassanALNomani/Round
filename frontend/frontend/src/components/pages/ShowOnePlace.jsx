@@ -207,6 +207,7 @@ export default function ShowPage(props) {
                           Comment
                           <MDBIcon far icon="paper-plane" className="ml-1" />
                         </MDBBtn>
+                        {/* <MDBCardText>{place.comments}</MDBCardText> */}
                       </div>
                     </form>
                   </MDBCol>
