@@ -54,7 +54,7 @@ const handleOnChangeDate = (date) => {
                 console.log("response data: ", res.data)
 
                 if (place) {
-                        history.push("/home");
+                        history.push("/");
                     } else {
                     alert("Error! check your information and try again")
                     }

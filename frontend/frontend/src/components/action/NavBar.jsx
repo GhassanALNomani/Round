@@ -28,7 +28,7 @@ export default function NavBar(props) {
                     </MDBNavbarBrand>
                     <MDBNavbarNav left>
                         <MDBNavItem active>
-                            <MDBNavLink to="/home"><MDBIcon icon="home" /> Home</MDBNavLink>
+                            <MDBNavLink to="/"><MDBIcon icon="home" /> Home</MDBNavLink>
                         </MDBNavItem>
                         <MDBNavItem>
                             <MDBNavLink to="/aboutus"> <MDBIcon icon="info" /> About us</MDBNavLink>
