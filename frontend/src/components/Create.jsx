@@ -109,7 +109,7 @@ export default function Create(props) {
                       <MDBInput
                         /* className='white-text'
                         iconClass='white-text' */
-                        label='name'
+                        label='Name'
                         name = "name"
                         onChange={(e) => onChangeInput(e)}
                       />
