@@ -26,9 +26,9 @@ export default function Home(props) {
     const allplaces = places.map(place => {
 
         return (
-            <MDBCol style={{ maxWidth: "40rem" }}>
+            <MDBCol className='homeCard' md="4" style={{ maxWidth: "40rem" }}>
                 <MDBCard reverse>
-                    <MDBCardImage cascade style={{ height: '20rem' }} src={place.image} />
+                    <MDBCardImage className="cardPhoto" cascade style={{ height: '20rem' }} src={place.image} />
                     <MDBCardBody cascade className="text-center">
                         <MDBCardTitle>{place.name}</MDBCardTitle>
                         <a href='#!' className='black-text d-flex justify-content-end'>

@@ -141,6 +141,7 @@ export default function ShowPage(props) {
             <MDBCol style={{ maxWidth: "40rem" }}>
               <MDBCard reverse>
                 <MDBCardImage
+                className="cardPhoto"
                   cascade
                   style={{ height: "20rem" }}
                   src={place.image}
