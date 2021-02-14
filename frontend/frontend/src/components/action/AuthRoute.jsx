@@ -1,7 +1,7 @@
 import React from "react";
 import { Route, Redirect } from "react-router-dom";
 import UserProfile from "../pages/UserProfile"
-
+import Create from './Create';
 
 export default function AuthRoute(props) {
   if (props.auth.isLoggedIn) {
@@ -19,7 +19,7 @@ export default function AuthRoute(props) {
   } else {
     return (
       <Route>
-        <Redirect to="/home" />
+        <Redirect to="/" />
       </Route>
     );
   }

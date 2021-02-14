@@ -88,14 +88,21 @@ function App() {
               </Route>
 
               <Route path="/show/:id">
-                <ShowOnePlace user={auth.currentUser}/>
+                <ShowOnePlace
+                user={auth.currentUser}
+                isLoggedIn={auth.isLoggedIn}
+                />
               </Route>
 
               {/* <Route path="/profile">
                 <UserProfile />
               </Route>  */}
+
               <Route path="/create">
-                  <Create />
+                  <Create
+                  user={auth.currentUser}
+                  isLoggedIn={auth.isLoggedIn}
+                  />
               </Route>
 
               <Route path="/signup">

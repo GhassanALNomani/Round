@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react'
+import {Link, BrowserRouter } from "react-router-dom";
 import Axios from 'axios'
 import { MDBCard, MDBCardBody, MDBCardImage, MDBCardTitle, MDBIcon, MDBRow, MDBCol, MDBAlert, MDBContainer } from 'mdbreact';
 import { MDBDropdown, MDBDropdownToggle, MDBDropdownMenu, MDBDropdownItem } from "mdbreact";
@@ -18,6 +19,7 @@ export default function Home(props) {
     console.log("place", selectPlaces)
     const allplaces = places.map(place => {
         return (
+            <Link to={`/Show/${place._id}`}>
             <MDBCol className='' md="4" style={{ maxWidth: "40rem" }}>
                 <MDBCard reverse>
                     <MDBCardImage cascade style={{ height: '20rem' }} src={place.image} />
@@ -32,6 +34,7 @@ export default function Home(props) {
                     </MDBCardBody>
                 </MDBCard>
             </MDBCol>
+            </Link>
         )
     })
     let allSelect = category.map(ele => <option value={ele}>{ele}</option>)

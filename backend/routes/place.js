@@ -75,7 +75,7 @@ router.post("/create", (req, res) => {
 
 
 // Rate place
-// router.post("/rate", (req, res) => {
+// router.post("/review", (req, res) => {
 //     const { userId, score, placeId, userName } = req.body
 //     Places.findById(placeId).then(place => {
 //         let result = place.reviews.find(ele => ele.userId == userId)
