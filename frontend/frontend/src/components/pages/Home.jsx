@@ -39,9 +39,10 @@ export default function Home(props) {
     const filteredPlaces = filterPlaces.map(place => {
 
         return (
-            <MDBCol className='placeItem' md="4" style={{ maxWidth: "40rem" }}>
+            <Link to={`/show/${place._id}`}>
+            <MDBCol className='placeItem' md="4" style={{ maxWidth: "20rem" }}>
                 <MDBCard reverse>
-                    <MDBCardImage className="cardPhoto" cascade style={{ height: '20rem' }} src={place.image} />
+                    <MDBCardImage className="cardPhoto" cascade style={{ height: '20rem', width: "100%" }} src={place.image} />
                     <MDBCardBody cascade className="text-center">
                         <MDBCardTitle>{place.name}</MDBCardTitle>
                         <a href='#!' className='black-text d-flex justify-content-end'>
@@ -53,6 +54,7 @@ export default function Home(props) {
                     </MDBCardBody>
                 </MDBCard>
             </MDBCol>
+            </Link>
         )
     })
 
@@ -94,7 +96,7 @@ export default function Home(props) {
                     {allSelect}
                 </MDBDropdownMenu>
             </MDBDropdown>
-            <MDBRow className="placesContainer">
+            <MDBRow className="placesContainer" style={{margin: "0 auto"}}>
                 {filteredPlaces}
             </MDBRow>
         </div>
