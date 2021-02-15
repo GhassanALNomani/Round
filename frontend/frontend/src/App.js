@@ -3,7 +3,6 @@ import SignUp from "./components/action/SignUp"
 import Login from "./components/action/Login"
 import Create from './components/action/Create';
 import NavBar from './components/action/NavBar';
-import UserProfile from "./components/pages/UserProfile"
 import Home from "./components/pages/Home";
 import ShowOnePlace from './components/pages/ShowOnePlace';
 import AuthRoute from './components/action/AuthRoute';

@@ -5,7 +5,7 @@ import { MDBBtn, MDBCol, MDBContainer, MDBIcon, MDBInput, MDBCard, MDBAnimation,
 import NavBar from './NavBar';
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
-
+import Profile from "../pages/Profile"
 //import { MDBDatePickerV5 } from 'mdbreact';
 //import NavBar from './components/NavBar';
 
@@ -84,6 +84,7 @@ const handleOnChangeDate = (date) => {
 
     return (
 <>
+<Profile />
 { props.user != null && props.user.email == "admin@admin.com"?      
         <div className="classicformpage">
           

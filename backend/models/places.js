@@ -14,7 +14,7 @@ const placeSchema = new mongoose.Schema({
         default: []
     },
     // location: String
-    comments: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Comment' }],
+    comments: [{ type: mongoose.Schema.Types.ObjectId, ref: 'comment' }],
 })
 
 const Place = mongoose.model('place', placeSchema)

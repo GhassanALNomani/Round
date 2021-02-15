@@ -19,7 +19,7 @@ const validtionSchima = Yup.object({
     img: Yup.string().required("This Field is Required")
 })
 
-export default function UserProfile(props) {
+export default function EditUserInfo(props) {
     const history = useHistory();
     const [userInfo, setUserInfo] = useState(props.user)
 
