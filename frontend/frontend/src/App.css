@@ -1,5 +1,5 @@
 .classicformpage {
-  background-image: url('https://images.pexels.com/photos/853168/pexels-photo-853168.jpeg?auto=compress&cs=tinysrgb&h=650&w=940');
+  background-color:white;
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center center;
@@ -36,9 +36,17 @@
 }
  */
  .home{
-  background-image: url('https://images.pexels.com/photos/1267697/pexels-photo-1267697.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260');
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center center;
   min-height: 100vh;
  }
+
+ .nav-style{
+   color: #3753bf
+ }
+
+
+ .style-header{
+  color:rgb(10, 0, 0)
+}

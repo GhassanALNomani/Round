@@ -1,4 +1,5 @@
 import React from 'react'
+import "../../App.css"
 import { MDBNavbar, MDBNavbarBrand, MDBNavbarNav, MDBNavbarToggler, MDBCollapse, MDBNavItem, MDBNavLink, MDBIcon } from 'mdbreact';
 import { useHistory } from 'react-router-dom';
 export default function NavBar(props) {
@@ -21,31 +22,31 @@ export default function NavBar(props) {
     return (
         <div>
             <header>
-                <MDBNavbar style={bgPink} dark expand="md"  >
+                <MDBNavbar style={bgPink} dark expand="md"  color="blue">
 {/*                 scrolling fixed="top"
  */}                    <MDBNavbarBrand href="/">
                         <strong></strong>
                     </MDBNavbarBrand>
-                    <MDBNavbarNav left>
+                    <MDBNavbarNav left style={{fontSize: "25px"}}>
                         <MDBNavItem active>
-                            <MDBNavLink to="/"><MDBIcon icon="home" /> Home</MDBNavLink>
+                            <MDBNavLink to="/"><MDBIcon icon="home" /> 𝑯𝒐𝒎𝒆</MDBNavLink>
                         </MDBNavItem>
                         <MDBNavItem>
-                            <MDBNavLink to="/aboutus"> <MDBIcon icon="info" /> About us</MDBNavLink>
+                            <MDBNavLink to="/aboutus"> <MDBIcon icon="info" /> 𝔸𝕓𝕠𝕦𝕥 𝕦𝕤</MDBNavLink>
                         </MDBNavItem>
                     </MDBNavbarNav>
                     {!props.isLoggedIn ? <> 
                         
-                        <MDBNavbarNav right>
+                        <MDBNavbarNav right style={{fontSize: "25px"}}>
                                 <MDBNavItem>
-                                    <MDBNavLink to="/signup"><MDBIcon icon="user-plus" /> Signup</MDBNavLink>
+                                    <MDBNavLink to="/signup"><MDBIcon icon="user-plus" /> 𝕊𝕚𝕘𝕟𝕦𝕡</MDBNavLink>
                                 </MDBNavItem>
                                 <MDBNavItem>
-                                    <MDBNavLink to="/login"> <MDBIcon icon="sign-in-alt" />Login</MDBNavLink>
+                                    <MDBNavLink to="/login"> <MDBIcon icon="sign-in-alt" />𝕃𝕠𝕘𝕚𝕟</MDBNavLink>
                                 </MDBNavItem>
                             </MDBNavbarNav>
                            </> : <>
-                            <MDBNavbarNav right>
+                            <MDBNavbarNav right style={{fontSize: "25px"}}>
                                 <MDBNavItem>
                                     <MDBNavLink to="/profile"><MDBIcon far icon="user" /> Profile</MDBNavLink>
                                 </MDBNavItem>
