@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const User = require("../models/user")
 const Comment = require("../models/comment")
-// const Place = require("../models/place")
+const Place = require("../models/places")
 
 router.get("/", (req, res) => {
     Comment.find()
@@ -13,15 +13,18 @@ router.get("/", (req, res) => {
 })
 
 //:id
-router.post("/", (req, res)=>{
-
+router.post("/:placeId/:userId", (req, res)=>{
+    
     var createComment = {
-        text: req.body.text
+        text: req.body.text,
+        user: req.params.userId
     }
-
     Comment.create(createComment)
     .then((comment=>{
-        res.json({msg: "successfully comment", comment: comment})
+        Place.findByIdAndUpdate(req.params.placeId,{$push:{comments: comment}},{new:true})
+        .then(place => {
+            res.json({msg: "successfully comment", place: place})
+        })
     }))
     .catch(err => res.json({msg: err}))
 })

@@ -1,13 +1,13 @@
 const express = require("express");
 const Place = require("../models/places");
 const router = express.Router();
-const Places = require("../models/places");
+
 const User = require("../models/user");
 
 
 //Get all Places
 router.get("/", (req, res) => {
-  Places.find()
+  Place.find()
     .then((result) => {
       res.json({ result });
     })
@@ -15,36 +15,37 @@ router.get("/", (req, res) => {
 });
 
 // get all cafe
-router.get("/cafe", (req, res) => {
+// router.get("/cafe", (req, res) => {
 
 
-  Place.find({ category: "cafe" })
-      .then(cafe => {
+//   Place.find({ category: "cafe" })
+//       .then(cafe => {
 
-          res.json(cafe);
+//           res.json(cafe);
 
-      }).catch((err) => res.json({ msg: err }));
+//       }).catch((err) => res.json({ msg: err }));
 
-});
+// });
 
 // get all restaurant
-router.get("/restaurant", (req, res) => {
+// router.get("/restaurant", (req, res) => {
 
 
-  Place.find({ category: "restaurant" })
-      .then(restaurant => {
+//   Place.find({ category: "restaurant" })
+//       .then(restaurant => {
 
-          res.json(restaurant);
+//           res.json(restaurant);
 
-      }).catch((err) => res.json({ msg: err }));
+//       }).catch((err) => res.json({ msg: err }));
 
-});
+// });
 
 
 //Get one place
 router.get("/:placeId", (req, res) => {
   let placeId = req.params.placeId;
-  Places.findById(placeId)
+  Place.findById(placeId)
+  .populate("comments")
     .then((pros) => {
       res.json({ pros });
     })
@@ -66,7 +67,7 @@ router.post("/create", (req, res) => {
     workingHours: req.body.workingHours,
   };
 
-  Places.create(addPlace)
+  Place.create(addPlace)
     .then((place) => {
       res.json({ msg: "successfully place added" });
     })
@@ -99,7 +100,7 @@ router.post("/create", (req, res) => {
 router.delete("/:placeId", (req, res) => {
   let placeId = req.params.placeId;
 
-  Places.findByIdAndDelete(placeId)
+  Place.findByIdAndDelete(placeId)
 
     .then((res) => {
       console.log("Place has been deleted", placeId); // make it alert
@@ -122,7 +123,7 @@ router.put("/:placeId", (req, res) => {
     workingHours: req.body.workingHours,
   };
 
-  Places.findByIdAndUpdate(placeId, updatePlace)
+  Place.findByIdAndUpdate(placeId, updatePlace)
     .then((res) => {
       console.log("Place has been updated :", res);
     })
