@@ -5,7 +5,7 @@
   background-position: center center;
   min-height: 100vh;
 }
- .placesCard{
+ .placesContainer{
   display: flex;
   margin: auto;
   width: 80%;
@@ -15,6 +15,29 @@
   flex-wrap: wrap;
   justify-content: center;
 } 
+/* .footer{
+  text-align: center;
+  position: fixed;
+  bottom: 0;
+  width: 100%
+} */
+
+.homeCard{
+  width: 30%;
+  height: 30%;
+}
+  
+.cardPhoto{
+  width: 60%;
+  height: 60%;
+}
+
+.placeItem{
+  flex-basis: 20%;
+  flex-grow: 0;
+  flex-shrink: 0;
+  margin: 10px;
+}
  /* .classicformpage .gradient {
   background: -webkit-linear-gradient(
     45deg,
@@ -47,6 +70,3 @@
  }
 
 
- .style-header{
-  color:rgb(10, 0, 0)
-}
