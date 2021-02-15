@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import {Link, BrowserRouter } from "react-router-dom";
 import Axios from 'axios'
-import { MDBCard, MDBCardBody, MDBCardImage, MDBCardTitle, MDBIcon, MDBRow, MDBCol, MDBAlert, MDBContainer } from 'mdbreact';
+import { MDBCard, MDBCardBody, MDBCardImage, MDBCardTitle, MDBIcon, MDBRow, MDBCol, MDBAlert, MDBContainer, MDBBtn } from 'mdbreact';
 import { MDBDropdown, MDBDropdownToggle, MDBDropdownMenu, MDBDropdownItem } from "mdbreact";
 import ShowOnePlace from './ShowOnePlace';
 
@@ -83,12 +83,12 @@ export default function Home(props) {
         <div className="home">
             <br />
             <br />
-            <h1 className='white-text mt-3  d-flex justify-content-center align-items-center '>𝕎𝔼𝕃ℂ𝕆𝕄𝔼</h1>
+            <h1 className='dark-text mt-3  d-flex justify-content-center align-items-center '>𝕎𝔼𝕃ℂ𝕆𝕄𝔼</h1>
             <MDBDropdown
                 style={{ height: '100%', width: '100%', paddingTop: '10rem' }}
                 className='mt-5  d-flex justify-content-center align-items-center '
             >
-                <MDBDropdownToggle caret gradient="blue" className="mt-5"  >
+                <MDBDropdownToggle caret className="mt-5" gradient="deep-blue"  >
                     Where - 2 - Go
          </MDBDropdownToggle>
                 <MDBDropdownMenu basic  >

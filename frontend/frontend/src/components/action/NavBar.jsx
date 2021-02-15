@@ -4,14 +4,14 @@ import React, { useEffect, useState } from 'react'
 import { MDBNavbar, MDBNavbarBrand, MDBNavbarNav, MDBNavbarToggler, MDBCollapse, MDBNavItem, MDBNavLink, MDBIcon } from 'mdbreact';
 import { useHistory } from 'react-router-dom';
 export default function NavBar(props) {
-    const bgPink = { backgroundColor: '' }
+    const bgPink = { backgroundColor: '#a9dceb' }
     const history = useHistory();
 
 
-    const [searchTerm, setSearchTerm] = useState("");
+   /*  const [searchTerm, setSearchTerm] = useState("");
     const [searchResults, setSearchResults] = useState([]);
     const [place, setPlace] = useState([])
-
+#2c6785
     const onChangeHandler = (e) => {
         setSearchTerm(e.target.value);
        // console.log("target", e.target.value)
@@ -25,7 +25,10 @@ export default function NavBar(props) {
 
       setSearchResults(results);
       
-    }, [searchTerm]);
+    }, [searchTerm]); */
+
+   
+    
 
 
     const logOut = () => {
@@ -41,7 +44,7 @@ export default function NavBar(props) {
     return (
         <div>
             <header>
-                <MDBNavbar style={bgPink} dark expand="md"  color="blue">
+                <MDBNavbar style={bgPink} dark expand="md"  >
 {/*                 scrolling fixed="top"
  */}                    <MDBNavbarBrand href="/">
                         <strong></strong>

@@ -15,12 +15,12 @@
   flex-wrap: wrap;
   justify-content: center;
 } 
-/* .footer{
+ .footer{
   text-align: center;
   position: fixed;
   bottom: 0;
-  width: 100%
-} */
+  width: 100%,
+} 
 
 .homeCard{
   width: 30%;
@@ -66,7 +66,7 @@
  }
 
  .nav-style{
-   color: #3753bf
+   color: #393f82
  }
 
 

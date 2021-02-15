@@ -2,7 +2,6 @@ import React, { useState } from 'react'
 import axios from 'axios'
 import { useHistory } from 'react-router-dom'
 import { MDBBtn, MDBCol, MDBContainer, MDBIcon, MDBInput, MDBCard, MDBAnimation, MDBCardBody} from 'mdbreact';
-import NavBar from './NavBar';
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import Profile from "../pages/Profile"
@@ -84,10 +83,10 @@ const handleOnChangeDate = (date) => {
 <>
 
 { props.user != null && props.user.email == "admin@admin.com"?      
-        <div className="classicformpage">
-          <NavBar/>
+        <div >
+         
             <MDBContainer
-            style={{ height: '100%', width: '100%', paddingTop: '10rem' }}
+            style={{ height: '100%', width: '100%', paddingTop: '6rem' }}
             className='mt-5  d-flex justify-content-center align-items-center'
             >
              <MDBCol md='6' xl='5' className='mb-4' >
