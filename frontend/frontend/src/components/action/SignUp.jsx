@@ -3,7 +3,6 @@ import { useHistory } from 'react-router-dom'
 import {MDBAnimation, MDBBtn, MDBCard, MDBCardBody, MDBCol, MDBContainer, MDBIcon, MDBInput,  MDBView , MDBAlert  } from 'mdbreact';
 import { Formik, Form as FormikForm, Field, ErrorMessage } from 'formik';
 import axios from "axios";
-import NavBar from './NavBar'
 //import signup from '../assets/signup.jpg'
 
 import * as Yup from 'yup';
@@ -13,7 +12,7 @@ const validtionSchima = Yup.object({
   password: Yup.string().required("Enter your passwor please!!").min(8, "must be more than 8").max(20, "whatEver")
 })
 
-export default function SignUp() {
+export default function Signup() {
 
 
 
@@ -36,7 +35,7 @@ export default function SignUp() {
         .then((res) => {
           const user = res.data.user;
           if (user) {
-            history.push("/login");
+            history.push("/home");
           } else {
             alert("Error! check your information and try again")
             // setTimeout(() => {
@@ -62,8 +61,7 @@ export default function SignUp() {
         onSubmit={values => onSubmit(values)}
       > */}
         
-        <div className='classicformpage'>
-
+        <div>
 <MDBView>
 {/* <FormikForm> */}
 <MDBContainer
@@ -74,11 +72,13 @@ export default function SignUp() {
       <MDBCol md='6' xl='5' className='mb-4'>
                 <MDBAnimation type='fadeInRight' delay='.3s'>
                   <MDBCard id='classic-card'>
+                  <h1 className='text-center mt-5' >
+                   𝕊𝕀𝔾ℕ 𝕌ℙ
+                      </h1>
                     <MDBCardBody className='white-text'>
-                      <h3 className='text-center'> <MDBIcon icon='user' /> Register: </h3>
                      
-                      <hr className='hr-light' />
-                    
+{/*                       <hr className='hr-light' />
+ */}                    
                       <MDBInput
                         /* className='white-text'
                         iconClass='white-text' */
@@ -117,7 +117,8 @@ export default function SignUp() {
                         
                       <div className='text-center mt-4 black-text'>
 
-                        <MDBBtn color='indigo' onClick={(e) => onSubmit(e)}>Sign Up</MDBBtn>
+                        <MDBBtn gradient="blue" onClick={(e) => onSubmit(e)}>Sign Up</MDBBtn>
+                        
                       </div>
                     </MDBCardBody>
                   </MDBCard>
@@ -135,3 +136,4 @@ export default function SignUp() {
      </>
     )
 }
+
