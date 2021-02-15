@@ -106,7 +106,7 @@ router.post('/reset', (req, res) => {
 })
 
 //=================Edit Profile 
-router.post("/EditProfile/:userId", (req, res) => {
+router.post("/edituserinfo/:userId", (req, res) => {
   const userId  = req.params.userId ;
   let updateUserProfile = {
       name: req.body.name,

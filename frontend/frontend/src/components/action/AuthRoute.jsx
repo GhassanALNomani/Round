@@ -8,11 +8,11 @@ export default function AuthRoute(props) {
     return (
       <Route>
         <Profile
-        setAuth = {props.setAuth}
-        auth = {props.auth}
-        user={props.user}
-        userProfile={props.userProfile}
-        setUserProfile={props.setUserProfile}
+          setAuth = {props.setAuth}
+          auth = {props.auth}
+          user={props.user}
+          userProfile={props.userProfile}
+          setUserProfile={props.setUserProfile}
         />
       </Route>
     );
