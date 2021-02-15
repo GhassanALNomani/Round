@@ -1,5 +1,6 @@
-import React, {useState, useEffect} from 'react'
-import { MDBNavbar, MDBNavbarBrand, MDBNavbarNav, MDBNavbarToggler, MDBCollapse, MDBNavItem, MDBNavLink, MDBIcon, MDBFormInline, MDBCol } from 'mdbreact';
+import React from 'react'
+import "../../App.css"
+import { MDBNavbar, MDBNavbarBrand, MDBNavbarNav, MDBNavbarToggler, MDBCollapse, MDBNavItem, MDBNavLink, MDBIcon } from 'mdbreact';
 import { useHistory } from 'react-router-dom';
 export default function NavBar(props) {
     const bgPink = { backgroundColor: '' }
@@ -30,7 +31,7 @@ export default function NavBar(props) {
         console.log("Logging Out!");
         localStorage.removeItem("jwtToken");
         props.loginCallback();
-        history.push('/home');
+        history.push('/');
     }
 
 
@@ -39,45 +40,31 @@ export default function NavBar(props) {
     return (
         <div>
             <header>
-                <MDBNavbar style={bgPink} dark expand="md"  >
+                <MDBNavbar style={bgPink} dark expand="md"  color="blue">
 {/*                 scrolling fixed="top"
- */}                  
-                    <MDBNavbarNav left>
+ */}                    <MDBNavbarBrand href="/">
+                        <strong></strong>
+                    </MDBNavbarBrand>
+                    <MDBNavbarNav left style={{fontSize: "25px"}}>
                         <MDBNavItem active>
-                            <MDBNavLink to="/"><MDBIcon icon="home" /> Home</MDBNavLink>
+                            <MDBNavLink to="/"><MDBIcon icon="home" /> 𝑯𝒐𝒎𝒆</MDBNavLink>
                         </MDBNavItem>
                         <MDBNavItem>
-                            <MDBNavLink to="/aboutus"> <MDBIcon icon="info" /> About us</MDBNavLink>
+                            <MDBNavLink to="/aboutus"> <MDBIcon icon="info" /> 𝔸𝕓𝕠𝕦𝕥 𝕦𝕤</MDBNavLink>
                         </MDBNavItem>
                     </MDBNavbarNav>
                     {!props.isLoggedIn ? <> 
                         
-                        <MDBNavbarNav right>
-                        <MDBCol md="6">
-                <form className="form-inline mt-2 mb-2">
-                    <MDBIcon icon="search" type="submit"/>
-               <input className="form-control form-control-sm ml-3 w-75" type="text" placeholder="Search" aria-label="Search"  value={searchTerm} onChange={(e) => onChangeHandler(e)}  />
-               <ul>
-                  {searchResults.map(item => (
-                        <li>{item}</li> ))}
-                </ul>
-                  </form>
-                 </MDBCol>
+                        <MDBNavbarNav right style={{fontSize: "25px"}}>
                                 <MDBNavItem>
-                                    <MDBNavLink to="/signup"><MDBIcon icon="user-plus" /> Signup</MDBNavLink>
+                                    <MDBNavLink to="/signup"><MDBIcon icon="user-plus" /> 𝕊𝕚𝕘𝕟𝕦𝕡</MDBNavLink>
                                 </MDBNavItem>
                                 <MDBNavItem>
-                                    <MDBNavLink to="/login"> <MDBIcon icon="sign-in-alt" />Login</MDBNavLink>
+                                    <MDBNavLink to="/login"> <MDBIcon icon="sign-in-alt" />𝕃𝕠𝕘𝕚𝕟</MDBNavLink>
                                 </MDBNavItem>
                             </MDBNavbarNav>
                            </> : <>
-                            <MDBNavbarNav right>
-                            <MDBCol>
-                        <form className="form-inline mt-2 mb-2">
-                         <MDBIcon icon="search" />
-                       <input className="form-control form-control-sm ml-3 w-60" type="text" placeholder="Search" aria-label="Search" />
-                         </form>
-                        </MDBCol>
+                            <MDBNavbarNav right style={{fontSize: "25px"}}>
                                 <MDBNavItem>
                                     <MDBNavLink to="/profile"><MDBIcon far icon="user" /> Profile</MDBNavLink>
                                 </MDBNavItem>

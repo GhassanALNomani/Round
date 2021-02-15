@@ -53,9 +53,12 @@ export default function ShowPage(props) {
           console.log(data);
         });
     };
+
+
     // git data
     useEffect(() => {
-      axios.get(`http://localhost:5000/api/place/${id}`).then((res) => {
+      axios.get(`http://localhost:5000/api/place/${id}`)
+      .then((res) => {
         setPlaces(res.data.pros);
         const onePlace = res.data.pros;
         console.log(onePlace)
@@ -65,7 +68,10 @@ export default function ShowPage(props) {
         }
         console.log("place info", onePlace);
       });
+      
     }, []);
+
+
     const handleRating = () => {
       if (props.isLoggedIn) {
         const body = {
@@ -79,6 +85,7 @@ export default function ShowPage(props) {
         axios.post(`http://localhost:5000/api/place/review`, body)
           .then(res => {
             console.log(res)
+            console.log("reviewd done")
             if (res.data == "Error! you already reviewed") {
               setErrorRating(true)
             }
@@ -92,14 +99,14 @@ export default function ShowPage(props) {
       setScore(newRating)
     }
 
-    // git data
-    useEffect(() => {
-        axios.get(`http://localhost:5000/api/place/${id}`)
-          .then(res => {
-            setPlaces(res.data.pros)
-            console.log("place info", place)
-          })
-    }, [])
+    // // git data
+    // useEffect(() => {
+    //     axios.get(`http://localhost:5000/api/place/${id}`)
+    //       .then(res => {
+    //         setPlaces(res.data.pros)
+    //         console.log("place info", place)
+    //       })
+    // }, [])
 
 
 
@@ -115,8 +122,7 @@ export default function ShowPage(props) {
     //handle on click send comment 
     const handleComment = (event) =>{
       event.preventDefault();
-      // axios.post(`http://localhost:5000/api/comment/${place._id}`, comment)
-      axios.post("http://localhost:5000/api/comment", comment)
+      axios.post(`http://localhost:5000/api/comment/${place._id}/${props.user._id}`, comment)
       .then(res =>{
         console.log(res)
       })
@@ -202,6 +208,7 @@ export default function ShowPage(props) {
                           Comment
                           <MDBIcon far icon="paper-plane" className="ml-1" />
                         </MDBBtn>
+                        {/* <MDBCardText>{place.comments}</MDBCardText> */}
                       </div>
                     </form>
                   </MDBCol>

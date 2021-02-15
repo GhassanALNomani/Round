@@ -3,16 +3,16 @@ import SignUp from "./components/action/SignUp"
 import Login from "./components/action/Login"
 import Create from './components/action/Create';
 import NavBar from './components/action/NavBar';
-import UserProfile from "./components/pages/UserProfile"
 import Home from "./components/pages/Home";
 import ShowOnePlace from './components/pages/ShowOnePlace';
 import AuthRoute from './components/action/AuthRoute';
 import {AboutUs} from './components/pages/AboutUs';
-import {Footer} from './components/pages/Footer'
+import {Footer} from './components/pages/Footer';
+import EditUserInfo from "./components/pages/EditUserInfo"
 import axios from "axios"
 import jwt_decode from "jwt-decode";
 import React, { useState, useEffect } from "react";
-
+import EditPlace from "./components/action/EditPlace"
 
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 
@@ -66,7 +66,6 @@ function App() {
     <>
     <div className="classicformpage">
       
-        
         <Router> 
         <NavBar loginCallback={userLogin} isLoggedIn={auth.isLoggedIn}/>
           <Switch>
@@ -86,16 +85,33 @@ function App() {
               <Route path="/login">
                 <Login loginCallback={userLogin}/>
               </Route>
-
-              <Route path="/show/:id">
-                <ShowOnePlace/>
+              
+              <Route exact path="/edit/:placeId">
+                <EditPlace user={auth.currentUser} />
               </Route>
 
-              <Route path="/profile">
-                <UserProfile />
+              <Route path="/show/:id">
+                <ShowOnePlace
+                user={auth.currentUser}
+                isLoggedIn={auth.isLoggedIn}
+                />
+              </Route>
+
+              <Route path="/edituserinfo/:id">
+                <EditUserInfo 
+                setAuth = {setAuth}
+                auth = {auth}
+                user={auth.currentUser}
+                userProfile={userProfile}
+                setUserProfile={setUserProfile}
+                />
               </Route> 
+
               <Route path="/create">
-                  <Create />
+                  <Create
+                  user={auth.currentUser}
+                  isLoggedIn={auth.isLoggedIn}
+                  />
               </Route>
 
               <Route path="/signup">
