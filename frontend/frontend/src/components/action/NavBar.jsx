@@ -1,11 +1,29 @@
-import React from 'react'
-import { MDBNavbar, MDBNavbarBrand, MDBNavbarNav, MDBNavbarToggler, MDBCollapse, MDBNavItem, MDBNavLink, MDBIcon } from 'mdbreact';
+import React, {useState, useEffect} from 'react'
+import { MDBNavbar, MDBNavbarBrand, MDBNavbarNav, MDBNavbarToggler, MDBCollapse, MDBNavItem, MDBNavLink, MDBIcon, MDBFormInline, MDBCol } from 'mdbreact';
 import { useHistory } from 'react-router-dom';
 export default function NavBar(props) {
     const bgPink = { backgroundColor: '' }
     const history = useHistory();
 
 
+    const [searchTerm, setSearchTerm] = useState("");
+    const [searchResults, setSearchResults] = useState([]);
+    const [place, setPlace] = useState([])
+
+    const onChangeHandler = (e) => {
+        setSearchTerm(e.target.value);
+       // console.log("target", e.target.value)
+    };
+
+        useEffect(() => {
+      const results = place.filter(place =>
+
+        place.toLowerCase().includes(searchTerm)
+      );
+
+      setSearchResults(results);
+      
+    }, [searchTerm]);
 
 
     const logOut = () => {
@@ -23,9 +41,7 @@ export default function NavBar(props) {
             <header>
                 <MDBNavbar style={bgPink} dark expand="md"  >
 {/*                 scrolling fixed="top"
- */}                    <MDBNavbarBrand href="/">
-                        <strong></strong>
-                    </MDBNavbarBrand>
+ */}                  
                     <MDBNavbarNav left>
                         <MDBNavItem active>
                             <MDBNavLink to="/"><MDBIcon icon="home" /> Home</MDBNavLink>
@@ -37,6 +53,16 @@ export default function NavBar(props) {
                     {!props.isLoggedIn ? <> 
                         
                         <MDBNavbarNav right>
+                        <MDBCol md="6">
+                <form className="form-inline mt-2 mb-2">
+                    <MDBIcon icon="search" type="submit"/>
+               <input className="form-control form-control-sm ml-3 w-75" type="text" placeholder="Search" aria-label="Search"  value={searchTerm} onChange={(e) => onChangeHandler(e)}  />
+               <ul>
+                  {searchResults.map(item => (
+                        <li>{item}</li> ))}
+                </ul>
+                  </form>
+                 </MDBCol>
                                 <MDBNavItem>
                                     <MDBNavLink to="/signup"><MDBIcon icon="user-plus" /> Signup</MDBNavLink>
                                 </MDBNavItem>
@@ -46,6 +72,12 @@ export default function NavBar(props) {
                             </MDBNavbarNav>
                            </> : <>
                             <MDBNavbarNav right>
+                            <MDBCol>
+                        <form className="form-inline mt-2 mb-2">
+                         <MDBIcon icon="search" />
+                       <input className="form-control form-control-sm ml-3 w-60" type="text" placeholder="Search" aria-label="Search" />
+                         </form>
+                        </MDBCol>
                                 <MDBNavItem>
                                     <MDBNavLink to="/profile"><MDBIcon far icon="user" /> Profile</MDBNavLink>
                                 </MDBNavItem>

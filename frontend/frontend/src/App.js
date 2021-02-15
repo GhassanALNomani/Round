@@ -22,7 +22,7 @@ function App() {
 
   
   
-  const [dataLoading, setDataloading] = useState(false)
+  const [loadingData, setLoadingData] = useState(false);
   const [auth, setAuth] = useState({ currentUser: null, isLoggedIn: false });
   const [userProfile , setUserProfile] = useState({})
   const [dataLoaded, setDataloaded] = useState(false)
@@ -65,9 +65,9 @@ function App() {
   return(
     <>
     <div className="classicformpage">
-      {/* { dataLoaded ? */}
+      
         
-        <Router>
+        <Router> 
         <NavBar loginCallback={userLogin} isLoggedIn={auth.isLoggedIn}/>
           <Switch>
 
@@ -79,7 +79,7 @@ function App() {
               />
             </Route>
 
-              <Route path="/">
+              <Route exact path="/">
                   <Home />
               </Route>
 
@@ -108,7 +108,7 @@ function App() {
             </Switch>
             <Footer />
             </Router>  
-            {/* <Footer /> */}
+            
         {/* : <Spinner animation="border" />
       } */}
     </div>

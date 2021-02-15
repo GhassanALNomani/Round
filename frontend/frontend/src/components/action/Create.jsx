@@ -10,8 +10,6 @@ import "react-datepicker/dist/react-datepicker.css";
 //import NavBar from './components/NavBar';
 
 
-
-
 export default function Create(props) {
 
     const history = useHistory();
@@ -46,7 +44,7 @@ const handleOnChangeDate = (date) => {
         e.preventDefault();
 
         axios
-            .post("http://localhost:5000/api/place", placetFields)
+            .post("http://localhost:5000/api/place/create", placetFields)
             .then((res) => {
 
                 const place = res.data;
@@ -54,7 +52,7 @@ const handleOnChangeDate = (date) => {
                 console.log("response data: ", res.data)
 
                 if (place) {
-                        history.push("/");
+                        history.push("/home");
                     } else {
                     alert("Error! check your information and try again")
                     }
