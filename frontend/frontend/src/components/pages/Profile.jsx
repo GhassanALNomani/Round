@@ -1,40 +1,91 @@
-import React from 'react';
-import { MDBListGroup, MDBListGroupItem, MDBIcon } from 'mdbreact';
+import React ,{ useEffect, useState }from 'react';
+import { MDBListGroup, MDBListGroupItem, MDBIcon, MDBBtn } from 'mdbreact';
 import { NavLink, Link } from 'react-router-dom';
-import Create from "../action/Create"
+import { MDBCol, MDBCard, MDBCardImage, MDBCardBody, MDBCardTitle, MDBRow } from "mdbreact";
+
+import axios from 'axios'
+
+const Profile = (props) => {
+    const [places, setPlaces] = useState([])
+
+    useEffect(() => {
+        axios.get(`http://localhost:5000/api/place`)
+            .then(res => {
+                setPlaces(res.data.result)
+                console.log("place info:", places)
+                
+            })
+    }, [])
+
+    const handleDelete = (placeId) => {
+        console.log("Delete", placeId)
+        axios.delete(`http://localhost:5000/api/place/${placeId}`) ///${props.user._id}
+          .then(data => {
+            console.log("delete data ", data)
+          })
+          .catch((err) => console.log(err));
+      }
 
 
-const Profile = () => {
+    const allplaces = places.map(place => {
+        return (
+            
+            <MDBCol className='' md="4" style={{ maxWidth: "40rem" }}>
+                <MDBCard reverse>
+                    <MDBCardImage cascade style={{ height: '20rem' }} src={place.image} />
+                    <MDBCardBody cascade className="text-center">
+                        <MDBCardTitle>{place.name}</MDBCardTitle>
+                        <MDBBtn as={Link} to={`/edit/${place._id}`}>
+                            Edit
+                        </MDBBtn>
+                        <MDBBtn onClick={() => handleDelete(place._id)}>
+                            Delete
+                        </MDBBtn>
+                    </MDBCardBody>
+                </MDBCard>
+            </MDBCol>
+            
+        )
+    })
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     return (
         <div className="sidebar-fixed position-fixed">
             <MDBListGroup className="list-group-flush">
+                {props.user.email === "admin@admin.com" ? <>
                 <NavLink to="/create" activeClassName="activeClass">
                     <MDBListGroupItem>
                         Create
                     </MDBListGroupItem>
                 </NavLink>
-                <NavLink to="/edit" activeClassName="activeClass">
-                    <MDBListGroupItem>
-                        Edit
-                    </MDBListGroupItem>
-                </NavLink>
+                <MDBRow className="placesCard">
+                    {allplaces}
+                </MDBRow>
+                </> : <>
+
                 <NavLink to="/tables" activeClassName="activeClass">
                     <MDBListGroupItem>
-                        Tables
+                        Favorite Place
                     </MDBListGroupItem>
                 </NavLink>
-                <NavLink to="/maps" activeClassName="activeClass">
+                <NavLink to={`/edituserinfo/${props.user._id}`} activeClassName="activeClass">
                     <MDBListGroupItem>
-                        
-                        Maps
+                        Edit User Information
                     </MDBListGroupItem>
                 </NavLink>
-                <NavLink to="/404" activeClassName="activeClass">
-                    <MDBListGroupItem>
-                        
-                        404
-                    </MDBListGroupItem>
-                </NavLink>
+                </> }
             </MDBListGroup>
         </div>
     );

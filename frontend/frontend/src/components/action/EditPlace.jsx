@@ -1,91 +1,69 @@
-import React, { useState } from 'react'
-import axios from 'axios'
-import { useHistory } from 'react-router-dom'
+import React, { useState, useEffect } from 'react'
+import axios from "axios"
+import { useHistory, useParams } from "react-router-dom";
 import { MDBBtn, MDBCol, MDBContainer, MDBIcon, MDBInput, MDBCard, MDBAnimation, MDBCardBody} from 'mdbreact';
-import NavBar from './NavBar';
 import DatePicker from "react-datepicker";
-import "react-datepicker/dist/react-datepicker.css";
-import Profile from "../pages/Profile"
-//import { MDBDatePickerV5 } from 'mdbreact';
-//import NavBar from './components/NavBar';
 
 
 
-
-export default function Create(props) {
-console.log(props)
+export default function EditPlace(props) {
+    const { placeId } = useParams();
     const history = useHistory();
-
     const [startDate, setStartDate] = useState(new Date());
 
+    const handleOnChangeDate = (date) => {
+
+        setStartDate(date)
+      
+        setPlaceFields((prevState)=>({
+          ...prevState, date: date  
+        }))
+      }
 
     const [placetFields, setPlaceFields] = useState({
-      name: "",
-      description: "",
-      image: "",
-      category: "Choose the place",
-      location: "",
-      workingHours : "",
-    
-  });
+        name: "",
+        description: "",
+        image: "",
+        category: "Choose the place",
+        location: "",
+        workingHours : "",
+      
+    });
 
-
-
-const handleOnChangeDate = (date) => {
-
-  setStartDate(date)
-
-  setPlaceFields((prevState)=>({
-    ...prevState, date: date  
-  }))
-}
-
-
-    const onSubmit = (e) => {
-        console.log(placetFields);
-        e.preventDefault();
-
+    const getPlace = () => {
+        console.log(placeId);
         axios
-            .post("http://localhost:5000/api/place/create", placetFields)
-            .then((res) => {
-
-                const place = res.data;
-
-                console.log("response data: ", res.data)
-
-                if (place) {
-                        history.push("/");
-                    } else {
-                    alert("Error! check your information and try again")
-                    }
+            .get(`http://localhost:5000/api/place/${placeId}`)
+            .then(data => {
+                setPlaceFields(data.data.res);
             })
             .catch((err) => console.log(err));
     }
 
+    useEffect(() => {
+        getPlace()
+    }, [])
 
     const onChangeInput = (event) => {
-      const { name, value } = event.target;
-      setPlaceFields({
-          ...placetFields,
-          [name]: value,
-      });
-      console.log(placetFields)
-  };
+        const { name, value } = event.target;
 
+        setPlaceFields({
+            ...placetFields,
+            [name]: value,
+        });
+    };
 
-  /*   const onChangeSelect = ({ target: { name }, option }) => {
-      setPlaceFields({ ...placetFields, [name]: option });
-        console.log(placetFields);
+    const handleEdit= (placeId) => {
+      console.log("test")
+      axios.put(`http://localhost:5000/api/place/${placeId}`, placetFields)
+          .then(response => {
+              console.log(response)
+              history.push("/");
+          })
+    }
 
-    }; */
-
-
-  //  if (props.auth.currentUser.email === "admin@admin.com") {
 
     return (
-<>
-
-{ props.user != null && props.user.email == "admin@admin.com"?      
         <div className="classicformpage">
           
             <MDBContainer
@@ -108,19 +86,24 @@ const handleOnChangeDate = (date) => {
                         label='Name'
                         name = "name"
                         onChange={(e) => onChangeInput(e)}
+                        value={placetFields.name}
                       />
                       <MDBInput
                      /*    className='white-text'
                         iconClass='white-text' */
                         label='Description'
                         name = "description"
-                        onChange={(e) => onChangeInput(e)}/>
+                        onChange={(e) => onChangeInput(e)}
+                        value={placetFields.description}
+                    />
 
                       <MDBInput
                         label='Image'
                         name = "image"
                         /* onChange={(e) =>uploadImageHundler(e)} type="file" */
-                        onChange={(e) => onChangeInput(e)}/>
+                        onChange={(e) => onChangeInput(e)}
+                        
+                        />
  
                        <MDBInput
                         /* className='white-text'
@@ -128,6 +111,7 @@ const handleOnChangeDate = (date) => {
                         label='Location'
                         name = "location"
                         onChange={(e) => onChangeInput(e)}
+                        value={placetFields.location}
                       /> 
                    
 
@@ -158,7 +142,7 @@ const handleOnChangeDate = (date) => {
                  </select>
 
                       <div className='text-center mt-4 black-text'>
-                        <MDBBtn gradient="blue" type="submit" onClick={(e) => onSubmit(e)}>Submit</MDBBtn>
+                        <MDBBtn onClick={()=> handleEdit(placeId)}>Edit</MDBBtn>
                       </div>
                     </MDBCardBody>
                   </MDBCard>
@@ -166,21 +150,5 @@ const handleOnChangeDate = (date) => {
               </MDBCol>
               </MDBContainer>
         </div>
-        : <div>
-        <MDBContainer>
-         <p className="text-justify">Only the admin can access this page</p>
-        </MDBContainer>
-         </div>}
-         </>
     )
-} 
-//  else {
-//     return(
-//         <div>
-//   <MDBContainer>
-//       <p className="text-justify">Only the admin can access this page</p>
-//     </MDBContainer>
-//         </div>
-//     )
-//     }
-// }
+}
