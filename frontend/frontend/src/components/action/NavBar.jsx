@@ -7,6 +7,24 @@ export default function NavBar(props) {
     const history = useHistory();
 
 
+    const [searchTerm, setSearchTerm] = useState("");
+    const [searchResults, setSearchResults] = useState([]);
+    const [place, setPlace] = useState([])
+
+    const onChangeHandler = (e) => {
+        setSearchTerm(e.target.value);
+       // console.log("target", e.target.value)
+    };
+
+        useEffect(() => {
+      const results = place.filter(place =>
+
+        place.toLowerCase().includes(searchTerm)
+      );
+
+      setSearchResults(results);
+      
+    }, [searchTerm]);
 
 
     const logOut = () => {

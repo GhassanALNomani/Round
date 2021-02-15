@@ -10,8 +10,6 @@ import Profile from "../pages/Profile"
 //import NavBar from './components/NavBar';
 
 
-
-
 export default function Create(props) {
 console.log(props)
     const history = useHistory();
@@ -54,7 +52,7 @@ const handleOnChangeDate = (date) => {
                 console.log("response data: ", res.data)
 
                 if (place) {
-                        history.push("/");
+                        history.push("/home");
                     } else {
                     alert("Error! check your information and try again")
                     }
@@ -87,7 +85,7 @@ const handleOnChangeDate = (date) => {
 
 { props.user != null && props.user.email == "admin@admin.com"?      
         <div className="classicformpage">
-          
+          <NavBar/>
             <MDBContainer
             style={{ height: '100%', width: '100%', paddingTop: '10rem' }}
             className='mt-5  d-flex justify-content-center align-items-center'
