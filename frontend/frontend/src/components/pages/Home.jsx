@@ -88,7 +88,7 @@ export default function Home(props) {
                 style={{ height: '100%', width: '100%', paddingTop: '10rem' }}
                 className='mt-5  d-flex justify-content-center align-items-center '
             >
-                <MDBDropdownToggle caret className="mt-5" gradient="deep-blue"  >
+                <MDBDropdownToggle caret className="mt-3" gradient="deep-blue"  >
                     Where - 2 - Go
          </MDBDropdownToggle>
                 <MDBDropdownMenu basic  >
