@@ -5,7 +5,7 @@ import { MDBBtn, MDBCol, MDBContainer, MDBIcon, MDBInput, MDBCard, MDBAnimation,
 import NavBar from './NavBar';
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
-
+import Profile from "../pages/Profile"
 //import { MDBDatePickerV5 } from 'mdbreact';
 //import NavBar from './components/NavBar';
 
@@ -13,7 +13,7 @@ import "react-datepicker/dist/react-datepicker.css";
 
 
 export default function Create(props) {
-
+console.log(props)
     const history = useHistory();
 
     const [startDate, setStartDate] = useState(new Date());
@@ -80,10 +80,12 @@ const handleOnChangeDate = (date) => {
     }; */
 
 
-   // if (props.auth.currentUser.userType === "admin") {
+  //  if (props.auth.currentUser.email === "admin@admin.com") {
 
     return (
-      
+<>
+<Profile />
+{ props.user != null && props.user.email == "admin@admin.com"?      
         <div className="classicformpage">
           
             <MDBContainer
@@ -164,16 +166,21 @@ const handleOnChangeDate = (date) => {
               </MDBCol>
               </MDBContainer>
         </div>
+        : <div>
+        <MDBContainer>
+         <p className="text-justify">Only the admin can access this page</p>
+        </MDBContainer>
+         </div>}
+         </>
     )
 } 
-/* else {
-    return(
-        <div>
-  <MDBContainer>
-      <p className="text-justify">Only the admin can access this page</p>
-    </MDBContainer>
-        </div>
-    )
-    }
-}
- */
+//  else {
+//     return(
+//         <div>
+//   <MDBContainer>
+//       <p className="text-justify">Only the admin can access this page</p>
+//     </MDBContainer>
+//         </div>
+//     )
+//     }
+// }

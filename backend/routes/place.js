@@ -8,37 +8,14 @@ const User = require("../models/user");
 //Get all Places
 router.get("/", (req, res) => {
   Place.find()
+  .populate("comments")
     .then((result) => {
       res.json({ result });
     })
     .catch((err) => res.json({ msg: err }));
 });
 
-// get all cafe
-// router.get("/cafe", (req, res) => {
 
-
-//   Place.find({ category: "cafe" })
-//       .then(cafe => {
-
-//           res.json(cafe);
-
-//       }).catch((err) => res.json({ msg: err }));
-
-// });
-
-// get all restaurant
-// router.get("/restaurant", (req, res) => {
-
-
-//   Place.find({ category: "restaurant" })
-//       .then(restaurant => {
-
-//           res.json(restaurant);
-
-//       }).catch((err) => res.json({ msg: err }));
-
-// });
 
 
 //Get one place
@@ -76,7 +53,7 @@ router.post("/create", (req, res) => {
 
 
 // Rate place
-// router.post("/rate", (req, res) => {
+// router.post("/review", (req, res) => {
 //     const { userId, score, placeId, userName } = req.body
 //     Places.findById(placeId).then(place => {
 //         let result = place.reviews.find(ele => ele.userId == userId)
