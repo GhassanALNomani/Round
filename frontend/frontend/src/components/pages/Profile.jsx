@@ -35,9 +35,11 @@ const Profile = (props) => {
                     <MDBCardImage cascade style={{ height: '20rem' }} src={place.image} />
                     <MDBCardBody cascade className="text-center">
                         <MDBCardTitle>{place.name}</MDBCardTitle>
-                        <MDBBtn as={Link} to={`/edit/${place._id}`}>
+                        <Link to={`/edit/${place._id}`}>
+                        <MDBBtn>
                             Edit
                         </MDBBtn>
+                        </Link>
                         <MDBBtn onClick={() => handleDelete(place._id)}>
                             Delete
                         </MDBBtn>
