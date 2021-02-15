@@ -35,13 +35,14 @@ export default function EditPlace(props) {
         axios
             .get(`http://localhost:5000/api/place/${placeId}`)
             .then(data => {
-                setPlaceFields(data.data.res);
+                setPlaceFields(data.data.pros);
+                console.log(data.data.pros)
             })
             .catch((err) => console.log(err));
     }
 
     useEffect(() => {
-        getPlace()
+        getPlace();
     }, [])
 
     const onChangeInput = (event) => {
@@ -54,7 +55,7 @@ export default function EditPlace(props) {
     };
 
     const handleEdit= (placeId) => {
-      console.log("test")
+      console.log("No need for test :)")
       axios.put(`http://localhost:5000/api/place/${placeId}`, placetFields)
           .then(response => {
               console.log(response)
@@ -74,7 +75,7 @@ export default function EditPlace(props) {
                 <MDBAnimation type='fadeInRight' delay='.3s'>
                   <MDBCard id='classic-card'>
                   <h1 className='text-center mt-5' ><MDBIcon icon='' />
-                       ℂℝ𝔼𝔸𝕋𝔼
+                        𝔼𝕕𝕚𝕥
                       </h1>
                     <MDBCardBody className='white-text'>
                      
@@ -100,6 +101,7 @@ export default function EditPlace(props) {
                       <MDBInput
                         label='Image'
                         name = "image"
+                        value={placetFields.image}
                         /* onChange={(e) =>uploadImageHundler(e)} type="file" */
                         onChange={(e) => onChangeInput(e)}
                         
@@ -120,6 +122,7 @@ export default function EditPlace(props) {
                         iconClass='white-text' */
                         label='working Hours'
                         name = "workingHours"
+                        value={placetFields.workingHours}
                         onChange={(e) => onChangeInput(e)}
                       
                       />     
@@ -128,11 +131,12 @@ export default function EditPlace(props) {
                        <DatePicker 
                        name = "date"
                        selected={startDate}
+                       value={placetFields.date}
                        onChange={(date)=>handleOnChangeDate(date)} /> 
                        
                              <br/><br/>
                         
-                  <select className="browser-default custom-select" name="category" onChange={(e) => onChangeInput(e)}>   
+                  <select className="browser-default custom-select" name="category" value={placetFields.category} onChange={(e) => onChangeInput(e)}>   
                     <option >Choose the place</option>
                     <option>cafe</option>
                     <option >restaurant</option>
