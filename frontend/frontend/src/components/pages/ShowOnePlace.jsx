@@ -21,13 +21,15 @@ import {
 
 
 export default function ShowPage(props) {
-    const [place, setPlaces] = useState({})
+    const [place, setPlaces] = useState([])
     const { id } = useParams()
     const selectPlace = props.selectPlace;
     const [errorRating, setErrorRating] = useState(false)
     const [score, setScore] = useState(5)
     const [added, setadded] = useState(true);
     const [comment, setComment] = useState({});
+    // const [allcomment, setAllComment] = useState([])
+
 
     const onChangeInput = ({ target: { name, value } }) => {
         setComment({ ...comment, [name]: value });
@@ -60,6 +62,7 @@ export default function ShowPage(props) {
       axios.get(`http://localhost:5000/api/place/${id}`)
       .then((res) => {
         setPlaces(res.data.pros);
+        console.log("place info for comment", place)
         const onePlace = res.data.pros;
         console.log(onePlace)
         const total = onePlace.reviews.reduce((a, b) => a + (b["score"] || 0), 0)
@@ -124,12 +127,21 @@ export default function ShowPage(props) {
       event.preventDefault();
       axios.post(`http://localhost:5000/api/comment/${place._id}/${props.user._id}`, comment)
       .then(res =>{
-        console.log(res)
+        console.log("comment info",res)
       })
       .catch(err => console.log(err))
     }
 
-    
+
+
+    const allComment = place.comments && place.comments.map(comment =>{
+      return(
+          
+            
+            <p>{comment.text}</p>
+          
+      )
+    })
 
   
 
@@ -147,9 +159,9 @@ export default function ShowPage(props) {
             <MDBCol style={{ maxWidth: "40rem" }}>
               <MDBCard reverse>
                 <MDBCardImage
-                className="cardPhoto"
+                  style={{ height: '20rem', width: "100%" }}
+                  className="cardPhoto"
                   cascade
-                  style={{ height: "20rem" }}
                   src={place.image}
                 />
                 <MDBCardBody cascade className="text-center">
@@ -191,14 +203,11 @@ export default function ShowPage(props) {
                   >
                     Review
                   </MDBBtn>
-                </MDBCardBody>
-
-                {/* section comment */}
-                <h2>Join the Discussion!</h2>
-                <MDBContainer>
-                <MDBRow>
-
-                  <MDBCol md="6">
+                </MDBCardBody>      
+              </MDBCard>
+            </MDBCol>
+            <MDBCol lg="6" style={{width:"900px"}}>
+                  <h2>Join the Discussion!</h2>
                     <form>
                       <div className="grey-text">
                         <MDBInput type="textarea" rows="2" label="Your Comment" name="text" icon="pencil-alt" onChange={(e) => onChangeInput(e)}/>
@@ -208,17 +217,11 @@ export default function ShowPage(props) {
                           Comment
                           <MDBIcon far icon="paper-plane" className="ml-1" />
                         </MDBBtn>
-                        {/* <MDBCardText>{place.comments}</MDBCardText> */}
+                        <div className="grey-text">
+                            {allComment}
+                        </div>
                       </div>
                     </form>
-                  </MDBCol>
-
-                    
-
-                </MDBRow>
-              </MDBContainer>
-              </MDBCard>
-              
             </MDBCol>
           </MDBRow>
         </MDBContainer>
