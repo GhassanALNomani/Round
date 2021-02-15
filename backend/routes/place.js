@@ -23,6 +23,7 @@ router.get("/:placeId", (req, res) => {
   let placeId = req.params.placeId;
   Place.findById(placeId)
   .populate("comments")
+  .populate("user")
     .then((pros) => {
       res.json({ pros });
     })
