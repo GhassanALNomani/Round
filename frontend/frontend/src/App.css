@@ -38,6 +38,11 @@
   flex-shrink: 0;
   margin: 10px;
 }
+.footer-txt{
+  font-size: large;
+  font-weight: bold;
+  font-style: italic;
+}
  /* .classicformpage .gradient {
   background: -webkit-linear-gradient(
     45deg,
