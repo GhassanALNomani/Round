@@ -57,7 +57,7 @@ export default function Login(props) {
     <div  >
       <MDBContainer
         style={{ height: '100%', width: '100%', paddingTop: '10rem' }}
-        className='mt-5  d-flex justify-content-center align-items-center'
+        className='mt-2  d-flex justify-content-center align-items-center'
       >
         <MDBCol md='6' xl='5' className='mb-4'>
           <MDBAnimation type='fadeInRight' delay='.3s'>
