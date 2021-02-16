@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import axios from "axios"
 import { useHistory, useParams } from "react-router-dom";
-import { MDBBtn, MDBCol, MDBContainer, MDBIcon, MDBInput, MDBCard, MDBAnimation, MDBCardBody} from 'mdbreact';
+import { MDBBtn, MDBCol, MDBContainer, MDBIcon, MDBInput, MDBCard, MDBAnimation, MDBCardBody, MDBAlert} from 'mdbreact';
 import DatePicker from "react-datepicker";
 
 
@@ -55,12 +55,13 @@ export default function EditPlace(props) {
     };
 
     const handleEdit= (placeId) => {
-      console.log("No need for test :)")
       axios.put(`http://localhost:5000/api/place/${placeId}`, placetFields)
           .then(response => {
-              console.log(response)
-              history.push("/");
+              console.log(response);
           })
+          .catch((err) => console.log(err));
+          alert("Edited successfully");
+              history.push("/");
     }
 
 

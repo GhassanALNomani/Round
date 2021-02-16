@@ -7,7 +7,7 @@ import axios from 'axios'
 
 const Profile = (props) => {
     const [places, setPlaces] = useState([])
-
+    const [flag , setFlag] = useState(false)
     useEffect(() => {
         axios.get(`http://localhost:5000/api/place`)
             .then(res => {
@@ -15,15 +15,18 @@ const Profile = (props) => {
                 console.log("place info:", places)
                 
             })
-    }, [])
+    }, [flag])
 
     const handleDelete = (placeId) => {
         console.log("Delete", placeId)
         axios.delete(`http://localhost:5000/api/place/${placeId}`) ///${props.user._id}
           .then(data => {
             console.log("delete data ", data)
+            alert("Deleted successfully")
+            
           })
           .catch((err) => console.log(err));
+          setFlag(pre => !pre)
       }
 
 
@@ -52,16 +55,7 @@ const Profile = (props) => {
 
 
 
-
-
-
-
-
-
-
-
-
-
+    
 
     return (
         <div className="sidebar-fixed position-fixed">

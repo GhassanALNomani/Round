@@ -29,7 +29,7 @@ export default function ShowPage(props) {
     const [added, setadded] = useState(true);
     const [comment, setComment] = useState({});
     // const [allcomment, setAllComment] = useState([])
-
+    const [flag , setFlag] = useState(false)
 
     const onChangeInput = ({ target: { name, value } }) => {
         setComment({ ...comment, [name]: value });
@@ -72,7 +72,7 @@ export default function ShowPage(props) {
         console.log("place info", onePlace);
       });
       
-    }, []);
+    }, [flag]);
 
 
     const handleRating = () => {
@@ -129,17 +129,15 @@ export default function ShowPage(props) {
       .then(res =>{
         console.log("comment info",res)
       })
-      .catch(err => console.log(err))
+      .catch(err => console.log(err));
+      setFlag(pre => !pre)
     }
 
 
 
     const allComment = place.comments && place.comments.map(comment =>{
       return(
-          
-            
-            <p>{comment.text}</p>
-          
+          <p>{comment.text}</p>
       )
     })
 

@@ -5,22 +5,22 @@ import { MDBBtn, MDBCol, MDBContainer, MDBIcon, MDBInput, MDBCard, MDBAnimation,
 // import { MDBAnimation, MDBCard, MDBCardBody, MDBCol, MDBIcon, MDBInput, MDBContainer, MDBBtn, MDBLink } from 'mdbreact';
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
-import { Formik, Form as FormikForm, Field, ErrorMessage } from 'formik';
 import Profile from "../pages/Profile"
 //import { MDBDatePickerV5 } from 'mdbreact';
 //import NavBar from './components/NavBar';
 
+ 
 
-import * as Yup from 'yup';
-const validtionSchima = Yup.object({
-  name: Yup.string().required("Enter place Name please"),
-  category: Yup.string().required("select category please"),
-  image: Yup.string().required("Upload Place Picture please"),
-  description: Yup.string().required("Enter description please"),
-  // date: Yup.string().required("Enter your passwor please!!"),
-  workingHours: Yup.string().required("Enter workingHours please"),
-})
+function valid (object) {
+    let flag = true 
+    for (var key in object){
+      if (object[key] == " "){
 
+        flag =  false 
+      } 
+    }
+    return flag
+}
 
 export default function Create(props) {
   console.log(props)
@@ -30,12 +30,12 @@ export default function Create(props) {
 
 
   const [placetFields, setPlaceFields] = useState({
-    name: "",
-    description: "",
-    image: "",
+    name: " ",
+    description: " ",
+    image: " ",
     category: "Choose the place",
-    location: "",
-    workingHours: "",
+    location: " ",
+    workingHours: " ",
 
   });
 
@@ -54,8 +54,13 @@ export default function Create(props) {
   const onSubmit = (e) => {
     console.log(placetFields);
     e.preventDefault();
+    console.log(valid(placetFields))
+    if ( !valid(placetFields) ) {
+        alert("somting is missing ! ")
 
-    axios
+    }else {
+
+      axios
       .post("http://localhost:5000/api/place/create", placetFields)
       .then((res) => {
 
@@ -64,12 +69,15 @@ export default function Create(props) {
         console.log("response data: ", res.data)
 
         if (place) {
+          alert("Place added successfully")
           history.push("/");
         } else {
           alert("Error! check your information and try again")
         }
       })
       .catch((err) => console.log(err));
+    }
+    
   }
 
 
@@ -90,19 +98,10 @@ export default function Create(props) {
     }; */
 
 
-  //  if (props.auth.currentUser.email === "admin@admin.com") {
-
   return (
     <>
-
       { props.user != null && props.user.email == "admin@admin.com" ?
         <div className="classicformpage">
-          <Formik
-            initialValues={placetFields}
-            validationSchema={validtionSchima}
-            onSubmit={values => onSubmit(values)}
-          >
-            <FormikForm className="mt-5">
               <MDBContainer
                 style={{ height: '100%', width: '100%', paddingTop: '10rem' }}
                 className='mt-5  d-flex justify-content-center align-items-center'
@@ -117,110 +116,69 @@ export default function Create(props) {
 
                         <hr className='hr-light' />
 
-                        <>
                         <MDBInput
                           /* className='white-text'
                           iconClass='white-text' */
-                          as={Field}
                           label='Name'
                           name="name"
                           onChange={(e) => onChangeInput(e)}
                         />
-                        <ErrorMessage name="name" render={(msg) => <MDBAlert color="danger" variant={"danger"}>
-                          {msg}
-                        </MDBAlert>} />
-                        </>
 
-                        <>
                         <MDBInput
                           /*    className='white-text'
                              iconClass='white-text' */
-                             as={Field}
                           label='Description'
                           name="description"
                           onChange={(e) => onChangeInput(e)} />
-                        <ErrorMessage name="name" render={(msg) => <MDBAlert color="danger" variant={"danger"}>
-                          {msg}
-                        </MDBAlert>} />
-                        </>
 
-                        <>
                         <MDBInput
-                        as={Field}
                           label='Image'
                           name="image"
                           /* onChange={(e) =>uploadImageHundler(e)} type="file" */
                           onChange={(e) => onChangeInput(e)} />
-                        <ErrorMessage name="name" render={(msg) => <MDBAlert color="danger" variant={"danger"}>
-                          {msg}
-                        </MDBAlert>} />
-                        </>
 
-                        <>
+
                         <MDBInput
                           /* className='white-text'
                           iconClass='white-text' */
-                          as={Field}
                           label='Location'
                           name="location"
                           onChange={(e) => onChangeInput(e)}
                         />
-                        <ErrorMessage name="name" render={(msg) => <MDBAlert color="danger" variant={"danger"}>
-                          {msg}
-                        </MDBAlert>} />
-                        </>
 
-                        <>
+
                         <MDBInput
                           /* className='white-text'
                           iconClass='white-text' */
-                          as={Field}
                           label='working Hours'
                           name="workingHours"
                           onChange={(e) => onChangeInput(e)}
                         />
-                        <ErrorMessage name="name" render={(msg) => <MDBAlert color="danger" variant={"danger"}>
-                          {msg}
-                        </MDBAlert>} />
-                        </>
 
-                        <>
                         <DatePicker
-                        as={Field}
                           name="date"
                           selected={startDate}
                           onChange={(date) => handleOnChangeDate(date)} />
-                        <ErrorMessage name="name" render={(msg) => <MDBAlert color="danger" variant={"danger"}>
-                          {msg}
-                        </MDBAlert>} />
-                        </>
 
                         <br /><br />
 
-                        <>
-                        <select className="browser-default custom-select" name="category" as={Field} onChange={(e) => onChangeInput(e)}>
+                        <select className="browser-default custom-select" name="category" onChange={(e) => onChangeInput(e)}>
                           <option >Choose the place</option>
                           <option>cafe</option>
                           <option >restaurant</option>
                           <option >entertainment</option>
                           <option >concert</option>
                         </select>
-                        <ErrorMessage name="name" render={(msg) => <MDBAlert color="danger" variant={"danger"}>
-                          {msg}
-                        </MDBAlert>} />
-                        </>
 
 
                         <div className='text-center mt-4 black-text'>
-                          <MDBBtn gradient="blue" type="submit" onClick={(e) => onSubmit(e)}>Submit</MDBBtn>
+                          <MDBBtn gradient="blue"  onClick={(e) => onSubmit(e)} >Submit</MDBBtn>
                         </div>
                       </MDBCardBody>
                     </MDBCard>
                   </MDBAnimation>
                 </MDBCol>
               </MDBContainer>
-            </FormikForm>
-          </Formik>
         </div>
         : <div>
           <MDBContainer>
