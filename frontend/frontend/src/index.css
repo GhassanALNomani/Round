@@ -21,10 +21,16 @@ body, html {
   }
 
   .footer{
-    border-top: 1px solid black;
+    border-top: 1px solid #d2eaf7;
     text-align: center;
     padding-top: 30px;
+    padding-bottom: 30px;
     margin-top: 100px;
+    text-align: center;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    background-color: #a9dceb
   }
 
 

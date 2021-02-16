@@ -45,63 +45,64 @@ export default function Signup(props) {
         onSubmit={values => onSubmit(values)}
       >
         <FormikForm className="mt-5">
-          <Container style={{width: "1000px", margin: "0 auto"}}>
-          <Row className="justify-content-center mt-5">
-            <Col md={8}>
-              <Form.Row>
-                <Col md={6}>
-                  <Form.Label>Name</Form.Label>
-                  <Form.Control
-                    as={Field}
-                    placeholder="Enter Your Name"
-                    name="name"
-                  />
-                  <ErrorMessage name="name" render={(msg) => <Alert variant={"danger"}>
-                    {msg}
-                  </Alert>} />
-                </Col>
-              </Form.Row>
-              <Form.Row>
-                <Col md={6}>
-                  <Form.Label>Email</Form.Label>
-                  <Form.Control
-                    as={Field}
-                    placeholder="Enter Your Email"
-                    name="email"
-                  />
-                  <ErrorMessage name="email" render={(msg) => <Alert variant={"danger"}>
-                    {msg}
-                  </Alert>} />
-                </Col>
-              </Form.Row>
-              <Form.Row>
-                <Col md={6}>
-                  <Form.Label>Password</Form.Label>
-                  <Form.Control
-                    as={Field}
-                    placeholder="Enter Your Password"
-                    name="password"
-                    type="password"
-                  />
-                  <ErrorMessage name="password" render={(msg) => <Alert variant={"danger"}>
-                    {msg}
-                  </Alert>} />
-                </Col>
-              </Form.Row>
-                   
-              <Button
-                variant="info"
-                type="submit"
-                style={{textAlign : "center"}}
-              // onClick={(e) => onSubmit(e)}
-              >
-                Submit
+          <Container style={{ width: "1000px", margin: "0 auto" }}>
+            <Row className="justify-content-center mt-5">
+              <Col md={8}>
+                <Form.Row>
+                  <Col md={6}>
+                    <Form.Label>Name</Form.Label>
+                    <Form.Control
+                      as={Field}
+                      placeholder="Enter Your Name"
+                      name="name"
+                    />
+                    <ErrorMessage name="name" render={(msg) => <Alert variant={"danger"}>
+                      {msg}
+                    </Alert>} />
+                  </Col>
+                </Form.Row>
+                <Form.Row>
+                  <Col md={6}>
+                    <Form.Label>Email</Form.Label>
+                    <Form.Control
+                      as={Field}
+                      placeholder="Enter Your Email"
+                      name="email"
+                    />
+                    <ErrorMessage name="email" render={(msg) => <Alert variant={"danger"}>
+                      {msg}
+                    </Alert>} />
+                  </Col>
+                </Form.Row>
+                <Form.Row>
+                  <Col md={6}>
+                    <Form.Label>Password</Form.Label>
+                    <Form.Control
+                      as={Field}
+                      placeholder="Enter Your Password"
+                      name="password"
+                      type="password"
+                    />
+                    <ErrorMessage name="password" render={(msg) => <Alert variant={"danger"}>
+                      {msg}
+                    </Alert>} />
+                  </Col>
+                </Form.Row>
+
+                <Button
+                  variant="info"
+                  type="submit"
+                  style={{ textAlign: "center" }}
+                // onClick={(e) => onSubmit(e)}
+                >
+                  Submit
             </Button>
-            </Col>
-          </Row>
+              </Col>
+            </Row>
           </Container>
         </FormikForm>
       </Formik>
     </>
   );
 }
+

@@ -13,11 +13,11 @@ app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 
 mongoose.connect(
-    process.env.MongoDB,
-    { useNewUrlParser: true, useUnifiedTopology: true, useFindAndModify: true },
-    () => {
-      console.log("mongoDb is connect");
-    }
+  process.env.MongoDB,
+  { useNewUrlParser: true, useUnifiedTopology: true, useFindAndModify: true },
+  () => {
+    console.log("mongoDb is connect");
+  }
 );
 
 
@@ -25,7 +25,7 @@ mongoose.connect(
 app.use("/api/user", require("./routes/user"))
 app.use("/api/place", require("./routes/place"))
 app.use("/api/comment", require("./routes/comment"))
- 
+
 
 app.listen(PORT, () => console.log(`server running in ${PORT}`));
 

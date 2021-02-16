@@ -1,25 +1,24 @@
 import React, { useState } from 'react'
 import axios from 'axios'
 import { useHistory } from 'react-router-dom'
-import { MDBBtn, MDBCol, MDBContainer, MDBIcon, MDBInput, MDBCard, MDBAnimation, MDBCardBody, MDBAlert } from 'mdbreact';
-// import { MDBAnimation, MDBCard, MDBCardBody, MDBCol, MDBIcon, MDBInput, MDBContainer, MDBBtn, MDBLink } from 'mdbreact';
+import { MDBBtn, MDBCol, MDBContainer, MDBIcon, MDBInput, MDBCard, MDBAnimation, MDBCardBody } from 'mdbreact';
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import Profile from "../pages/Profile"
 //import { MDBDatePickerV5 } from 'mdbreact';
 //import NavBar from './components/NavBar';
 
- 
 
-function valid (object) {
-    let flag = true 
-    for (var key in object){
-      if (object[key] == " "){
 
-        flag =  false 
-      } 
+function valid(object) {
+  let flag = true
+  for (var key in object) {
+    if (object[key] == " ") {
+
+      flag = false
     }
-    return flag
+  }
+  return flag
 }
 
 export default function Create(props) {
@@ -29,7 +28,7 @@ export default function Create(props) {
   const [startDate, setStartDate] = useState(new Date());
 
 
-  const [placetFields, setPlaceFields] = useState({
+  const [placeFields, setPlaceFields] = useState({
     name: " ",
     description: " ",
     image: " ",
@@ -52,149 +51,139 @@ export default function Create(props) {
 
 
   const onSubmit = (e) => {
-    console.log(placetFields);
+    console.log(placeFields);
     e.preventDefault();
-    console.log(valid(placetFields))
-    if ( !valid(placetFields) ) {
-        alert("somting is missing ! ")
+    console.log(valid(placeFields))
+    if (!valid(placeFields)) {
+      alert("somting is missing ! ")
 
-    }else {
+    } else {
 
       axios
-      .post("http://localhost:5000/api/place/create", placetFields)
-      .then((res) => {
+        .post("http://localhost:5000/api/place/create", placeFields)
+        .then((res) => {
 
-        const place = res.data;
+          const place = res.data;
 
-        console.log("response data: ", res.data)
+          console.log("response data: ", res.data)
 
-        if (place) {
-          alert("Place added successfully")
-          history.push("/");
-        } else {
-          alert("Error! check your information and try again")
-        }
-      })
-      .catch((err) => console.log(err));
+          if (place) {
+            alert("Place added successfully")
+            history.push("/");
+          } else {
+            alert("Error! check your information and try again")
+          }
+        })
+        .catch((err) => console.log(err));
     }
-    
+
   }
 
 
   const onChangeInput = (event) => {
     const { name, value } = event.target;
     setPlaceFields({
-      ...placetFields,
+      ...placeFields,
       [name]: value,
     });
-    console.log(placetFields)
+    console.log(placeFields)
   };
 
 
-  /*   const onChangeSelect = ({ target: { name }, option }) => {
-      setPlaceFields({ ...placetFields, [name]: option });
-        console.log(placetFields);
 
-    }; */
 
 
   return (
     <>
       { props.user != null && props.user.email == "admin@admin.com" ?
         <div className="classicformpage">
-              <MDBContainer
-                style={{ height: '100%', width: '100%', paddingTop: '10rem' }}
-                className='mt-5  d-flex justify-content-center align-items-center'
-              >
-                <MDBCol md='6' xl='5' className='mb-4' >
-                  <MDBAnimation type='fadeInRight' delay='.3s'>
-                    <MDBCard id='classic-card'>
-                      <h1 className='text-center mt-5' ><MDBIcon icon='' />
+          <MDBContainer
+            style={{ height: '100%', width: '100%', paddingTop: '10rem' }}
+            className='mt-5  d-flex justify-content-center align-items-center'
+          >
+            <MDBCol md='6' xl='5' className='mb-4' >
+              <MDBAnimation type='fadeInRight' delay='.3s'>
+                <MDBCard id='classic-card'>
+                  <h1 className='text-center mt-5' ><MDBIcon icon='' />
                        ℂℝ𝔼𝔸𝕋𝔼
                       </h1>
-                      <MDBCardBody className='white-text'>
+                  <MDBCardBody className='white-text'>
 
-                        <hr className='hr-light' />
+                    <hr className='hr-light' />
 
-                        <MDBInput
-                          /* className='white-text'
-                          iconClass='white-text' */
-                          label='Name'
-                          name="name"
-                          onChange={(e) => onChangeInput(e)}
-                        />
+                   
 
-                        <MDBInput
-                          /*    className='white-text'
-                             iconClass='white-text' */
-                          label='Description'
-                          name="description"
-                          onChange={(e) => onChangeInput(e)} />
+                    <MDBInput
+                      /* className='white-text'
+                      iconClass='white-text' */
+                      label='Name'
+                      name="name"
+                      onChange={(e) => onChangeInput(e)}
+                    />
 
-                        <MDBInput
-                          label='Image'
-                          name="image"
-                          /* onChange={(e) =>uploadImageHundler(e)} type="file" */
-                          onChange={(e) => onChangeInput(e)} />
+                    <MDBInput
+                      /*    className='white-text'
+                         iconClass='white-text' */
+                      label='Description'
+                      name="description"
+                      onChange={(e) => onChangeInput(e)} />
 
-
-                        <MDBInput
-                          /* className='white-text'
-                          iconClass='white-text' */
-                          label='Location'
-                          name="location"
-                          onChange={(e) => onChangeInput(e)}
-                        />
+                    <MDBInput
+                      label='Image'
+                      name="image"
+                      /* onChange={(e) =>uploadImageHundler(e)} type="file" */
+                      onChange={(e) => onChangeInput(e)} />
 
 
-                        <MDBInput
-                          /* className='white-text'
-                          iconClass='white-text' */
-                          label='working Hours'
-                          name="workingHours"
-                          onChange={(e) => onChangeInput(e)}
-                        />
-
-                        <DatePicker
-                          name="date"
-                          selected={startDate}
-                          onChange={(date) => handleOnChangeDate(date)} />
-
-                        <br /><br />
-
-                        <select className="browser-default custom-select" name="category" onChange={(e) => onChangeInput(e)}>
-                          <option >Choose the place</option>
-                          <option>cafe</option>
-                          <option >restaurant</option>
-                          <option >entertainment</option>
-                          <option >concert</option>
-                        </select>
+                    <MDBInput
+                      /* className='white-text'
+                      iconClass='white-text' */
+                      label='Location'
+                      name="location"
+                      onChange={(e) => onChangeInput(e)}
+                    />
 
 
-                        <div className='text-center mt-4 black-text'>
-                          <MDBBtn gradient="blue"  onClick={(e) => onSubmit(e)} >Submit</MDBBtn>
-                        </div>
-                      </MDBCardBody>
-                    </MDBCard>
-                  </MDBAnimation>
-                </MDBCol>
-              </MDBContainer>
+                    <MDBInput
+                      /* className='white-text'
+                      iconClass='white-text' */
+                      label='working Hours'
+                      name="workingHours"
+                      onChange={(e) => onChangeInput(e)}
+                    />
+
+                    <DatePicker
+                      name="date"
+                      selected={startDate}
+                      onChange={(date) => handleOnChangeDate(date)} />
+
+                    <br /><br />
+
+                    <select className="browser-default custom-select" name="category" onChange={(e) => onChangeInput(e)}>
+                      <option >Choose the place</option>
+                      <option>cafe</option>
+                      <option >restaurant</option>
+                      <option >entertainment</option>
+                      <option >concert</option>
+                    </select>
+
+
+                    <div className='text-center mt-4 black-text'>
+                      <MDBBtn gradient="blue" onClick={(e) => onSubmit(e)} >Submit</MDBBtn>
+                    </div>
+                  </MDBCardBody>
+                </MDBCard>
+              </MDBAnimation>
+            </MDBCol>
+          </MDBContainer>
         </div>
         : <div>
           <MDBContainer>
-            <p className="text-justify">Only the admin can access this page</p>
+            <h1 className="text-justify" style={{ fontSize: "25px" }}>Only the admin can access this page</h1>
           </MDBContainer>
         </div>}
     </>
   )
 }
-//  else {
-//     return(
-//         <div>
-//   <MDBContainer>
-//       <p className="text-justify">Only the admin can access this page</p>
-//     </MDBContainer>
-//         </div>
-//     )
-//     }
-// }
+
+
