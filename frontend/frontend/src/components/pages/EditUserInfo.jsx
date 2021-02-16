@@ -56,12 +56,12 @@ export default function EditUserInfo(props) {
     // }
     // console.log(image)
     return (
-        <>  
-            {userInfo.name && userInfo.email == "admin@admin.com"?
+        <>
+            {userInfo.name && userInfo.email == "admin@admin.com" ?
                 <Link to={`/create`}>
                     ℂℝ𝔼𝔸𝕋𝔼
                     </Link>
-                :<Formik
+                : <Formik
                     initialValues={userInfo}
                     // validationSchema={validtionSchima}
                     onSubmit={(values) => onSubmit(values)}
@@ -123,7 +123,7 @@ export default function EditUserInfo(props) {
                 //  <div className="spinner-border" role="status">
                 //     <span className="sr-only">Loading...</span>
                 // </div> 
-             } 
+            }
         </>
     );
 }
