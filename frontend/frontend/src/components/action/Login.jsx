@@ -54,7 +54,7 @@ export default function Login(props) {
         The email address or password is incorrect. Please retry...
       </MDBAlert>
     )}
-    <div className='backg' >
+    <div  >
       <MDBContainer
         style={{ height: '100%', width: '100%', paddingTop: '10rem' }}
         className='mt-5  d-flex justify-content-center align-items-center'
@@ -62,9 +62,9 @@ export default function Login(props) {
         <MDBCol md='6' xl='5' className='mb-4'>
           <MDBAnimation type='fadeInRight' delay='.3s'>
             <MDBCard id='classic-card'>
-              <h3 className='text-center'>
-                Log In
-                      </h3>
+              <h1 className='text-center mt-5'>
+                       𝕃𝕠𝕘 𝕀𝕟
+                      </h1>
               <MDBCardBody className='white-text'>
 
 
@@ -87,7 +87,7 @@ export default function Login(props) {
                   onChange={(e) => onChangeInput(e)}
                 />
                 <div className='text-center mt-4 black-text '>
-                  <MDBBtn color='indigo' onClick={(e) => onSubmit(e)}> Log In</MDBBtn>
+                  <MDBBtn gradient="blue" onClick={(e) => onSubmit(e)}> Log In</MDBBtn>
                 </div>
                 {/* <div className='text-center'>
                   <MDBLink to='#'  >

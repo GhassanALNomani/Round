@@ -1,12 +1,18 @@
 import React, { useState } from 'react'
 import { useHistory } from 'react-router-dom'
-import {MDBAnimation, MDBBtn, MDBCard, MDBCardBody, MDBCol, MDBContainer, MDBIcon, MDBInput,  MDBView  } from 'mdbreact';
+import {MDBAnimation, MDBBtn, MDBCard, MDBCardBody, MDBCol, MDBContainer, MDBIcon, MDBInput,  MDBView , MDBAlert  } from 'mdbreact';
+import { Formik, Form as FormikForm, Field, ErrorMessage } from 'formik';
 import axios from "axios";
-import NavBar from './NavBar'
 //import signup from '../assets/signup.jpg'
 
+import * as Yup from 'yup';
+const validtionSchima = Yup.object({
+  name: Yup.string().required("Enter your Name please"),
+  email: Yup.string().required("Enter your email please").email("example@example.com"),
+  password: Yup.string().required("Enter your passwor please!!").min(8, "must be more than 8").max(20, "whatEver")
+})
 
-export default function SignUp() {
+export default function Signup() {
 
 
 
@@ -29,7 +35,7 @@ export default function SignUp() {
         .then((res) => {
           const user = res.data.user;
           if (user) {
-            history.push("/login");
+            history.push("/home");
           } else {
             alert("Error! check your information and try again")
             // setTimeout(() => {
@@ -43,10 +49,21 @@ export default function SignUp() {
  
 
     return (
+    <>
+      {/* {!register && (
+        <MDBAlert variant={"danger"}>
+          The email is already in use. Please change the email
+          </MDBAlert>
+      )}
+      <Formik
+        initialValues={user}
+        validationSchema={validtionSchima}
+        onSubmit={values => onSubmit(values)}
+      > */}
         
-        <div className='classicformpage'>
-
+        <div>
 <MDBView>
+{/* <FormikForm> */}
 <MDBContainer
             style={{ height: '100%', width: '100%', paddingTop: '10rem' }}
             className='mt-5  d-flex justify-content-center align-items-center'
@@ -55,45 +72,68 @@ export default function SignUp() {
       <MDBCol md='6' xl='5' className='mb-4'>
                 <MDBAnimation type='fadeInRight' delay='.3s'>
                   <MDBCard id='classic-card'>
+                  <h1 className='text-center mt-5' >
+                   𝕊𝕀𝔾ℕ 𝕌ℙ
+                      </h1>
                     <MDBCardBody className='white-text'>
-                      <h3 className='text-center'> <MDBIcon icon='user' /> Register: </h3>
                      
-                      <hr className='hr-light' />
-                    
+{/*                       <hr className='hr-light' />
+ */}                    
                       <MDBInput
                         /* className='white-text'
                         iconClass='white-text' */
+                        // as={Field}
                         label='Enter your name'
                         icon='user'
                         name = "name"
                         onChange={(e) => onChangeInput(e)}
                       />
+                      {/* <ErrorMessage name="name" render={(msg) => <MDBAlert color="danger" variant={"danger"}>
+                          {msg}
+                        </MDBAlert>} /> */}
+
                       <MDBInput
                      /*    className='white-text'
                         iconClass='white-text' */
+                        // as={Field}
                         label='Enter your email'
                         icon='envelope'
                         name = "email"
                         onChange={(e) => onChangeInput(e)}/>
+                        {/* <ErrorMessage name="name" render={(msg) => <MDBAlert color="danger" variant={"danger"}>
+                          {msg}
+                        </MDBAlert>} /> */}
+                      
                       <MDBInput
+                      // as={Field}
                         label='Enter your password'
                         icon='lock'
                         type='password'
                         name = "password"
                         onChange={(e) => onChangeInput(e)}/>
+                        {/* <ErrorMessage name="name" render={(msg) => <MDBAlert color="danger" variant={"danger"}>
+                          {msg}
+                        </MDBAlert>} /> */}
+                        
                       <div className='text-center mt-4 black-text'>
-                        <MDBBtn color='indigo' onClick={(e) => onSubmit(e)}>Sign Up</MDBBtn>
+
+                        <MDBBtn gradient="blue" onClick={(e) => onSubmit(e)}>Sign Up</MDBBtn>
+                        
                       </div>
                     </MDBCardBody>
                   </MDBCard>
                 </MDBAnimation>
               </MDBCol>
-        
+              
               </MDBContainer>
+              {/* </FormikForm> */}
               </MDBView>
 
-</div>
+              
 
-      
+</div>
+{/* </Formik> */}
+     </>
     )
 }
+
