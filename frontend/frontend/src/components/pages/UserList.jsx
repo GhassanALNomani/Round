@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
 import { MDBNavbar, MDBNavbarBrand, MDBRow, MDBNavbarNav, MDBNavbarToggler, MDBListGroupItem, MDBNavItem, MDBNavLink, MDBIcon, MDBContainer, MDBListGroup } from 'mdbreact';
 import axios from "axios";
-
+import API_URL from "../../apiConfig";
 
 
 
@@ -9,9 +9,9 @@ export default function UserList(props) {
   const [placesToVisit, setPlacesToVisit] = useState([]) // Contains all fave books form user
   const { _id } = props.auth.currentUser;
   const getplace = async () => {
-    let getUser = await axios.get(`http://localhost:5000/api/users/profile/${props.auth.currentUser._id}`)
+    let getUser = await axios.get(`${API_URL}/api/users/profile/${props.auth.currentUser._id}`)
     console.log('get profile', getUser)
-    axios.get(`http://localhost:5000/api/place/`)
+    axios.get(`${API_URL}/api/place/`)
       .then(res => {
         console.log(">>>>>>> props.user.placesToVisit: ", getUser.data.user.placesToVisit)
         const tovisit = res.data.filter(book => getUser.data.user.placesToVisit.includes(book._id));
@@ -24,7 +24,7 @@ export default function UserList(props) {
   const deletePlace = (placeId) => {
     console.log("myyyyyyyyyy")
     let userId = _id
-    axios.delete(`http://localhost:5000/api/place/${placeId}/${userId}`)
+    axios.delete(`${API_URL}/api/place/${placeId}/${userId}`)
       .then(data => {
         const userData = localStorage.getItem("userData");
         // 1. update (userData), add fav, delete or whatever then 2. do the setItem

@@ -17,7 +17,7 @@ import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
 import ReactStars from 'react-stars';
-
+import API_URL from "../../apiConfig";
 
 
 export default function ShowPage(props) {
@@ -38,7 +38,7 @@ export default function ShowPage(props) {
     console.log("placeId = ", selectPlace._id);
     console.log("userId = ", props.user._id);
     axios
-      .post("http://localhost:5000/place/tovisit", {
+      .post(`${API_URL}/place/tovisit`, {
         placeId: selectPlace._id,
         userId: props.user._id,
       })
@@ -63,7 +63,7 @@ export default function ShowPage(props) {
 
   // git data
   useEffect(() => {
-    axios.get(`http://localhost:5000/api/place/${id}`)
+    axios.get(`${API_URL}/api/place/${id}`)
       .then((res) => {
         setPlaces(res.data.pros);
         console.log("place info for comment", place)
@@ -89,7 +89,7 @@ export default function ShowPage(props) {
       }
       // user id 
       // score 
-      axios.post(`http://localhost:5000/api/place/review`, body)
+      axios.post(`${API_URL}/api/place/review`, body)
         .then(res => {
           console.log(res)
           console.log("reviewd done")
@@ -129,7 +129,7 @@ export default function ShowPage(props) {
   //handle on click send comment 
   const handleComment = (event) => {
     event.preventDefault();
-    axios.post(`http://localhost:5000/api/comment/${place._id}/${props.user._id}`, comment)
+    axios.post(`${API_URL}/api/comment/${place._id}/${props.user._id}`, comment)
       .then(res => {
         console.log("comment info", res)
       })

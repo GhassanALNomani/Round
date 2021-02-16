@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useHistory, Link, BrowserRouter, useParams } from "react-router-dom";
 import { MDBCard, MDBRow, MDBCardImage, MDBCardText, MDBIcon, MDBCardTitle, MDBCol, MDBLightbox, MDBBtn, MDBAlert, MDBCardBody, MDBSpinner } from 'mdbreact';
 import Profile from "../pages/Profile"
+import API_URL from "../../apiConfig";
 import axios from "axios";
 import { Formik, Form as FormikForm, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
@@ -35,7 +36,7 @@ export default function EditUserInfo(props) {
     const onSubmit = (values) => {
         // let userId = props.userProfile._id
         axios
-            .post(`http://localhost:5000/api/user/edituserinfo/${id}`, values)
+            .post(`${API_URL}/api/user/edituserinfo/${id}`, values)
             .then((res) => {
                 console.log("res.data.user from profile update: ", res.data.user)
                 props.setUserProfile(values)

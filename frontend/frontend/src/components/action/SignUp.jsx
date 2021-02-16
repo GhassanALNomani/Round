@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import { Row, Form, Col, Button, Alert, Container } from "react-bootstrap";
 import axios from "axios";
+import API_URL from "../../apiConfig";
 import { Formik, Form as FormikForm, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 const validtionSchima = Yup.object({
@@ -18,7 +19,7 @@ export default function Signup(props) {
   const onSubmit = (values) => {
     // values.preventDefault();
     axios
-      .post("http://localhost:5000/api/user/signup", values)
+      .post(`${API_URL}/api/user/signup`, values)
       .then((res) => {
         const user = res.data.user;
         if (user) {
