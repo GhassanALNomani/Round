@@ -117,7 +117,7 @@ export default function Signup() {
                         
                       <div className='text-center mt-4 black-text'>
 
-                        <MDBBtn gradient="blue" onClick={(e) => onSubmit(e)}>Sign Up</MDBBtn>
+                        <MDBBtn gradient="deep-blue" onClick={(e) => onSubmit(e)}>Sign Up</MDBBtn>
                         
                       </div>
                     </MDBCardBody>
