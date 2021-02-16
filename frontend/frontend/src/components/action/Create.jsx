@@ -5,6 +5,7 @@ import { MDBBtn, MDBCol, MDBContainer, MDBIcon, MDBInput, MDBCard, MDBAnimation,
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import Profile from "../pages/Profile"
+import API_URL from "../../apiConfig";
 //import { MDBDatePickerV5 } from 'mdbreact';
 //import NavBar from './components/NavBar';
 
@@ -60,7 +61,7 @@ export default function Create(props) {
     } else {
 
       axios
-        .post("http://localhost:5000/api/place/create", placeFields)
+        .post(`${API_URL}/api/place/create`, placeFields)
         .then((res) => {
 
           const place = res.data;

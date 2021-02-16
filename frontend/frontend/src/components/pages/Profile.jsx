@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { MDBListGroup, MDBListGroupItem, MDBIcon, MDBBtn } from 'mdbreact';
 import { NavLink, Link } from 'react-router-dom';
 import { MDBCol, MDBCard, MDBCardImage, MDBCardBody, MDBContainer, MDBCardTitle, MDBRow, MDBMask } from "mdbreact";
-
+import API_URL from "../../apiConfig";
 import axios from 'axios'
 
 const Profile = (props) => {
@@ -19,14 +19,14 @@ const Profile = (props) => {
 
     const handleDelete = (placeId) => {
         console.log("Delete", placeId)
-        axios.delete(`http://localhost:5000/api/place/${placeId}`) ///${props.user._id}
+        axios.delete(`${API_URL}/api/place/${placeId}`) ///${props.user._id}
             .then(data => {
                 console.log("delete data ", data)
                 alert("Deleted successfully")
 
             })
             .catch((err) => console.log(err));
-        setFlag(pre => !pre)
+        setFlag(pre => !pre) 
     }
 
 

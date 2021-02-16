@@ -3,7 +3,7 @@ import axios from "axios"
 import { useHistory, useParams } from "react-router-dom";
 import { MDBBtn, MDBCol, MDBContainer, MDBIcon, MDBInput, MDBCard, MDBAnimation, MDBCardBody, MDBAlert } from 'mdbreact';
 import DatePicker from "react-datepicker";
-
+import API_URL from "../../apiConfig";
 
 
 export default function EditPlace(props) {
@@ -33,7 +33,7 @@ export default function EditPlace(props) {
   const getPlace = () => {
     console.log(placeId);
     axios
-      .get(`http://localhost:5000/api/place/${placeId}`)
+      .get(`${API_URL}/api/place/${placeId}`)
       .then(data => {
         setPlaceFields(data.data.pros);
         console.log(data.data.pros)
@@ -55,7 +55,7 @@ export default function EditPlace(props) {
   };
 
   const handleEdit = (placeId) => {
-    axios.put(`http://localhost:5000/api/place/${placeId}`, placetFields)
+    axios.put(`${API_URL}/api/place/${placeId}`, placetFields)
       .then(response => {
         console.log(response);
       })
