@@ -13,7 +13,7 @@ export default function Home(props) {
     const [filterPlaces, setFilterPlaces] = useState([])
 
 
-    //const [selectPlaces, setSelectPlace] = useState([])
+    
 
 
     useEffect(() => {
@@ -22,38 +22,31 @@ export default function Home(props) {
                 setPlaces(res.data.result)
                 setFilterPlaces(res.data.result)
                 console.log("Places info:", places)
-                //  setSelectPlace(res.data)
+                
                 let categories = res.data.result.map(place => place.category)
                 categories.unshift('All Places')
                 setCategory(Array.from(new Set(categories)))
             })
     }, [])
 
-    // console.log("place", selectPlaces)
-
-    /* const thePlace = selectPlaces.map(place =>{
-        return <ShowOnePlace place = {place} setSelectPlace = {props.setSelectPlace} />
-    }) */
-
 
     const filteredPlaces = filterPlaces.map(place => {
 
         return (
             <Link to={`/show/${place._id}`}>
-                <MDBCol className='placeItem' md="4" style={{ maxWidth: "20rem" }}>
-                    <MDBCard reverse>
-                        <MDBCardImage className="cardPhoto" cascade style={{ height: '20rem', width: "100%" }} src={place.image} />
-                        <MDBCardBody cascade className="text-center">
-                            <MDBCardTitle>{place.name}</MDBCardTitle>
-                            <a href='#!' className='black-text d-flex justify-content-end'>
-                                <p>
-                                    Read more
-                                <MDBIcon icon='angle-double-right' className='ml-2' />
-                                </p>
-                            </a>
-                        </MDBCardBody>
-                    </MDBCard>
-                </MDBCol>
+            <MDBCol className='placeItem' md="4" style={{ maxWidth: "20rem" }}>
+                <MDBCard reverse>
+                    <MDBCardImage className="cardPhoto" cascade style={{ height: '20rem', width: "100%" }} src={place.image} />
+                    <MDBCardBody cascade className="text-center">
+                        <MDBCardTitle>{place.name}</MDBCardTitle>
+                            <p>
+                                Read more
+                            <MDBIcon icon='angle-double-right' className='ml-2' />
+                            </p>
+                        
+                    </MDBCardBody>
+                </MDBCard>
+            </MDBCol>
             </Link>
         )
     })
@@ -83,12 +76,12 @@ export default function Home(props) {
         <div className="home">
             <br />
             <br />
-            <h1 className='dark-text mt-3  d-flex justify-content-center align-items-center '>𝕎𝔼𝕃ℂ𝕆𝕄𝔼</h1>
+            <h1 className='dark-text mt-3  d-flex justify-content-center align-items-center '>ℝ𝕆𝕌ℕ𝔻</h1>
             <MDBDropdown
                 style={{ height: '100%', width: '100%', paddingTop: '10rem' }}
                 className='mt-5  d-flex justify-content-center align-items-center '
             >
-                <MDBDropdownToggle caret className="mt-3" gradient="deep-blue"  >
+                <MDBDropdownToggle caret className="mt-3" gradient="deep-blue"  style={{color: "black"}}>
                     Where - 2 - Go
          </MDBDropdownToggle>
                 <MDBDropdownMenu basic  >
