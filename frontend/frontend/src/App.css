@@ -65,8 +65,56 @@
   min-height: 100vh;
  }
 
+
+.styleProfile{
+  font-weight: bold;
+  padding-bottom: 50px;
+  color: black
+}
+
+.iconsStyle{
+  padding-right: 10px;
+
+}
+.headerStyleAdmin{
+  padding-top: 40px;
+  border-bottom: 1px solid black;
+ 
+
+}
+
+.fixPadding{
+  padding-left: 20px;
+}
+
+
  .nav-style{
    color: #393f82
  }
 
 
+
+.iconsCreateStyle{
+  font-size: 30px;
+}
+
+.createHover:hover{
+  font-weight: bold;
+  text-shadow: 8px 8px 8px #bbbcbd;
+  cursor: pointer;
+}
+
+.cardPadding{
+  margin-bottom: 20px;
+}
+
+.styleBorder{
+  border-right: 3px solid
+}
+.styleText{
+  padding-right: 19px
+}
+
+.stylePaddingUser{
+  padding-top: 20px;
+}
