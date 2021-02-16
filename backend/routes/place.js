@@ -9,6 +9,7 @@ const User = require("../models/user");
 router.get("/", (req, res) => {
   Place.find()
   .populate("comments")
+  .populate("user")
     .then((result) => {
       res.json({ result });
     })

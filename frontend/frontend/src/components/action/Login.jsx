@@ -11,43 +11,10 @@ import NavBar from './NavBar'
 
 
 export default function Login(props) {
-  // const history = useHistory();
-  // const [credentials, setCredentials] = useState({ email: "", password: "" });
+  
   const [register, setRegister] = useState(true); // to show aleart
 
-  // const onChangeInput = (event) => {
-  //   const { name, value } = event.target;
-  //   setCredentials({
-  //     ...credentials,
-  //     [name]: value,
-  //   });
-  // };
-
-
-  // const onSubmit = (event) => {
-
-  //   event.preventDefault();
-  //   axios
-  //     .post("http://localhost:5000/api/user/login", credentials)
-  //     .then((res) => {
-  //       console.log("Express backend /login response", res);
-
-  //       const token = res.data.token;
-  //       const msg = res.data.msg;
-
-  //       if (token) {
-  //         localStorage.setItem("jwtToken", token);
-  //         props.loginCallback();
-
-  //         history.push("/home");
-
-  //       } else {
-  //         console.log("Login error: ", msg);
-  //         setRegister(false)
-  //       }
-
-  //     });
-  // }
+  
   const history = useHistory();
   const [credentials, setCredentials] = useState({ email: "", password: "" });
 

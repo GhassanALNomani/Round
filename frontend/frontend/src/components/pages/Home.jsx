@@ -40,20 +40,20 @@ export default function Home(props) {
 
         return (
             <Link to={`/show/${place._id}`}>
-            <MDBCol className='placeItem' md="4" style={{ maxWidth: "20rem" }}>
-                <MDBCard reverse>
-                    <MDBCardImage className="cardPhoto" cascade style={{ height: '20rem', width: "100%" }} src={place.image} />
-                    <MDBCardBody cascade className="text-center">
-                        <MDBCardTitle>{place.name}</MDBCardTitle>
-                        <a href='#!' className='black-text d-flex justify-content-end'>
-                            <p>
-                                Read more
-                            <MDBIcon icon='angle-double-right' className='ml-2' />
-                            </p>
-                        </a>
-                    </MDBCardBody>
-                </MDBCard>
-            </MDBCol>
+                <MDBCol className='placeItem' md="4" style={{ maxWidth: "20rem" }}>
+                    <MDBCard reverse>
+                        <MDBCardImage className="cardPhoto" cascade style={{ height: '20rem', width: "100%" }} src={place.image} />
+                        <MDBCardBody cascade className="text-center">
+                            <MDBCardTitle>{place.name}</MDBCardTitle>
+                            <a href='#!' className='black-text d-flex justify-content-end'>
+                                <p>
+                                    Read more
+                                <MDBIcon icon='angle-double-right' className='ml-2' />
+                                </p>
+                            </a>
+                        </MDBCardBody>
+                    </MDBCard>
+                </MDBCol>
             </Link>
         )
     })

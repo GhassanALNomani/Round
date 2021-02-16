@@ -22,20 +22,16 @@ import {
 
 export default function ShowPage(props) {
     const [place, setPlaces] = useState([])
-    const { id } = useParams()
-    const selectPlace = props.selectPlace;
     const [errorRating, setErrorRating] = useState(false)
     const [score, setScore] = useState(5)
     const [added, setadded] = useState(true);
     const [comment, setComment] = useState({});
-    // const [allcomment, setAllComment] = useState([])
+    const { id } = useParams()
+    const selectPlace = props.selectPlace;
+   
 
 
-    const onChangeInput = ({ target: { name, value } }) => {
-        setComment({ ...comment, [name]: value });
-        console.log("comment", comment);
-    };
-
+ 
     const addPlace = () => {
       console.log("placeId = ", selectPlace._id);
       console.log("userId = ", props.user._id);
@@ -56,6 +52,12 @@ export default function ShowPage(props) {
         });
     };
 
+    
+
+    const onChangeInput = ({ target: { name, value } }) => {
+      setComment({ ...comment, [name]: value });
+      console.log("comment", comment);
+    };
 
     // git data
     useEffect(() => {
@@ -175,7 +177,7 @@ export default function ShowPage(props) {
                     color="dark"
                     onClick={() => {
                       addPlace();
-                      add();
+                      // add();
                     }}
                   >
                     {" "}

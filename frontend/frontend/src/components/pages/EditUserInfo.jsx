@@ -18,15 +18,11 @@ const validtionSchima = Yup.object({
     }),
     img: Yup.string().required("This Field is Required")
 })
-
 export default function EditUserInfo(props) {
     const history = useHistory();
     const [userInfo, setUserInfo] = useState(props.user)
     const { id } = useParams()
-
-
     console.log(props)
-   
     const user = {
         name: userInfo.name,
         email: userInfo.email,
@@ -60,7 +56,6 @@ export default function EditUserInfo(props) {
     // }
     // console.log(image)
     return (
-
         <>  
             {userInfo.name && userInfo.email == "admin@admin.com"?
                 <Link to={`/create`}>
@@ -76,12 +71,6 @@ export default function EditUserInfo(props) {
                         <MDBRow>
                             <MDBCol lg="4" md="12" className="mb-lg-0 mb-4">
                                 <MDBCard testimonial>
-                                    <MDBCardImage className="mx-auto white">
-                                        {/* <img
-                                            src={props.userProfile.img} alt=""
-                                            className="rounded-circle img-fluid"
-                                        /> */}
-                                    </MDBCardImage>
                                     <MDBCardBody>
                                         <MDBCardTitle>  <h4 className="font-weight-bold mb-4">{userInfo.name ? userInfo.name : userInfo.name}</h4></MDBCardTitle>
                                         {/* <MDBCardTitle>  <h4 className="font-weight-bold mb-4">{userInfo.name}</h4></MDBCardTitle> */}
@@ -96,10 +85,9 @@ export default function EditUserInfo(props) {
                             </MDBCol>
                             <MDBCol lg="4" md="12" className="mb-lg-0 mb-4">
                                 <div className="form-group">
-                                    <label htmlFor="formGroupExampleInput">Name</label>
+                                    <label htmlFor="formGroupExampleInput"> Change Name : </label>
                                     <Field
                                         type="text"
-                                        
                                         name="name"
                                         className="form-control"
                                         id="formGroupExampleInput"
@@ -107,10 +95,9 @@ export default function EditUserInfo(props) {
                                     <ErrorMessage name="name" render={(msg) => <MDBAlert color="danger" >
                                         {msg}
                                     </MDBAlert>} />
-                                    <label htmlFor="formGroupExampleInput">Email</label>
+                                    <label htmlFor="formGroupExampleInput">Change Email : </label>
                                     <Field
                                         type="text"
-                                        
                                         name="email"
                                         className="form-control"
                                         id="formGroupExampleInput"
@@ -118,43 +105,14 @@ export default function EditUserInfo(props) {
                                     <ErrorMessage name="email" render={(msg) => <MDBAlert color="danger" >
                                         {msg}
                                     </MDBAlert>} />
-                                    <label htmlFor="formGroupExampleInput">password</label>
+                                    <label htmlFor="formGroupExampleInput"> Change password : </label>
                                     <Field
                                         type="Password"
-                                        
                                         name="password"
                                         className="form-control"
                                         id="formGroupExampleInput"
                                     />
-                                    <ErrorMessage name="password" render={(msg) => <MDBAlert color="danger" >
-                                        {msg}
-                                    </MDBAlert>} />
-                                    <label htmlFor="formGroupExampleInput">Confirm Password</label>
-                                    <Field
-                                        type="Password"
-                                        
-                                        name="confirmPassword"
-                                        className="form-control"
-                                        id="formGroupExampleInput"
-                                    />
-                                    <ErrorMessage name="confirmPassword" render={(msg) => <MDBAlert color="danger" >
-                                        {msg}
-                                    </MDBAlert>} />
-                                    <label htmlFor="formGroupExampleInput">Image</label>
-                                    <input
-                                        type="file"
-                                        className="custom-file-input"
-                                        id="inputGroupFile01"
-                                        aria-describedby="inputGroupFileAddon01"
-                                        // onChange={uploadImagefunc}
-                                        name="img"
-                                    />
-                                    <label className="custom-file-label" htmlFor="inputGroupFile01">
-                                        Choose file    </label>
-                                    <ErrorMessage name="img" render={(msg) => <MDBAlert color="danger" >
-                                        {msg}
-                                    </MDBAlert>} />
-                                    <MDBBtn color="danger" type="submit" style={{ margin: '20px 0px 20px 140px' }}>
+                                    <MDBBtn type="submit" style={{ margin: '20px 0px 20px 140px', color: "black" }} gradient="deep-blue">
                                         Save
                                         </MDBBtn>
                                 </div>
@@ -165,10 +123,7 @@ export default function EditUserInfo(props) {
                 //  <div className="spinner-border" role="status">
                 //     <span className="sr-only">Loading...</span>
                 // </div> 
-
-                
              } 
         </>
-        
     );
 }

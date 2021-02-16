@@ -7,7 +7,8 @@ const Comment = require("../models/comment")
 
 router.get("/", (req, res) => {
     Comment.find()
-    .populate("comments")
+    // .populate("comments")
+    .populate("user")
     .then(comment =>{
         res.json({msg: "Show comment", comment: comment})
     })
