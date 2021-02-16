@@ -87,7 +87,7 @@ export default function Login(props) {
                   onChange={(e) => onChangeInput(e)}
                 />
                 <div className='text-center mt-4 black-text '>
-                  <MDBBtn gradient="blue" onClick={(e) => onSubmit(e)}> Log In</MDBBtn>
+                  <MDBBtn gradient="deep-blue" onClick={(e) => onSubmit(e)}> Log In</MDBBtn>
                 </div>
                 {/* <div className='text-center'>
                   <MDBLink to='#'  >

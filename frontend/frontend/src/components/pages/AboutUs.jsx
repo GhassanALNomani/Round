@@ -5,6 +5,7 @@ export const AboutUs = () => {
     return (
         <>
           <h1>About Us</h1>
+          <br/> 
           <h2>Team Final-Battle</h2>  
         </>
     )

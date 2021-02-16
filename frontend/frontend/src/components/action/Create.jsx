@@ -149,7 +149,7 @@ const handleOnChangeDate = (date) => {
                  </select>
 
                       <div className='text-center mt-4 black-text'>
-                        <MDBBtn gradient="blue" type="submit" onClick={(e) => onSubmit(e)}>Submit</MDBBtn>
+                        <MDBBtn gradient="deep-blue" type="submit" onClick={(e) => onSubmit(e)}>Submit</MDBBtn>
                       </div>
                     </MDBCardBody>
                   </MDBCard>
