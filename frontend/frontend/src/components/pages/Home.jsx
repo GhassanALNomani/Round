@@ -13,7 +13,7 @@ export default function Home(props) {
     const [filterPlaces, setFilterPlaces] = useState([])
 
     useEffect(() => {
-        Axios.get(`${API_URL}api/place`)
+        Axios.get("http://localhost:5000/api/place")
             .then(res => {
                 setPlaces(res.data.result)
                 setFilterPlaces(res.data.result)
@@ -21,6 +21,7 @@ export default function Home(props) {
                 let categories = res.data.result.map(place => place.category)
                 categories.unshift('All Places')
                 setCategory(Array.from(new Set(categories)))
+                console.log("What is going on? ++++++")
             })
     }, [])
 
@@ -64,7 +65,9 @@ export default function Home(props) {
 
     let allSelect = category.map(ele => <MDBDropdownItem onClick={() => onChangeHandler(ele)}>{ele}</MDBDropdownItem>)
 
-
+    //
+    console.log("all category(s) - allSelect ", allSelect)
+    //
 
 
     return (
