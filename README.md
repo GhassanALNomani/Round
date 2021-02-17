@@ -44,8 +44,8 @@ What technologies you used that helped you build this project.
 
 ### Feature in Future
 
-- More details in comment section.
-- More Ineractive rating.
+- Expanding the project to reach the rest of the cities of the Kingdom of Saudi Arabia.
+- Suggest places to the user base on previous visited.
 
 ## APIs Used
 
