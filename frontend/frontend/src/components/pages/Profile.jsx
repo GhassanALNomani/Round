@@ -3,12 +3,13 @@ import { MDBListGroup, MDBListGroupItem, MDBIcon, MDBBtn } from 'mdbreact';
 import { NavLink, Link } from 'react-router-dom';
 import { MDBCol, MDBCard, MDBCardImage, MDBCardBody, MDBContainer, MDBCardTitle, MDBRow, MDBMask } from "mdbreact";
 
-import API_URL from "../../apiConfig";
 import axios from 'axios'
+
 
 const Profile = (props) => {
     const [places, setPlaces] = useState([])
     const [flag, setFlag] = useState(false)
+
     useEffect(() => {
         axios.get(`http://localhost:5000/api/place`)
             .then(res => {
@@ -20,7 +21,6 @@ const Profile = (props) => {
 
     const handleDelete = (placeId) => {
         console.log("Delete", placeId)
-
         axios.delete(`http://localhost:5000/api/place/${placeId}`) ///${props.user._id}
             .then(data => {
                 console.log("delete data ", data)
@@ -33,6 +33,7 @@ const Profile = (props) => {
     }
 
 
+
     const allplaces = places.map(place => {
         return (
 
@@ -41,7 +42,6 @@ const Profile = (props) => {
                     <MDBCardImage cascade style={{ height: '20rem', width: "100%" }} src={place.image} />
                     <MDBCardBody cascade className="text-center">
                         <MDBCardTitle>{place.name}</MDBCardTitle>
-
                         <Link to={`/edit/${place._id}`}>
                         <MDBBtn style={{ fontSize: "15px", fontWeight: "bold", color: "black" }} gradient="deep-blue">
                             <MDBIcon icon="edit" className="iconsStyle " />
@@ -88,7 +88,6 @@ const Profile = (props) => {
                             <NavLink to="/tovisit" activeClassName="activeClass" style={{ fontSize: "40px" }} style={{ color: "#a9dceb" }} className="createHover styleBorder">
                                 <MDBIcon fab icon="gratipay" className="iconsStyle fixPadding iconsCreateStyle" />
                                 <span className="iconsCreateStyle styleText">Place To Visit</span>
-
                             </NavLink>
                             <NavLink to={`/edituserinfo/${props.user._id}`} activeClassName="activeClass" style={{ fontSize: "40px" }} style={{ color: "#a9dceb" }} className="createHover">
                                 <MDBIcon icon="user-edit" className="iconsStyle fixPadding iconsCreateStyle" />

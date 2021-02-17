@@ -38,9 +38,8 @@ export default function (props) {
             )
           })}
         </MDBRow>
-      </div>) : "nothing in your list"}
+      </div>) : <MDBAlert color="danger" dismiss>nothing here</MDBAlert>}
 
     </>
   )
 }
-

@@ -12,17 +12,12 @@ export default function Home(props) {
     const [selectedCategory, setSelectedCategory] = useState()
     const [filterPlaces, setFilterPlaces] = useState([])
 
-
-
-
-
     useEffect(() => {
         Axios.get(`${API_URL}api/place`)
             .then(res => {
                 setPlaces(res.data.result)
                 setFilterPlaces(res.data.result)
-                console.log("Places info:", places)
-
+                console.log("Places info:", places)          
                 let categories = res.data.result.map(place => place.category)
                 categories.unshift('All Places')
                 setCategory(Array.from(new Set(categories)))
