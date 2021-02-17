@@ -1,10 +1,11 @@
 # Round
 
-Round is a website talks about places to visit, the admin can add/edit or delete places with details. Users can view, write reviews also add to section want to visit
+Full-stack web application.
+
 
 ## Description
 
-A description of your project. Explain what is the project about and what is the use for it.
+Our webise talks about places to visit, the admin can add/edit or delete places with details. Users can view, write reviews also add to section want to visit
 
 ### Technical Used
 What technologies you used that helped you build this project. 
@@ -13,7 +14,7 @@ What technologies you used that helped you build this project.
 - Express
 - REACT
 - Node.js
-- boostrap
+- mdboostrap
 - Ajax (axios) for API
 - HTML
 - JS
@@ -28,18 +29,10 @@ What technologies you used that helped you build this project.
 
 
 
-### User Stories
+### Features
 
-A story of the project user, that explains the use of the project.
-
-
-Admin must be able to:
-
-- create a place to visit
-
-User must be able to:
-
-- User can search for a place to go.
+- Admin create place, edit, delete.
+- User can login/ signup/ logout
 - User can view each other.
 - User can write a comment inside the page of the place.
 - User can add the place to their favorit, to visit it later.
@@ -49,43 +42,16 @@ User must be able to:
 
 ---
 
-## Planning and Development Process
+### Feature in Future
 
-### Day 1: TO DO LIST 9/10 FEB
-- Readme
-- ERD
-- User story
-- Wireframe
-
-
-### Day 2: TO DO LIST 10/11 FEB
-#### Backend: Ghassan / Dalya
-- Models
-- Routes Users
-#### Frontend: Ahlam/ Huda
-- landing page
-- sign up page
-- log in page
-
-
-### Problem-Solving Strategy
-
-What strategy did you use to solve your problems.
-
-### Unsolved problems
-
-List unsolved problems which would be fixed in future iterations.
+- More details in comment section.
+- More Ineractive rating.
 
 ## APIs Used
 
 - Internal API from DB
 
 ## Live link
-
----
-
-## Acknowledgments
-
 
 ---
 

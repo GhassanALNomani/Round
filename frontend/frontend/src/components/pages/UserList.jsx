@@ -26,12 +26,12 @@ export default function (props) {
     )
   }
 
- 
+
 
   return (
     <>
-    {change && <MDBAlert color="danger" dismiss>deleted</MDBAlert>}  
-    {placesToVisit.length > 0 ? (<div className='padding'>
+      {change && <MDBAlert color="danger" dismiss>deleted</MDBAlert>}
+      {placesToVisit.length > 0 ? (<div className='padding'>
         <MDBRow className="justify-content-md-center">
           {placesToVisit.map((onePlace, i) => {
             return (
@@ -44,4 +44,3 @@ export default function (props) {
     </>
   )
 }
-

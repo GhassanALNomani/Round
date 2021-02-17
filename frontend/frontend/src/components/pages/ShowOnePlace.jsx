@@ -32,6 +32,7 @@ export default function (props) {
   const onChangeInput = ({ target: { name, value } }) => {
     setComment({ ...comment, [name]: value });
     console.log("comment", comment);
+
   };
   // git data
   useEffect(() => {
@@ -66,7 +67,7 @@ export default function (props) {
         userName: props.user.name,
         productId: id
       }
-     
+
       axios.post(`${API_URL}/api/place/review`, body)
         .then(res => {
           console.log(res)
@@ -80,7 +81,6 @@ export default function (props) {
       console.log("Login first");
     }
   }
-
   const ratingChanged = (newRating) => {
     setScore(newRating)
   }
@@ -90,7 +90,7 @@ export default function (props) {
       setadded(true);
     }, 3000);
   };
-  
+
   //handle on click send comment 
   const handleComment = (event) => {
     event.preventDefault();

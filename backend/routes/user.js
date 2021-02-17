@@ -34,7 +34,7 @@ router.post('/signup', (req, res) => {
         name: req.body.name,
         // photo: req.file.filename
     };
-     newUser.email = newUser.email.toLowerCase(); 
+    newUser.email = newUser.email.toLowerCase();
     User.findOne({ email: newUser.email })
         .then((user) => {
             // if the email in the database !
@@ -116,34 +116,35 @@ router.post('/reset', (req, res) => {
 
 //=================Edit Profile 
 router.post("/edituserinfo/:userId", (req, res) => {
-  const userId  = req.params.userId ;
-  let updateUserProfile = {
-      name: req.body.name,
-      email: req.body.email,
-      img:req.body.img,   
-  };
-  console.log(" name "+req.body.name ,
-              "// email "+req.body.email ,
-              "// immgg "+req.body.img ,
-              "// idd "+ userId   ,
-  )
-// console.log(req.body.password)
-  if( !req.body.password || req.body.password.length == 0 ){
-      console.log("Updated Profile WITHOUT PASSWORD"+ updateUserProfile)
-      User.findByIdAndUpdate(userId, updateUserProfile)
-        .then((user) => {
-          res.json({msg : "Profile Updated" , user : user });
+    const userId = req.params.userId;
+    let updateUserProfile = {
+        name: req.body.name,
+        email: req.body.email,
+        img: req.body.img,
+    };
+    console.log(" name " + req.body.name,
+        "// email " + req.body.email,
+        "// immgg " + req.body.img,
+        "// idd " + userId   ,
+    )
+    // console.log(req.body.password)
+    if (!req.body.password || req.body.password.length == 0) {
+        console.log("Updated Profile WITHOUT PASSWORD" + updateUserProfile)
+        User.findByIdAndUpdate(userId, updateUserProfile)
+            .then((user) => {
+                res.json({ msg: "Profile Updated", user: user });
             })
-        .catch((err) => console.log("Error: User not found ", err));
-  }
-  else{
-    console.log("Updated Profile WITH PASSWORD"+ updateUserProfile)
-    var salt = bcrypt.genSaltSync(10);
-    updateUserProfile.password=bcrypt.hashSync(req.body.password, salt);
-    User.findByIdAndUpdate(userId, updateUserProfile)
-      .then((user) => {
-        res.json({msg : "Profile Updated" , user : user })}   )
-      .catch((err) => console.log("Error: User not found ", err));
+            .catch((err) => console.log("Error: User not found ", err));
+    }
+    else {
+        console.log("Updated Profile WITH PASSWORD" + updateUserProfile)
+        var salt = bcrypt.genSaltSync(10);
+        updateUserProfile.password = bcrypt.hashSync(req.body.password, salt);
+        User.findByIdAndUpdate(userId, updateUserProfile)
+            .then((user) => {
+                res.json({ msg: "Profile Updated", user: user })
+            })
+            .catch((err) => console.log("Error: User not found ", err));
     }
 });
 

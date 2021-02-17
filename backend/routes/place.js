@@ -54,25 +54,25 @@ router.post("/create", (req, res) => {
 });
 
 
-// Rate place
-// router.post("/review", (req, res) => {
-//     const { userId, score, placeId, userName } = req.body
-//     Places.findById(placeId).then(place => {
-//         let result = place.reviews.find(ele => ele.userId == userId)
-//         if (!result) {
-//             const review = {
-//                 userId, score, userName
-//             }
+//Rate place
+router.post("/review", (req, res) => {
+  const { userId, score, placeId, userName } = req.body
+  Places.findById(placeId).then(place => {
+    let result = place.reviews.find(ele => ele.userId == userId)
+    if (!result) {
+      const review = {
+        userId, score, userName
+      }
 
-//             Places.findByIdAndUpdate(placeId, { $push: { reviews: review } })
-//             .then(res => {
-//                 res.send('added review')
-//             })
-//         } else {
-//             res.send('Error! you already reviewed')
-//         }
-//     })
-// })
+      Places.findByIdAndUpdate(placeId, { $push: { reviews: review } })
+        .then(res => {
+          res.send('added review')
+        })
+    } else {
+      res.send('Error! you already reviewed')
+    }
+  })
+})
 
 
 //delete

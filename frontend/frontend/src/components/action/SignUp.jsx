@@ -1,3 +1,4 @@
+
 import React, { useState } from 'react'
 import { useHistory } from 'react-router-dom'
 import { MDBAnimation, MDBBtn, MDBCard, MDBCardBody, MDBCol, MDBContainer, MDBIcon, MDBInput, MDBView, MDBAlert } from 'mdbreact';
@@ -34,22 +35,22 @@ export default function Signup() {
   function valid() {
 
     let errors = []
-  
-    
+
+
     for (var key in user) {
       if (key == "email" && user['email'] != "") {
         console.log('check email regex', emailRegex.test(user['email']))
         console.log('check email regex', emailRegex.test('ali@ali.com'))
-        if(emailRegex.test(user['email'])){
-          errors.filter(err=>err.name == "email")
-        }else{
-          errors.push({name: "email", msg: "Please enter a valid Email"})
+        if (emailRegex.test(user['email'])) {
+          errors.filter(err => err.name == "email")
+        } else {
+          errors.push({ name: "email", msg: "Please enter a valid Email" })
         }
       }
-      if(user[key] == ""){
-        errors.push({name: key, msg: "Please fill this field"})
-      }else{
-        errors.filter(err=>err.name == key)
+      if (user[key] == "") {
+        errors.push({ name: key, msg: "Please fill this field" })
+      } else {
+        errors.filter(err => err.name == key)
       }
     }
     setFormErrors(errors)
@@ -59,13 +60,13 @@ export default function Signup() {
 
   const onSubmit = (event) => {
     console.log(user)
-    event.preventDefault(); 
+    event.preventDefault();
     console.log(valid())
     valid()
     console.log(user)
     let errors = valid()
     if (errors.length > 0) {
-      
+
 
     } else {
       axios
@@ -119,11 +120,11 @@ export default function Signup() {
                       onChange={(e) => onChangeInput(e)}
                     />
                     {formErrors.map(error => {
-                      if(error.name == "name")
-                      return <p key={error.name} style={{color: "red"}}>{error.msg}</p>
+                      if (error.name == "name")
+                        return <p key={error.name} style={{ color: "red" }}>{error.msg}</p>
                     })}
-                    
-                    
+
+
                     {/* <ErrorMessage name="name" render={(msg) => <MDBAlert color="danger" variant={"danger"}>
                           {msg}
                         </MDBAlert>} /> */}
@@ -136,9 +137,9 @@ export default function Signup() {
                       icon='envelope'
                       name="email"
                       onChange={(e) => onChangeInput(e)} />
-                      {formErrors.map(error => {
-                      if(error.name == "email")
-                      return <p key={error.name} style={{color: "red"}}>{error.msg}</p>
+                    {formErrors.map(error => {
+                      if (error.name == "email")
+                        return <p key={error.name} style={{ color: "red" }}>{error.msg}</p>
                     })}
                     {/* <ErrorMessage name="name" render={(msg) => <MDBAlert color="danger" variant={"danger"}>
                           {msg}
@@ -151,9 +152,9 @@ export default function Signup() {
                       type='password'
                       name="password"
                       onChange={(e) => onChangeInput(e)} />
-                      {formErrors.map(error => {
-                      if(error.name == "password")
-                      return <p key={error.name} style={{color: "red"}}>{error.msg}</p>
+                    {formErrors.map(error => {
+                      if (error.name == "password")
+                        return <p key={error.name} style={{ color: "red" }}>{error.msg}</p>
                     })}
                     {/* <ErrorMessage name="name" render={(msg) => <MDBAlert color="danger" variant={"danger"}>
                           {msg}

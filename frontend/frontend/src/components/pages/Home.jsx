@@ -17,7 +17,7 @@ export default function Home(props) {
             .then(res => {
                 setPlaces(res.data.result)
                 setFilterPlaces(res.data.result)
-                console.log("Places info:", places)          
+                console.log("Places info:", places)
                 let categories = res.data.result.map(place => place.category)
                 categories.unshift('All Places')
                 setCategory(Array.from(new Set(categories)))

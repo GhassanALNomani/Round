@@ -6,11 +6,12 @@ import { MDBCol, MDBCard, MDBCardImage, MDBCardBody, MDBContainer, MDBCardTitle,
 import API_URL from "../../apiConfig";
 import axios from 'axios'
 
+
 const Profile = (props) => {
     const [places, setPlaces] = useState([])
 
     const [flag, setFlag] = useState(false)
-    
+
     useEffect(() => {
         axios.get(`${API_URL}/api/place`)
             .then(res => {
@@ -26,13 +27,14 @@ const Profile = (props) => {
         axios.delete(`${API_URL}/api/place/${placeId}`) ///${props.user._id}
             .then(data => {
                 console.log("delete data ", data)
-
             })
+
         //.catch((err) => console.log(err));
         setPlaces(places.filter(item => {
             return item._id !== placeId
         }));
     }
+
 
 
     const allplaces = places.map(place => {
@@ -44,8 +46,8 @@ const Profile = (props) => {
                     <MDBCardBody cascade className="text-center">
                         <MDBCardTitle>{place.name}</MDBCardTitle>
                         <Link to={`/edit/${place._id}`}>
-                        <MDBBtn style={{ fontSize: "15px", fontWeight: "bold", color: "black" }} gradient="deep-blue">
-                            <MDBIcon icon="edit" className="iconsStyle " />
+                            <MDBBtn style={{ fontSize: "15px", fontWeight: "bold", color: "black" }} gradient="deep-blue">
+                                <MDBIcon icon="edit" className="iconsStyle " />
                             Edit
                         </MDBBtn>
                         </Link>
@@ -83,13 +85,12 @@ const Profile = (props) => {
                 </> : <>
                         <h2 className="headerStyleAdmin">
                             <MDBIcon icon="user-circle" className="iconsStyle mb-3" />
-                            User Profile : {props.userProfile.name}
+                            User Profile
                         </h2>
                         <MDBRow className="styleProfile stylePaddingUser">
                             <NavLink to="/tovisit" activeClassName="activeClass" style={{ fontSize: "40px" }} style={{ color: "#a9dceb" }} className="createHover styleBorder">
                                 <MDBIcon fab icon="gratipay" className="iconsStyle fixPadding iconsCreateStyle" />
                                 <span className="iconsCreateStyle styleText">Place To Visit</span>
-
                             </NavLink>
                             <NavLink to={`/edituserinfo/${props.user._id}`} activeClassName="activeClass" style={{ fontSize: "40px" }} style={{ color: "#a9dceb" }} className="createHover">
                                 <MDBIcon icon="user-edit" className="iconsStyle fixPadding iconsCreateStyle" />
