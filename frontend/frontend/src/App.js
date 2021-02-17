@@ -13,21 +13,15 @@ import axios from "axios"
 import jwt_decode from "jwt-decode";
 import React, { useState, useEffect } from "react";
 import EditPlace from "./components/action/EditPlace"
-
+import UserList from './components/pages/UserList'
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
-
-
-
 function App() {
-
-
 
   const [loadingData, setLoadingData] = useState(false);
   const [auth, setAuth] = useState({ currentUser: null, isLoggedIn: false });
   const [userProfile, setUserProfile] = useState({})
   const [dataLoaded, setDataloaded] = useState(false)
   const [userData, setUserData] = useState({ currentDataUser: null })
-
 
   const userLogin = () => {
     if (localStorage.jwtToken) {
@@ -53,7 +47,7 @@ function App() {
     console.log('Loaded user profile: ', user)
     setUserProfile(user)
   }
-
+  
   useEffect(userLogin, []);
   useEffect(() => {
     if (userProfile.name) {
@@ -61,31 +55,29 @@ function App() {
     }
   }, [userProfile])
 
-
   return (
     <>
+    {dataLoaded &&
       <div className="classicformpage">
 
         <Router>
           <NavBar loginCallback={userLogin} isLoggedIn={auth.isLoggedIn} />
           <Switch>
-
             <Route path="/profile">
               <AuthRoute
                 setAuth={setAuth}
                 auth={auth}
                 user={auth.currentUser}
+                userProfile={userProfile}
               />
             </Route>
 
             <Route exact path="/">
               <Home />
             </Route>
-
             <Route path="/login">
               <Login loginCallback={userLogin} />
             </Route>
-
             <Route exact path="/edit/:placeId">
               <EditPlace user={auth.currentUser} />
             </Route>
@@ -114,10 +106,15 @@ function App() {
               />
             </Route>
 
+            {auth.isLoggedIn &&
+              <Route exact path="/tovisit">
+                <UserList auth={auth} user={userData.currentDataUser} setAuth={setAuth} />
+              </Route>
+            }
             <Route path="/signup">
               <SignUp />
             </Route>
-
+    
             <Route path="/aboutus">
               <AboutUs />
             </Route>
@@ -125,9 +122,12 @@ function App() {
           <Footer />
         </Router>
 
+
+
         {/* : <Spinner animation="border" />
       } */}
       </div>
+
     </>
   );
 }

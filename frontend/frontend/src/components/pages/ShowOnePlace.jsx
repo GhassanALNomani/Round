@@ -1,4 +1,3 @@
-
 import {
   MDBCard,
   MDBCardBody,
@@ -17,55 +16,47 @@ import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
 import ReactStars from 'react-stars';
+export default function (props) {
+  const [place, setPlaces] = useState([]) // you won't need the whole array of places when you get one place, and set the state "selectPlace" with its data
+  const { id } = useParams()
+  const [userTovisit, setUserTovisit] = useState()
+  // const [selectPlace, setSelectPlace] = useState(props.selectPlace) // delete this from everywhere, App.js
+  const [selectPlace, setSelectPlace] = useState({})
+  // const { name } = selectPlace
+
 import API_URL from "../../apiConfig";
 
 
 export default function ShowPage(props) {
-  const [place, setPlaces] = useState([])
+const [place, setPlaces] = useState([]) // you won't need the whole array of places when you get one place, and set the state "selectPlace" with its data
+  const { id } = useParams()
+  const [userTovisit, setUserTovisit] = useState()
+  // const [selectPlace, setSelectPlace] = useState(props.selectPlace) // delete this from everywhere, App.js
+  const [selectPlace, setSelectPlace] = useState({})
+  // const { name } = selectPlace
   const [errorRating, setErrorRating] = useState(false)
   const [score, setScore] = useState(5)
   const [added, setadded] = useState(true);
   const [comment, setComment] = useState({});
-  // const [allcomment, setAllComment] = useState([])
-  const [flag, setFlag] = useState(false)
-  const { id } = useParams()
-  const selectPlace = props.selectPlace;
-
-
-
-
-  const addPlace = () => {
-    console.log("placeId = ", selectPlace._id);
-    console.log("userId = ", props.user._id);
-    axios
-      .post(`${API_URL}/place/tovisit`, {
-        placeId: selectPlace._id,
-        userId: props.user._id,
+  
+  
+// add to list 
+ const addPlace = () => {
+    console.log(props.user._id, place._id)
+    axios.put(`http://localhost:5000/api/tovisit/`, { userId: props.user._id, placeId: place._id })
+      .then(res => {
+        console.log("added to list", res)
+        setUserTovisit(res.data);// places: if it's all places,why set? if it's user's  places, use another name to indicate it, for example "userList", "toVisit"
       })
-      .then((data) => {
-        props.setAuth((pre) => ({
-          ...pre,
-          currentUser: {
-            ...pre.currentUser,
-            placesToVisit: data.data.placesToVisit,
-          },
-        }));
-        console.log(data);
-      });
   };
-
-
-
-  const onChangeInput = ({ target: { name, value } }) => {
-    setComment({ ...comment, [name]: value });
-    console.log("comment", comment);
-  };
+  
 
   // git data
   useEffect(() => {
     axios.get(`${API_URL}/api/place/${id}`)
+
       .then((res) => {
-        setPlaces(res.data.pros);
+        setPlaces(res.data.pros); // this returns one place so why use the "places" state // refactor state naming to indicate what data they hold, "places" "toVisit" "onePlace"
         console.log("place info for comment", place)
         const onePlace = res.data.pros;
         console.log(onePlace)
@@ -76,9 +67,9 @@ export default function ShowPage(props) {
         console.log("place info", onePlace);
       });
 
-  }, [flag]);
-
-
+  }, []);
+ 
+//Rating
   const handleRating = () => {
     if (props.isLoggedIn) {
       const body = {
@@ -87,8 +78,8 @@ export default function ShowPage(props) {
         userName: props.user.name,
         productId: id
       }
-      // user id 
-      // score 
+    
+
       axios.post(`${API_URL}/api/place/review`, body)
         .then(res => {
           console.log(res)
@@ -106,16 +97,6 @@ export default function ShowPage(props) {
     setScore(newRating)
   }
 
-  // // git data
-  // useEffect(() => {
-  //     axios.get(`http://localhost:5000/api/place/${id}`)
-  //       .then(res => {
-  //         setPlaces(res.data.pros)
-  //         console.log("place info", place)
-  //       })
-  // }, [])
-
-
 
   const add = () => {
     setadded(false);
@@ -125,7 +106,7 @@ export default function ShowPage(props) {
   };
 
 
-
+//comments
   //handle on click send comment 
   const handleComment = (event) => {
     event.preventDefault();
@@ -137,18 +118,17 @@ export default function ShowPage(props) {
     setFlag(pre => !pre)
   }
 
-
-
   const allComment = place.comments && place.comments.map(comment => {
     return (
       <p>{comment.text}</p>
     )
   })
-
-
-
-
-
+  
+  
+  const onChangeInput = ({ target: { name, value } }) => {
+    setComment({ ...comment, [name]: value });
+    console.log("comment", comment);
+  };
 
   return (
     <div>
@@ -172,17 +152,24 @@ export default function ShowPage(props) {
                   <strong>{place.category}</strong>
                 </h5>
                 <MDBCardText>{place.description}</MDBCardText>
+
+                <MDBCardText>{place.location}</MDBCardText>
+                <MDBCardText>{place.workingHours}</MDBCardText>
+                <MDBCardText>{place.date}</MDBCardText>
+
                 <MDBBtn
                   outline
                   color="dark"
                   onClick={() => {
                     addPlace();
-                    // add();
+
+                    add();
                   }}
                 >
                   {" "}
-                    Add To List
-                  </MDBBtn>
+                  Add To List
+                </MDBBtn>
+
                 {errorRating && (
                   // className="error-anim"
                   <div style={{ color: "#C70039" }}>
@@ -204,7 +191,9 @@ export default function ShowPage(props) {
                   onClick={handleRating}
                 >
                   Review
-                  </MDBBtn>
+
+                </MDBBtn>
+
               </MDBCardBody>
             </MDBCard>
           </MDBCol>
@@ -217,7 +206,9 @@ export default function ShowPage(props) {
               <div className="text-center">
                 <MDBBtn outline color="secondary" onClick={handleComment}>
                   Comment
-                          <MDBIcon far icon="paper-plane" className="ml-1" />
+
+                        <MDBIcon far icon="paper-plane" className="ml-1" />
+
                 </MDBBtn>
                 <div className="grey-text">
                   {allComment}
@@ -230,3 +221,4 @@ export default function ShowPage(props) {
     </div>
   );
 }
+
