@@ -6,9 +6,6 @@ import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import Profile from "../pages/Profile"
 import API_URL from "../../apiConfig";
-//import { MDBDatePickerV5 } from 'mdbreact';
-//import NavBar from './components/NavBar';
-
 
 
 function valid(object) {
