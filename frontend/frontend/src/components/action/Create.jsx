@@ -5,25 +5,37 @@ import { MDBBtn, MDBCol, MDBContainer, MDBIcon, MDBInput, MDBCard, MDBAnimation,
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import Profile from "../pages/Profile"
-//import { MDBDatePickerV5 } from 'mdbreact';
-//import NavBar from './components/NavBar';
+//import API_URL from "../../apiConfig";
+import moment from 'moment'
+
+function valid(object) {
+  let flag = true
+  for (var key in object) {
+    if (object[key] == " ") {
+
+      flag = false
+    }
+  }
+  return flag
+}
+
 
 
 export default function Create(props) {
-console.log(props)
-    const history = useHistory();
+  console.log(props)
+  const history = useHistory();
 
-    const [startDate, setStartDate] = useState(new Date());
+  const [startDate, setStartDate] = useState(new Date());
 
 
-    const [placeFields, setPlaceFields] = useState({
-      name: "",
-      description: "",
-      image: "",
-      category: "Choose the place",
-      location: "",
-      workingHours : "",
-    
+  const [placeFields, setPlaceFields] = useState({
+    name: " ",
+    description: " ",
+    image: " ",
+    category: "Choose the place",
+    location: " ",
+    workingHours: " ",
+
   });
 
 
@@ -38,26 +50,33 @@ const handleOnChangeDate = (date) => {
 }
 
 
-    const onSubmit = (e) => {
-        console.log(placeFields);
-        e.preventDefault();
+const onSubmit = (e) => {
+  console.log(placeFields);
+  e.preventDefault();
+  console.log(valid(placeFields))
+  if (!valid(placeFields)) {
+    alert("somting is missing ! ")
+  } else {
 
         axios
-            .post("http://localhost:5000/api/place/create", placeFields)
-            .then((res) => {
+        .post('http://localhost:5000/api/place/create', placeFields) 
+        .then((res) => {
 
                 const place = res.data;
 
                 console.log("response data: ", res.data)
-
-                if (place) {
-                        history.push("/");
-                    } else {
-                    alert("Error! check your information and try again")
-                    }
-            })
-            .catch((err) => console.log(err));
+     
+          if (place) {
+            alert("Place added successfully")
+            history.push("/");
+          } else {
+            alert("Error! check your information and try again")
+          }
+        })
+        .catch((err) => console.log(err));
     }
+
+  }
 
 
     const onChangeInput = (event) => {
@@ -68,9 +87,6 @@ const handleOnChangeDate = (date) => {
       });
       console.log(placeFields)
   };
-
-
-
 
 
     return (

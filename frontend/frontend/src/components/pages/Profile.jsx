@@ -8,6 +8,7 @@ import axios from 'axios'
 
 const Profile = (props) => {
     const [places, setPlaces] = useState([])
+    const [flag, setFlag] = useState(false)
 
     useEffect(() => {
         axios.get(`http://localhost:5000/api/place`)
@@ -16,7 +17,7 @@ const Profile = (props) => {
                 console.log("place info:", places)
 
             })
-    }, [])
+    }, [flag])
 
     const handleDelete = (placeId) => {
         console.log("Delete", placeId)
@@ -41,10 +42,12 @@ const Profile = (props) => {
                     <MDBCardImage cascade style={{ height: '20rem', width: "100%" }} src={place.image} />
                     <MDBCardBody cascade className="text-center">
                         <MDBCardTitle>{place.name}</MDBCardTitle>
-                        <MDBBtn as={Link} to={`/edit/${place._id}`} style={{ fontSize: "15px", fontWeight: "bold", color: "black" }} gradient="deep-blue">
+                        <Link to={`/edit/${place._id}`}>
+                        <MDBBtn style={{ fontSize: "15px", fontWeight: "bold", color: "black" }} gradient="deep-blue">
                             <MDBIcon icon="edit" className="iconsStyle " />
                             Edit
                         </MDBBtn>
+                        </Link>
                         <MDBBtn onClick={() => handleDelete(place._id)} style={{ fontSize: "15px", fontWeight: "bold", color: "black" }} gradient="deep-blue">
                             <MDBIcon icon="trash-alt" className="iconsStyle " /> Delete
                         </MDBBtn>

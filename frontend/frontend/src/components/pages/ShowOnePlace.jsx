@@ -16,6 +16,8 @@ import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
 import ReactStars from 'react-stars';
+import moment from 'moment'
+
 export default function (props) {
   const [place, setPlaces] = useState([]) // you won't need the whole array of places when you get one place, and set the state "selectPlace" with its data
   const { id } = useParams()
@@ -27,11 +29,13 @@ export default function (props) {
   const [score, setScore] = useState(5)
   const [added, setadded] = useState(true);
   const [comment, setComment] = useState({});
+
   // const [allcomment, setAllComment] = useState([])
   const onChangeInput = ({ target: { name, value } }) => {
     setComment({ ...comment, [name]: value });
     console.log("comment", comment);
   };
+  
   // git data
   useEffect(() => {
     axios.get(`http://localhost:5000/api/place/${id}`)
@@ -126,7 +130,7 @@ export default function (props) {
                 <MDBCardText>{place.description}</MDBCardText>
                 <MDBCardText>{place.location}</MDBCardText>
                 <MDBCardText>{place.workingHours}</MDBCardText>
-                <MDBCardText>{place.date}</MDBCardText>
+  <MDBCardText>{moment(place.date).format('DD MMM YYYY')}</MDBCardText>
                 <MDBBtn
                   outline
                   color="dark"
@@ -153,13 +157,7 @@ export default function (props) {
                   size={24}
                   color2={"#ffd700"}
                 />
-                <MDBBtn
-                  style={{ backgroundColor: "black", margin: "10px" }}
-                  size="md"
-                  onClick={handleRating}
-                >
-                  Review
-                </MDBBtn>
+              
               </MDBCardBody>
             </MDBCard>
           </MDBCol>

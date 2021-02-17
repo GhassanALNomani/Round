@@ -10,7 +10,9 @@ export default function EditPlace(props) {
     const { placeId } = useParams();
     const history = useHistory();
     const [startDate, setStartDate] = useState(new Date());
+    const [flag, setFlag] = useState(false)
 
+    //datepicker
     const handleOnChangeDate = (date) => {
 
         setStartDate(date)
@@ -30,6 +32,7 @@ export default function EditPlace(props) {
       
     });
 
+    //get one place
     const getPlace = () => {
         console.log(placeId);
         axios
@@ -54,15 +57,17 @@ export default function EditPlace(props) {
         });
     };
 
-    const handleEdit= (placeId) => {
-      console.log("No need for test :)")
+    //edit places
+    const handleEdit = (placeId) => {
       axios.put(`http://localhost:5000/api/place/${placeId}`, placetFields)
-          .then(response => {
-              console.log(response)
-              history.push("/");
-          })
+        .then(response => {
+          console.log(response);
+        })
+        .catch((err) => console.log(err));
+      alert("Edited successfully");
+      history.push("/profile");
+      setFlag(pre => !pre)
     }
-
 
     return (
         <div className="classicformpage">
