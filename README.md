@@ -3,10 +3,6 @@
 Full-stack web application.
 
 
-
-Round is a website talks about places to visit, the admin can add/edit or delete places with details. Users can view, write reviews also add to section want to visit
-
-
 ## Description
 
 Our webise talks about places to visit, the admin can add/edit or delete places with details. Users can view, write reviews also add to section want to visit
