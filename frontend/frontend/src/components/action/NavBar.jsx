@@ -21,7 +21,7 @@ export default function NavBar(props) {
     return (
         <div>
             <header>
-                <MDBNavbar style={bgPink} dark expand="md"  >
+                <MDBNavbar style={"#a9dceb"} dark expand="md"  >
                     {/*                 scrolling fixed="top"
  */}                    <MDBNavbarBrand href="/">
                         <strong></strong>

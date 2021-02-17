@@ -152,7 +152,7 @@ export default function EditPlace(props) {
                 </select>
 
                 <div className='text-center mt-4 black-text'>
-                  <MDBBtn onClick={() => handleEdit(placeId)}>Edit</MDBBtn>
+                  <MDBBtn gradient="deep-blue" onClick={() => handleEdit(placeId)}>Edit</MDBBtn>
                 </div>
               </MDBCardBody>
             </MDBCard>
