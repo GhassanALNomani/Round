@@ -1,59 +1,46 @@
-import {useState, useEffect} from 'react'
-import { MDBNavbar, MDBNavbarBrand,MDBRow, MDBNavbarNav, MDBNavbarToggler, MDBListGroupItem, MDBNavItem, MDBNavLink, MDBIcon,MDBContainer,MDBListGroup } from 'mdbreact';
+import { useState, useEffect } from 'react'
+import { MDBNavbar, MDBNavbarBrand, MDBRow, MDBAlert, MDBNavbarNav, MDBNavbarToggler, MDBListGroupItem, MDBNavItem, MDBNavLink, MDBIcon, MDBContainer, MDBListGroup } from 'mdbreact';
 import axios from "axios";
+import { useParams } from "react-router-dom"
+import OneItemList from '../pages/OneItemList'
+export default function (props) {
+  const [placesToVisit, setPlacesToVisit] = useState([]);
+  const [userId, setUserId] = useState(props.auth.currentUser._id);
+  const [change, setChange] = useState(false);
 
 
 
-
-export default function UserList(props) {
-  const [placesToVisit, setPlacesToVisit] = useState([]) // Contains all fave books form user
-  const { _id } = props.auth.currentUser;
-  const getplace = async () => {
-    let getUser = await axios.get(`http://localhost:5000/api/users/profile/${props.auth.currentUser._id}`)
-    console.log('get profile', getUser)
-    axios.get(`http://localhost:5000/api/place/`)
-      .then(res => {
-        console.log(">>>>>>> props.user.placesToVisit: ", getUser.data.user.placesToVisit)
-        const tovisit = res.data.filter(book => getUser.data.user.placesToVisit.includes(book._id));
-        setPlacesToVisit(tovisit)
-      })
-  }
-  useEffect(
-    getplace
+  useEffect(() => axios.get(`http://localhost:5000/api/tovisit/${userId}`)
+    .then(data => {
+      console.log("data.data.placesToVisit ----", data.data.placesToVisit)
+      setPlacesToVisit(data.data.placesToVisit)
+    })
     , [])
-     const deletePlace = (placeId) => {
-        console.log("myyyyyyyyyy")
-        let userId = _id
-         axios.delete(`http://localhost:5000/api/place/${placeId}/${userId}`)
-           .then(data => {
-             const userData = localStorage.getItem("userData");
-             // 1. update (userData), add fav, delete or whatever then 2. do the setItem
-             // localStorage.setItem("userData", userData)
-            const user = JSON.parse(userData);
-            localStorage[_id] = JSON.stringify(data.data.placesToVisit)
-            console.log(localStorage[_id])
-            console.log('deleted book', data.data.placesToVisit)
-            // setChangeuseEffect(!changeuseEffect)
-            setPlacesToVisit(placesToVisit.filter(place =>{
-              return place._id != placeId
-            }))
-          })
-       }
-       let MyPlace = placesToVisit.map((onePlace, i) => {
-        return (
-          <OneItemList onePlace={onePlace} deletePlace={deletePlace} delete={true} />
-        )
-      });
-      return (
-        <>
-              
-              <div className='padding'>
-    
-                    <MDBRow className="justify-content-md-center">  
-                    
-                        {MyPlace}
-                    </MDBRow>
-              </div>
-        </>
-      )
-      }
+
+  const deleteplace = (plaicId) => {
+    axios.delete(`http://localhost:5000/api/tovisit/${userId}/${plaicId}`)
+      .then((res) => console.log(res))
+    setChange(true)
+    setPlacesToVisit(placesToVisit.filter(ele => ele._id != plaicId)
+    )
+  }
+
+ 
+
+  return (
+    <>
+    {change && <MDBAlert color="danger" dismiss>deleted</MDBAlert>}  
+    {placesToVisit.length > 0 ? (<div className='padding'>
+        <MDBRow className="justify-content-md-center">
+          {placesToVisit.map((onePlace, i) => {
+            return (
+              <OneItemList onePlace={onePlace} delete={true} deleteplace={() => deleteplace(onePlace._id)} />
+            )
+          })}
+        </MDBRow>
+      </div>) : "nothing in your list"}
+
+    </>
+  )
+}
+

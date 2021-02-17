@@ -8,8 +8,8 @@ const User = require("../models/user");
 //Get all Places
 router.get("/", (req, res) => {
   Place.find()
-  .populate("comments")
-  .populate("user")
+    .populate("comments")
+    .populate("user")
     .then((result) => {
       res.json({ result });
     })
@@ -23,8 +23,8 @@ router.get("/", (req, res) => {
 router.get("/:placeId", (req, res) => {
   let placeId = req.params.placeId;
   Place.findById(placeId)
-  .populate("comments")
-  .populate("user")
+    .populate("comments")
+    .populate("user")
     .then((pros) => {
       res.json({ pros });
     })

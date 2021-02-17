@@ -8,7 +8,7 @@ const placeSchema = new mongoose.Schema({
     description: String,
     location: String,
     date: Date,
-    workingHours : String,
+    workingHours: String,
     reviews: {
         type: Array,
         default: []

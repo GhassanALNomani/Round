@@ -17,7 +17,7 @@
 } 
  .footer{
   text-align: center;
-  position: fixed;
+  /* position: fixed; */
   bottom: 0;
   width: 100%,
 } 
@@ -37,6 +37,11 @@
   flex-grow: 0;
   flex-shrink: 0;
   margin: 10px;
+}
+.footer-txt{
+  font-size: large;
+  font-weight: bold;
+  font-style: italic;
 }
  /* .classicformpage .gradient {
   background: -webkit-linear-gradient(
