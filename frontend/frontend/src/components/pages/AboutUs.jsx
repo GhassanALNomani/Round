@@ -2,6 +2,7 @@ import React from 'react'
 import { MDBDropdown, MDBDropdownToggle, MDBDropdownMenu, MDBDropdownItem, MDBRow } from "mdbreact";
 
 export const AboutUs = () => {
+
     return (
         <>
         <br/>
@@ -10,4 +11,5 @@ export const AboutUs = () => {
           <h2> <strong>Created by Final-Battle Team</strong></h2>  
         </>
     )
+
 }

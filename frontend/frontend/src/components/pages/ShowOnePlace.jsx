@@ -30,12 +30,32 @@ export default function (props) {
   const [added, setadded] = useState(true);
   const [comment, setComment] = useState({});
 
+
   // const [allcomment, setAllComment] = useState([])
   const onChangeInput = ({ target: { name, value } }) => {
     setComment({ ...comment, [name]: value });
     console.log("comment", comment);
+
   };
   
+
+
+  
+
+  
+  
+// add to list 
+ const addPlace = () => {
+    console.log(props.user._id, place._id)
+    axios.put(`http://localhost:5000/api/tovisit/`, { userId: props.user._id, placeId: place._id })
+      .then(res => {
+        console.log("added to list", res)
+        setUserTovisit(res.data);// places: if it's all places,why set? if it's user's  places, use another name to indicate it, for example "userList", "toVisit"
+      })
+  };
+  
+
+
   // git data
   useEffect(() => {
     axios.get(`http://localhost:5000/api/place/${id}`)
@@ -51,14 +71,9 @@ export default function (props) {
         console.log("place info", onePlace);
       });
   }, []);
-  const addPlace = () => {
-    console.log(props.user._id, place._id)
-    axios.put(`http://localhost:5000/api/tovisit/`, { userId: props.user._id, placeId: place._id })
-      .then(res => {
-        console.log("added to list", res)
-        setUserTovisit(res.data);// places: if it's all places,why set? if it's user's  places, use another name to indicate it, for example "userList", "toVisit"
-      })
-  };
+ 
+
+
   const handleRating = () => {
     if (props.isLoggedIn) {
       const body = {
@@ -130,7 +145,14 @@ export default function (props) {
                 <MDBCardText>{place.description}</MDBCardText>
                 <MDBCardText>{place.location}</MDBCardText>
                 <MDBCardText>{place.workingHours}</MDBCardText>
-  <MDBCardText>{moment(place.date).format('DD MMM YYYY')}</MDBCardText>
+
+                <MDBCardText>{moment(place.date).format('DD MMM YYYY')}</MDBCardText>
+
+
+
+                <MDBCardText>{place.date}</MDBCardText>
+
+
                 <MDBBtn
                   outline
                   color="dark"
@@ -157,7 +179,16 @@ export default function (props) {
                   size={24}
                   color2={"#ffd700"}
                 />
-              
+
+                <MDBBtn
+                  style={{ backgroundColor: "black", margin: "10px" }}
+                  size="md"
+                  onClick={handleRating}
+                >
+                  Review
+
+                </MDBBtn>
+
               </MDBCardBody>
             </MDBCard>
           </MDBCol>
@@ -183,27 +214,3 @@ export default function (props) {
     </div>
   );
 }
-// useEffect(() => {
-  //   if (!name) { //get one place by id , update state "selectPlace"
-  //     axios.get("http://localhost:5000/place")
-  //       .then(res => {
-  //         let show = res.data.find(ele => ele._id == id)
-  //         setSelectPlace(show)
-  //       })
-  //   }
-  // }, [])
-  // const addPlace = () => {
-  //   console.log(props.auth.currentUser._id)
-  //   axios.put(`http://localhost:5000/place/tovisit`, { userId: props.auth.currentUser._id, placeId: selectPlace._id })
-  //     .then(data => {
-  //       console.log(data)
-  //       userTovisit();// places: if it's all places,why set? if it's user's  places, use another name to indicate it, for example "userList", "toVisit"
-  //     })
-  // };
-  // // git data
-  // useEffect(() => {
-  //     axios.get(`http://localhost:5000/api/place/${id}`)
-  //       .then(res => {
-  //         setPlaces(res.data.pros)
-  //         console.log("place info", place)
-  //       })

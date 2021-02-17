@@ -7,6 +7,7 @@ import DatePicker from "react-datepicker";
 
 
 export default function EditPlace(props) {
+
     const { placeId } = useParams();
     const history = useHistory();
     const [startDate, setStartDate] = useState(new Date());
@@ -30,6 +31,7 @@ export default function EditPlace(props) {
         location: "",
         workingHours : "",
       
+
     });
 
     //get one place
@@ -69,17 +71,25 @@ export default function EditPlace(props) {
       setFlag(pre => !pre)
     }
 
-    return (
-        <div className="classicformpage">
-          
-            <MDBContainer
-            style={{ height: '100%', width: '100%', paddingTop: '10rem' }}
-            className='mt-5  d-flex justify-content-center align-items-center'
-            >
-             <MDBCol md='6' xl='5' className='mb-4' >
-                <MDBAnimation type='fadeInRight' delay='.3s'>
-                  <MDBCard id='classic-card'>
-                  <h1 className='text-center mt-5' ><MDBIcon icon='' />
+
+    useEffect(() => {
+        getPlace();
+    }, [])
+
+ 
+  
+  return (
+    <div className="classicformpage">
+
+      <MDBContainer
+        style={{ height: '100%', width: '100%', paddingTop: '10rem' }}
+        className='mt-5  d-flex justify-content-center align-items-center'
+      >
+        <MDBCol md='6' xl='5' className='mb-4' >
+          <MDBAnimation type='fadeInRight' delay='.3s'>
+            <MDBCard id='classic-card'>
+              <h1 className='text-center mt-5' ><MDBIcon icon='' />
+
                         𝔼𝕕𝕚𝕥
                       </h1>
                     <MDBCardBody className='white-text'>

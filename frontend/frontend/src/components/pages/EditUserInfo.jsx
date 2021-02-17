@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useHistory, Link, BrowserRouter, useParams } from "react-router-dom";
-import { MDBCard, MDBRow, MDBCardImage, MDBCardText, MDBIcon, MDBCardTitle, MDBCol, MDBLightbox, MDBBtn, MDBAlert, MDBCardBody, MDBSpinner } from 'mdbreact';
+import { MDBCard, MDBRow, MDBCardImage, MDBCardText,MDBContainer, MDBIcon, MDBCardTitle, MDBCol, MDBLightbox, MDBBtn, MDBAlert, MDBCardBody, MDBSpinner } from 'mdbreact';
 import Profile from "../pages/Profile"
 import axios from "axios";
 import { Formik, Form as FormikForm, Field, ErrorMessage } from 'formik';
@@ -47,14 +47,7 @@ export default function EditUserInfo(props) {
             })
             .catch((err) => console.log(err));
     };
-    // const uploadImagefunc = (e) => {
-    //     var formdata = new FormData();
-    //     formdata.append("image", e.target.files[0]);
-    //     axios.post("https://api.imgur.com/3/image", formdata, { headers: { "Authorization": "Client-ID 218eb66b0d739ed" } })
-    //         .then(result => console.log(result.data.data.link))
-    //         .catch(error => console.log('error', error));
-    // }
-    // console.log(image)
+    
     return (
         <>  
             {userInfo.name && userInfo.email == "admin@admin.com"?
@@ -68,8 +61,12 @@ export default function EditUserInfo(props) {
                 >
                     <FormikForm className="mt-5" style={{ color: "black" }}
                     >
+                        <MDBContainer
+                            style={{ height: "100%", width: "100%", paddingTop: "10rem" }}
+                            className="mt-5  d-flex justify-content-center align-items-center"
+                        >
                         <MDBRow>
-                            <MDBCol lg="4" md="12" className="mb-lg-0 mb-4">
+                            <MDBCol style={{ maxWidth: "40rem" }}>
                                 <MDBCard testimonial>
                                     <MDBCardBody>
                                         <MDBCardTitle>  <h4 className="font-weight-bold mb-4">{userInfo.name ? userInfo.name : userInfo.name}</h4></MDBCardTitle>
@@ -83,7 +80,7 @@ export default function EditUserInfo(props) {
                                     </MDBCardBody>
                                 </MDBCard>
                             </MDBCol>
-                            <MDBCol lg="4" md="12" className="mb-lg-0 mb-4">
+                            <MDBCol lg="6" style={{ width: "900px" }}>
                                 <div className="form-group">
                                     <label htmlFor="formGroupExampleInput"> Change Name : </label>
                                     <Field
@@ -118,11 +115,10 @@ export default function EditUserInfo(props) {
                                 </div>
                             </MDBCol>
                         </MDBRow>
+                        </MDBContainer>
                     </FormikForm>
                 </Formik>
-                //  <div className="spinner-border" role="status">
-                //     <span className="sr-only">Loading...</span>
-                // </div> 
+                
              } 
         </>
     );

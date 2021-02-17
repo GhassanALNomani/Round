@@ -19,9 +19,10 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 function App() {
   const [loadingData, setLoadingData] = useState(false);
   const [auth, setAuth] = useState({ currentUser: null, isLoggedIn: false });
-  const [userProfile, setUserProfile] = useState({})
-  const [dataLoaded, setDataloaded] = useState(false)
   const [userData, setUserData] = useState({ currentDataUser: null })
+  const [userProfile, setUserProfile] = useState({});
+  const [dataLoaded, setDataloaded] = useState(false);
+  
   const userLogin = () => {
     if (localStorage.jwtToken) {
       const jwtToken = localStorage.jwtToken;
@@ -31,7 +32,7 @@ function App() {
       setAuth({ currentUser, isLoggedIn: true });
       // setUserData({ currentDataUser });
       getProfile(currentUser);
-      // getBook(currentBook)
+      
     } else {
       setAuth({ currentUser: null, isLoggedIn: false });
     }
@@ -40,49 +41,56 @@ function App() {
     console.log("The current User is: ", auth.currentUser);
     console.log("The current DATA User  ", userData.currentDataUser);
   };
-  
   const getProfile = async (currentUser) => {
     const { data: { user } } = await axios.get(`http://localhost:5000/api/users/profile/${currentUser._id}`)
     console.log('Loaded user profile: ', user)
     setUserProfile(user)
   }
-  
+
   useEffect(userLogin, []);
   useEffect(() => {
     if (userProfile.name) {
       setDataloaded(true)
     }
   }, [userProfile])
+  
   return (
     <>
-    {dataLoaded &&
+​
+​     {dataLoaded &&
       <div className="classicformpage">
+​
         <Router>
           <NavBar loginCallback={userLogin} isLoggedIn={auth.isLoggedIn} />
           <Switch>
+​
             <Route path="/profile">
               <AuthRoute
                 setAuth={setAuth}
                 auth={auth}
                 user={auth.currentUser}
-                userProfile={userProfile}
               />
             </Route>
+​
             <Route exact path="/">
               <Home />
             </Route>
+​
             <Route path="/login">
               <Login loginCallback={userLogin} />
             </Route>
+​
             <Route exact path="/edit/:placeId">
               <EditPlace user={auth.currentUser} />
             </Route>
+​
             <Route path="/show/:id">
               <ShowOnePlace
                 user={auth.currentUser}
                 isLoggedIn={auth.isLoggedIn}
               />
             </Route>
+​
             <Route path="/edituserinfo/:id">
               <EditUserInfo
                 setAuth={setAuth}
@@ -92,6 +100,7 @@ function App() {
                 setUserProfile={setUserProfile}
               />
             </Route>
+​
             <Route path="/create">
               <Create
                 user={auth.currentUser}
@@ -103,15 +112,18 @@ function App() {
                 <UserList auth={auth} user={userData.currentDataUser} setAuth={setAuth} />
               </Route>
             }
+​
             <Route path="/signup">
               <SignUp />
             </Route>
+​
             <Route path="/aboutus">
               <AboutUs />
             </Route>
           </Switch>
           <Footer />
         </Router>
+​
         {/* : <Spinner animation="border" />
       } */}
       </div>

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { MDBNavbar, MDBNavbarBrand, MDBNavbarNav, MDBNavbarToggler, MDBListGroupItem, MDBNavItem, MDBNavLink, MDBIcon, MDBContainer, MDBListGroup } from 'mdbreact';
+import { MDBNavbar, MDBNavbarBrand, MDBNavbarNav, MDBCardImage, MDBListGroupItem, MDBCard, MDBCol, MDBIcon, MDBContainer, MDBListGroup, MDBCardBody, MDBCardTitle, MDBBtn } from 'mdbreact';
 import axios from "axios";
 export default function OneItemList(props) {
     // const [place, setPlaces] = useState([]) // you won't need the whole array of places when you get one place, and set the state "selectPlace" with its data
@@ -8,29 +8,18 @@ export default function OneItemList(props) {
     return (
         <div>
             <br/>
-            <MDBContainer>
-                <MDBListGroup style={{ width: "22rem" }}>
-                    <MDBListGroupItem><table class="table">
-                        <thead>
-                            <tr>
-                                <th scope="col">#</th>
-                                <th scope="col">Name</th>
-                                <th scope="col">category</th>
-                                <th scope="col"></th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <th scope="row">1</th>
-                                <td>{props.onePlace.name}</td>
-                                <td>{props.onePlace.category}</td>
-                                <td><MDBIcon far icon="trash-alt" onClick={() => props.deleteplace(props.onePlace._id)} /> </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                    </MDBListGroupItem>
-                </MDBListGroup>
-            </MDBContainer>
+            <MDBCol className='' md="4" style={{ maxWidth: "40rem" }}>
+                <MDBCard reverse className="cardPadding">
+                    <MDBCardImage cascade style={{ height: '20rem', width: "100%" }} src={props.onePlace.image} />
+                    <MDBCardBody cascade className="text-center">
+                        <MDBCardTitle>{props.onePlace.name}</MDBCardTitle>
+                        <MDBCardTitle>{props.onePlace.category}</MDBCardTitle>
+                        <MDBBtn onClick={() => props.deleteplace(props.onePlace._id)} style={{ fontSize: "15px", fontWeight: "bold", color: "black" }} gradient="deep-blue">
+                            <MDBIcon icon="trash-alt" className="iconsStyle " /> Delete
+                        </MDBBtn>
+                    </MDBCardBody>
+                </MDBCard>
+            </MDBCol>
         </div>
     )
     }

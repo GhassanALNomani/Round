@@ -42,6 +42,7 @@ const Profile = (props) => {
                     <MDBCardImage cascade style={{ height: '20rem', width: "100%" }} src={place.image} />
                     <MDBCardBody cascade className="text-center">
                         <MDBCardTitle>{place.name}</MDBCardTitle>
+
                         <Link to={`/edit/${place._id}`}>
                         <MDBBtn style={{ fontSize: "15px", fontWeight: "bold", color: "black" }} gradient="deep-blue">
                             <MDBIcon icon="edit" className="iconsStyle " />
@@ -82,7 +83,7 @@ const Profile = (props) => {
                 </> : <>
                         <h2 className="headerStyleAdmin">
                             <MDBIcon icon="user-circle" className="iconsStyle mb-3" />
-                            User Profile : {props.userProfile.name}
+                            User Profile
                         </h2>
                         <MDBRow className="styleProfile stylePaddingUser">
                             <NavLink to="/tovisit" activeClassName="activeClass" style={{ fontSize: "40px" }} style={{ color: "#a9dceb" }} className="createHover styleBorder">

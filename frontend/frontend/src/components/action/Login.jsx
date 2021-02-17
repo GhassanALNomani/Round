@@ -4,7 +4,8 @@ import React, { useState } from "react";
 
 import { useHistory } from "react-router-dom";
 import NavBar from './NavBar'
-//import API_URL from "../../apiConfig";
+import API_URL from "../../apiConfig";
+
 
 
 
@@ -30,7 +31,7 @@ export default function Login(props) {
   const onSubmit = (event) => {
     event.preventDefault();
     axios
-      .post('http://localhost:5000/api/user/login', credentials)
+      .post(`${API_URL}/api/user/login`, credentials)
       .then((res) => {
         console.log("Express backend /login response", res);
 
@@ -58,8 +59,14 @@ export default function Login(props) {
       )}
       <div  >
         <MDBContainer
+
           style={{ height: '100%', width: '100%', paddingTop: '5rem' }}
           className=' d-flex justify-content-center align-items-center'
+          style={{ height: '100%', width: '100%', paddingTop: '5rem' }}
+          className=' d-flex justify-content-center align-items-center'
+          style={{ height: '100%', width: '100%', paddingTop: '10rem' }}
+          className='mt-2  d-flex justify-content-center align-items-center'
+
         >
           <MDBCol md='6' xl='5' className='mb-4'>
             <MDBAnimation type='fadeInRight' delay='.3s'>
