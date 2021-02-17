@@ -3,7 +3,7 @@ import axios from "axios"
 import { useHistory, useParams } from "react-router-dom";
 import { MDBBtn, MDBCol, MDBContainer, MDBIcon, MDBInput, MDBCard, MDBAnimation, MDBCardBody } from 'mdbreact';
 import DatePicker from "react-datepicker";
-
+import API_URL from '../../apiConfig';
 
 
 export default function EditPlace(props) {
