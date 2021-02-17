@@ -8,7 +8,7 @@ export default function OneItemList(props) {
     return (
         <div>
             <br/>
-            <MDBCol className='' md="4" style={{ maxWidth: "40rem" }}>
+            <MDBCol style={{ maxWidth: "20rem" }}>
                 <MDBCard reverse className="cardPadding">
                     <MDBCardImage cascade style={{ height: '20rem', width: "100%" }} src={props.onePlace.image} />
                     <MDBCardBody cascade className="text-center">
