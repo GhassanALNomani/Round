@@ -108,7 +108,7 @@ export default function Create(props) {
                               onChange={(e) => onChangeInput(e)}/>
       
                             <MDBInput
-                              // label='Image'
+                              label='Image'
                               name = "image"
                               // onChange={(e) =>uploadImageHundler(e)} 
                               // type="file"

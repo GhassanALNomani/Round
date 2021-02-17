@@ -35,7 +35,7 @@ export default function Signup() {
         .then((res) => {
           const user = res.data.user;
           if (user) {
-            history.push("/home");
+            history.push("/");
           } else {
             alert("Error! check your information and try again")
             // setTimeout(() => {
@@ -136,4 +136,3 @@ export default function Signup() {
      </>
     )
 }
-
