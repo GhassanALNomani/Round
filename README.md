@@ -1,11 +1,11 @@
 # Round
-<<<<<<< HEAD
+
 Full-stack web application.
 
 =======
 
 Round is a website talks about places to visit, the admin can add/edit or delete places with details. Users can view, write reviews also add to section want to visit
->>>>>>> 3056da7fac26d3aef1e44f73b6b1ad9d802558a6
+
 
 ## Description
 
