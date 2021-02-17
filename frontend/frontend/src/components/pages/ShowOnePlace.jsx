@@ -16,8 +16,6 @@ import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
 import ReactStars from 'react-stars';
-import moment from 'moment'
-
 export default function (props) {
   const [place, setPlaces] = useState([]) // you won't need the whole array of places when you get one place, and set the state "selectPlace" with its data
   const { id } = useParams()
@@ -29,33 +27,12 @@ export default function (props) {
   const [score, setScore] = useState(5)
   const [added, setadded] = useState(true);
   const [comment, setComment] = useState({});
-
-
   // const [allcomment, setAllComment] = useState([])
   const onChangeInput = ({ target: { name, value } }) => {
     setComment({ ...comment, [name]: value });
     console.log("comment", comment);
 
   };
-  
-
-
-  
-
-  
-  
-// add to list 
- const addPlace = () => {
-    console.log(props.user._id, place._id)
-    axios.put(`http://localhost:5000/api/tovisit/`, { userId: props.user._id, placeId: place._id })
-      .then(res => {
-        console.log("added to list", res)
-        setUserTovisit(res.data);// places: if it's all places,why set? if it's user's  places, use another name to indicate it, for example "userList", "toVisit"
-      })
-  };
-  
-
-
   // git data
   useEffect(() => {
     axios.get(`http://localhost:5000/api/place/${id}`)
@@ -71,8 +48,15 @@ export default function (props) {
         console.log("place info", onePlace);
       });
   }, []);
- 
 
+  const addPlace = () => {
+    console.log(props.user._id, place._id)
+    axios.put(`http://localhost:5000/api/tovisit/`, { userId: props.user._id, placeId: place._id })
+      .then(res => {
+        console.log("added to list", res)
+        setUserTovisit(res.data);// places: if it's all places,why set? if it's user's  places, use another name to indicate it, for example "userList", "toVisit"
+      })
+  };
 
   const handleRating = () => {
     if (props.isLoggedIn) {
@@ -82,8 +66,7 @@ export default function (props) {
         userName: props.user.name,
         productId: id
       }
-      // user id 
-      // score 
+     
       axios.post(`http://localhost:5000/api/place/review`, body)
         .then(res => {
           console.log(res)
@@ -106,6 +89,7 @@ export default function (props) {
       setadded(true);
     }, 3000);
   };
+  
   //handle on click send comment 
   const handleComment = (event) => {
     event.preventDefault();
@@ -145,14 +129,7 @@ export default function (props) {
                 <MDBCardText>{place.description}</MDBCardText>
                 <MDBCardText>{place.location}</MDBCardText>
                 <MDBCardText>{place.workingHours}</MDBCardText>
-
-                <MDBCardText>{moment(place.date).format('DD MMM YYYY')}</MDBCardText>
-
-
-
                 <MDBCardText>{place.date}</MDBCardText>
-
-
                 <MDBBtn
                   outline
                   color="dark"
@@ -179,16 +156,13 @@ export default function (props) {
                   size={24}
                   color2={"#ffd700"}
                 />
-
                 <MDBBtn
                   style={{ backgroundColor: "black", margin: "10px" }}
                   size="md"
                   onClick={handleRating}
                 >
                   Review
-
                 </MDBBtn>
-
               </MDBCardBody>
             </MDBCard>
           </MDBCol>

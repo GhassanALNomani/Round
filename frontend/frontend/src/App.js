@@ -14,6 +14,7 @@ import jwt_decode from "jwt-decode";
 import React, { useState, useEffect } from "react";
 import EditPlace from "./components/action/EditPlace"
 import UserList from './components/pages/UserList'
+
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 
 function App() {
@@ -42,40 +43,41 @@ function App() {
     console.log("The current DATA User  ", userData.currentDataUser);
   };
   const getProfile = async (currentUser) => {
-    const { data: { user } } = await axios.get(`http://localhost:5000/api/users/profile/${currentUser._id}`)
-    console.log('Loaded user profile: ', user)
-    setUserProfile(user)
+    console.log("get profile in App.js ======",currentUser)
+    const res = await axios.get(`http://localhost:5000/api/user/profile/${currentUser._id}`)
+    console.log('Loaded user profile: ', res)
+    setUserProfile(res.data)
   }
-
   useEffect(userLogin, []);
+
   useEffect(() => {
     if (userProfile.name) {
       setDataloaded(true)
     }
   }, [userProfile])
-  
+
   return (
     <>
-​
-​     {dataLoaded &&
       <div className="classicformpage">
 ​
         <Router>
           <NavBar loginCallback={userLogin} isLoggedIn={auth.isLoggedIn} />
           <Switch>
-​
             <Route path="/profile">
               <AuthRoute
                 setAuth={setAuth}
                 auth={auth}
                 user={auth.currentUser}
+                userProfile={userProfile}
+
               />
+
             </Route>
-​
+
             <Route exact path="/">
               <Home />
             </Route>
-​
+
             <Route path="/login">
               <Login loginCallback={userLogin} />
             </Route>
@@ -127,7 +129,6 @@ function App() {
         {/* : <Spinner animation="border" />
       } */}
       </div>
-}
     </>
   );
 }
