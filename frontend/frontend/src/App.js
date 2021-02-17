@@ -15,14 +15,13 @@ import React, { useState, useEffect } from "react";
 import EditPlace from "./components/action/EditPlace"
 import UserList from './components/pages/UserList'
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
-function App() {
 
+function App() {
   const [loadingData, setLoadingData] = useState(false);
   const [auth, setAuth] = useState({ currentUser: null, isLoggedIn: false });
   const [userProfile, setUserProfile] = useState({})
   const [dataLoaded, setDataloaded] = useState(false)
   const [userData, setUserData] = useState({ currentDataUser: null })
-
   const userLogin = () => {
     if (localStorage.jwtToken) {
       const jwtToken = localStorage.jwtToken;
@@ -40,8 +39,8 @@ function App() {
     setDataloaded(true)
     console.log("The current User is: ", auth.currentUser);
     console.log("The current DATA User  ", userData.currentDataUser);
-
   };
+  
   const getProfile = async (currentUser) => {
     const { data: { user } } = await axios.get(`http://localhost:5000/api/users/profile/${currentUser._id}`)
     console.log('Loaded user profile: ', user)
@@ -54,12 +53,10 @@ function App() {
       setDataloaded(true)
     }
   }, [userProfile])
-
   return (
     <>
     {dataLoaded &&
       <div className="classicformpage">
-
         <Router>
           <NavBar loginCallback={userLogin} isLoggedIn={auth.isLoggedIn} />
           <Switch>
@@ -71,7 +68,6 @@ function App() {
                 userProfile={userProfile}
               />
             </Route>
-
             <Route exact path="/">
               <Home />
             </Route>
@@ -81,14 +77,12 @@ function App() {
             <Route exact path="/edit/:placeId">
               <EditPlace user={auth.currentUser} />
             </Route>
-
             <Route path="/show/:id">
               <ShowOnePlace
                 user={auth.currentUser}
                 isLoggedIn={auth.isLoggedIn}
               />
             </Route>
-
             <Route path="/edituserinfo/:id">
               <EditUserInfo
                 setAuth={setAuth}
@@ -98,14 +92,12 @@ function App() {
                 setUserProfile={setUserProfile}
               />
             </Route>
-
             <Route path="/create">
               <Create
                 user={auth.currentUser}
                 isLoggedIn={auth.isLoggedIn}
               />
             </Route>
-
             {auth.isLoggedIn &&
               <Route exact path="/tovisit">
                 <UserList auth={auth} user={userData.currentDataUser} setAuth={setAuth} />
@@ -114,20 +106,16 @@ function App() {
             <Route path="/signup">
               <SignUp />
             </Route>
-    
             <Route path="/aboutus">
               <AboutUs />
             </Route>
           </Switch>
           <Footer />
         </Router>
-
-
-
         {/* : <Spinner animation="border" />
       } */}
       </div>
-
+}
     </>
   );
 }

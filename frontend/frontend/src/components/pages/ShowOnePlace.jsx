@@ -16,6 +16,8 @@ import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
 import ReactStars from 'react-stars';
+import moment from 'moment'
+
 export default function (props) {
   const [place, setPlaces] = useState([]) // you won't need the whole array of places when you get one place, and set the state "selectPlace" with its data
   const { id } = useParams()
@@ -38,6 +40,15 @@ const [place, setPlaces] = useState([]) // you won't need the whole array of pla
   const [score, setScore] = useState(5)
   const [added, setadded] = useState(true);
   const [comment, setComment] = useState({});
+<<<<<<< HEAD
+
+  // const [allcomment, setAllComment] = useState([])
+  const onChangeInput = ({ target: { name, value } }) => {
+    setComment({ ...comment, [name]: value });
+    console.log("comment", comment);
+  };
+  
+=======
   
   
 // add to list 
@@ -51,6 +62,7 @@ const [place, setPlaces] = useState([]) // you won't need the whole array of pla
   };
   
 
+>>>>>>> 8e0d61d2d2087593ad7a39e577f6ab4242bfe0f6
   // git data
   useEffect(() => {
     axios.get(`${API_URL}/api/place/${id}`)
@@ -155,8 +167,12 @@ const [place, setPlaces] = useState([]) // you won't need the whole array of pla
 
                 <MDBCardText>{place.location}</MDBCardText>
                 <MDBCardText>{place.workingHours}</MDBCardText>
+<<<<<<< HEAD
+  <MDBCardText>{moment(place.date).format('DD MMM YYYY')}</MDBCardText>
+=======
                 <MDBCardText>{place.date}</MDBCardText>
 
+>>>>>>> 8e0d61d2d2087593ad7a39e577f6ab4242bfe0f6
                 <MDBBtn
                   outline
                   color="dark"
@@ -185,6 +201,9 @@ const [place, setPlaces] = useState([]) // you won't need the whole array of pla
                   size={24}
                   color2={"#ffd700"}
                 />
+<<<<<<< HEAD
+              
+=======
                 <MDBBtn
                   style={{ backgroundColor: "black", margin: "10px" }}
                   size="md"
@@ -194,6 +213,7 @@ const [place, setPlaces] = useState([]) // you won't need the whole array of pla
 
                 </MDBBtn>
 
+>>>>>>> 8e0d61d2d2087593ad7a39e577f6ab4242bfe0f6
               </MDBCardBody>
             </MDBCard>
           </MDBCol>

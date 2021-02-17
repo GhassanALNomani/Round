@@ -7,6 +7,81 @@ import API_URL from "../../apiConfig";
 
 
 export default function EditPlace(props) {
+<<<<<<< HEAD
+    const { placeId } = useParams();
+    const history = useHistory();
+    const [startDate, setStartDate] = useState(new Date());
+    const [flag, setFlag] = useState(false)
+
+    //datepicker
+    const handleOnChangeDate = (date) => {
+
+        setStartDate(date)
+      
+        setPlaceFields((prevState)=>({
+          ...prevState, date: date  
+        }))
+      }
+
+    const [placetFields, setPlaceFields] = useState({
+        name: "",
+        description: "",
+        image: "",
+        category: "Choose the place",
+        location: "",
+        workingHours : "",
+      
+    });
+
+    //get one place
+    const getPlace = () => {
+        console.log(placeId);
+        axios
+            .get(`http://localhost:5000/api/place/${placeId}`)
+            .then(data => {
+                setPlaceFields(data.data.pros);
+                console.log(data.data.pros)
+            })
+            .catch((err) => console.log(err));
+    }
+
+    useEffect(() => {
+        getPlace();
+    }, [])
+
+    const onChangeInput = (event) => {
+        const { name, value } = event.target;
+
+        setPlaceFields({
+            ...placetFields,
+            [name]: value,
+        });
+    };
+
+    //edit places
+    const handleEdit = (placeId) => {
+      axios.put(`http://localhost:5000/api/place/${placeId}`, placetFields)
+        .then(response => {
+          console.log(response);
+        })
+        .catch((err) => console.log(err));
+      alert("Edited successfully");
+      history.push("/profile");
+      setFlag(pre => !pre)
+    }
+
+    return (
+        <div className="classicformpage">
+          
+            <MDBContainer
+            style={{ height: '100%', width: '100%', paddingTop: '10rem' }}
+            className='mt-5  d-flex justify-content-center align-items-center'
+            >
+             <MDBCol md='6' xl='5' className='mb-4' >
+                <MDBAnimation type='fadeInRight' delay='.3s'>
+                  <MDBCard id='classic-card'>
+                  <h1 className='text-center mt-5' ><MDBIcon icon='' />
+=======
   const { placeId } = useParams();
   const history = useHistory();
   const [startDate, setStartDate] = useState(new Date());
@@ -77,6 +152,7 @@ export default function EditPlace(props) {
           <MDBAnimation type='fadeInRight' delay='.3s'>
             <MDBCard id='classic-card'>
               <h1 className='text-center mt-5' ><MDBIcon icon='' />
+>>>>>>> 8e0d61d2d2087593ad7a39e577f6ab4242bfe0f6
                         𝔼𝕕𝕚𝕥
                       </h1>
               <MDBCardBody className='white-text'>

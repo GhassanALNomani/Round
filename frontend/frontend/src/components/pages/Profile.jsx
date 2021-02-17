@@ -9,6 +9,10 @@ import axios from 'axios'
 const Profile = (props) => {
     const [places, setPlaces] = useState([])
     const [flag, setFlag] = useState(false)
+<<<<<<< HEAD
+
+=======
+>>>>>>> 8e0d61d2d2087593ad7a39e577f6ab4242bfe0f6
     useEffect(() => {
         axios.get(`http://localhost:5000/api/place`)
             .then(res => {
@@ -41,7 +45,10 @@ const Profile = (props) => {
                     <MDBCardImage cascade style={{ height: '20rem', width: "100%" }} src={place.image} />
                     <MDBCardBody cascade className="text-center">
                         <MDBCardTitle>{place.name}</MDBCardTitle>
+<<<<<<< HEAD
+=======
 
+>>>>>>> 8e0d61d2d2087593ad7a39e577f6ab4242bfe0f6
                         <Link to={`/edit/${place._id}`}>
                         <MDBBtn style={{ fontSize: "15px", fontWeight: "bold", color: "black" }} gradient="deep-blue">
                             <MDBIcon icon="edit" className="iconsStyle " />
