@@ -5,7 +5,9 @@ const User = require("../models/user");
 router.put("/", (req, res) => {
     let placeId = req.body.placeId
     let userId = req.body.userId
+
     console.log(placeId)
+
     User.findByIdAndUpdate(userId, { $addToSet: { placesToVisit: placeId } }, { new: true })
         .then(user => {
             res.json({ msg: "place added to visit list", placesToVisit: user.placesToVisit })

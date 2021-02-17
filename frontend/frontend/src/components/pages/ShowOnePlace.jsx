@@ -23,18 +23,38 @@ export default function (props) {
   // const [selectPlace, setSelectPlace] = useState(props.selectPlace) // delete this from everywhere, App.js
   const [selectPlace, setSelectPlace] = useState({})
   // const { name } = selectPlace
+
+import API_URL from "../../apiConfig";
+
+
+export default function ShowPage(props) {
+const [place, setPlaces] = useState([]) // you won't need the whole array of places when you get one place, and set the state "selectPlace" with its data
+  const { id } = useParams()
+  const [userTovisit, setUserTovisit] = useState()
+  // const [selectPlace, setSelectPlace] = useState(props.selectPlace) // delete this from everywhere, App.js
+  const [selectPlace, setSelectPlace] = useState({})
+  // const { name } = selectPlace
   const [errorRating, setErrorRating] = useState(false)
   const [score, setScore] = useState(5)
   const [added, setadded] = useState(true);
   const [comment, setComment] = useState({});
-  // const [allcomment, setAllComment] = useState([])
-  const onChangeInput = ({ target: { name, value } }) => {
-    setComment({ ...comment, [name]: value });
-    console.log("comment", comment);
+  
+  
+// add to list 
+ const addPlace = () => {
+    console.log(props.user._id, place._id)
+    axios.put(`http://localhost:5000/api/tovisit/`, { userId: props.user._id, placeId: place._id })
+      .then(res => {
+        console.log("added to list", res)
+        setUserTovisit(res.data);// places: if it's all places,why set? if it's user's  places, use another name to indicate it, for example "userList", "toVisit"
+      })
   };
+  
+
   // git data
   useEffect(() => {
-    axios.get(`http://localhost:5000/api/place/${id}`)
+    axios.get(`${API_URL}/api/place/${id}`)
+
       .then((res) => {
         setPlaces(res.data.pros); // this returns one place so why use the "places" state // refactor state naming to indicate what data they hold, "places" "toVisit" "onePlace"
         console.log("place info for comment", place)
@@ -46,15 +66,10 @@ export default function (props) {
         }
         console.log("place info", onePlace);
       });
+
   }, []);
-  const addPlace = () => {
-    console.log(props.user._id, place._id)
-    axios.put(`http://localhost:5000/api/tovisit/`, { userId: props.user._id, placeId: place._id })
-      .then(res => {
-        console.log("added to list", res)
-        setUserTovisit(res.data);// places: if it's all places,why set? if it's user's  places, use another name to indicate it, for example "userList", "toVisit"
-      })
-  };
+ 
+//Rating
   const handleRating = () => {
     if (props.isLoggedIn) {
       const body = {
@@ -63,45 +78,58 @@ export default function (props) {
         userName: props.user.name,
         productId: id
       }
-      // user id 
-      // score 
-      axios.post(`http://localhost:5000/api/place/review`, body)
+    
+
+      axios.post(`${API_URL}/api/place/review`, body)
         .then(res => {
           console.log(res)
           console.log("reviewd done")
           if (res.data == "Error! you already reviewed") {
             setErrorRating(true)
           }
-          // update the state to show the rating
         })
     } else {
       console.log("Login first");
     }
   }
+
   const ratingChanged = (newRating) => {
     setScore(newRating)
   }
+
+
   const add = () => {
     setadded(false);
     setTimeout(() => {
       setadded(true);
     }, 3000);
   };
+
+
+//comments
   //handle on click send comment 
   const handleComment = (event) => {
     event.preventDefault();
-    axios.post(`http://localhost:5000/api/comment/${place._id}/${props.user._id}`, comment)
+    axios.post(`${API_URL}/api/comment/${place._id}/${props.user._id}`, comment)
       .then(res => {
         console.log("comment info", res)
-        // update the state to show the new added comment 
       })
-      .catch(err => console.log(err))
+      .catch(err => console.log(err));
+    setFlag(pre => !pre)
   }
+
   const allComment = place.comments && place.comments.map(comment => {
     return (
       <p>{comment.text}</p>
     )
   })
+  
+  
+  const onChangeInput = ({ target: { name, value } }) => {
+    setComment({ ...comment, [name]: value });
+    console.log("comment", comment);
+  };
+
   return (
     <div>
       {!added && <MDBAlert color="danger">adedd to place List</MDBAlert>}
@@ -124,20 +152,24 @@ export default function (props) {
                   <strong>{place.category}</strong>
                 </h5>
                 <MDBCardText>{place.description}</MDBCardText>
+
                 <MDBCardText>{place.location}</MDBCardText>
                 <MDBCardText>{place.workingHours}</MDBCardText>
                 <MDBCardText>{place.date}</MDBCardText>
+
                 <MDBBtn
                   outline
                   color="dark"
                   onClick={() => {
                     addPlace();
+
                     add();
                   }}
                 >
                   {" "}
                   Add To List
                 </MDBBtn>
+
                 {errorRating && (
                   // className="error-anim"
                   <div style={{ color: "#C70039" }}>
@@ -159,7 +191,9 @@ export default function (props) {
                   onClick={handleRating}
                 >
                   Review
+
                 </MDBBtn>
+
               </MDBCardBody>
             </MDBCard>
           </MDBCol>
@@ -172,7 +206,9 @@ export default function (props) {
               <div className="text-center">
                 <MDBBtn outline color="secondary" onClick={handleComment}>
                   Comment
+
                         <MDBIcon far icon="paper-plane" className="ml-1" />
+
                 </MDBBtn>
                 <div className="grey-text">
                   {allComment}
@@ -185,27 +221,4 @@ export default function (props) {
     </div>
   );
 }
-// useEffect(() => {
-  //   if (!name) { //get one place by id , update state "selectPlace"
-  //     axios.get("http://localhost:5000/place")
-  //       .then(res => {
-  //         let show = res.data.find(ele => ele._id == id)
-  //         setSelectPlace(show)
-  //       })
-  //   }
-  // }, [])
-  // const addPlace = () => {
-  //   console.log(props.auth.currentUser._id)
-  //   axios.put(`http://localhost:5000/place/tovisit`, { userId: props.auth.currentUser._id, placeId: selectPlace._id })
-  //     .then(data => {
-  //       console.log(data)
-  //       userTovisit();// places: if it's all places,why set? if it's user's  places, use another name to indicate it, for example "userList", "toVisit"
-  //     })
-  // };
-  // // git data
-  // useEffect(() => {
-  //     axios.get(`http://localhost:5000/api/place/${id}`)
-  //       .then(res => {
-  //         setPlaces(res.data.pros)
-  //         console.log("place info", place)
-  //       })
+
