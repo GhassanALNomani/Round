@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react'
 import axios from "axios"
 import { useHistory, useParams } from "react-router-dom";
-import { MDBBtn, MDBCol, MDBContainer, MDBIcon, MDBInput, MDBCard, MDBAnimation, MDBCardBody, MDBAlert } from 'mdbreact';
+import { MDBBtn, MDBCol, MDBContainer, MDBIcon, MDBInput, MDBCard, MDBAnimation, MDBCardBody} from 'mdbreact';
 import DatePicker from "react-datepicker";
-import API_URL from "../../apiConfig";
+
 
 
 export default function EditPlace(props) {
@@ -30,6 +30,7 @@ export default function EditPlace(props) {
         location: "",
         workingHours : "",
       
+
     });
 
     //get one place
@@ -82,82 +83,82 @@ export default function EditPlace(props) {
                   <h1 className='text-center mt-5' ><MDBIcon icon='' />
                         𝔼𝕕𝕚𝕥
                       </h1>
-              <MDBCardBody className='white-text'>
+                    <MDBCardBody className='white-text'>
+                     
+                      <hr className='hr-light' />
+                    
+                      <MDBInput
+                        /* className='white-text'
+                        iconClass='white-text' */
+                        label='Name'
+                        name = "name"
+                        onChange={(e) => onChangeInput(e)}
+                        value={placetFields.name}
+                      />
+                      <MDBInput
+                     /*    className='white-text'
+                        iconClass='white-text' */
+                        label='Description'
+                        name = "description"
+                        onChange={(e) => onChangeInput(e)}
+                        value={placetFields.description}
+                    />
 
-                <hr className='hr-light' />
+                      <MDBInput
+                        label='Image'
+                        name = "image"
+                        value={placetFields.image}
+                        /* onChange={(e) =>uploadImageHundler(e)} type="file" */
+                        onChange={(e) => onChangeInput(e)}
+                        
+                        />
+ 
+                       <MDBInput
+                        /* className='white-text'
+                        iconClass='white-text' */
+                        label='Location'
+                        name = "location"
+                        onChange={(e) => onChangeInput(e)}
+                        value={placetFields.location}
+                      /> 
+                   
 
-                <MDBInput
-                  /* className='white-text'
-                  iconClass='white-text' */
-                  label='Name'
-                  name="name"
-                  onChange={(e) => onChangeInput(e)}
-                  value={placetFields.name}
-                />
-                <MDBInput
-                  /*    className='white-text'
-                     iconClass='white-text' */
-                  label='Description'
-                  name="description"
-                  onChange={(e) => onChangeInput(e)}
-                  value={placetFields.description}
-                />
+                        <MDBInput
+                        /* className='white-text'
+                        iconClass='white-text' */
+                        label='working Hours'
+                        name = "workingHours"
+                        value={placetFields.workingHours}
+                        onChange={(e) => onChangeInput(e)}
+                      
+                      />     
+                      
 
-                <MDBInput
-                  label='Image'
-                  name="image"
-                  value={placetFields.image}
-                  /* onChange={(e) =>uploadImageHundler(e)} type="file" */
-                  onChange={(e) => onChangeInput(e)}
+                       <DatePicker 
+                       name = "date"
+                       selected={startDate}
+                       value={placetFields.date}
+                       onChange={(date)=>handleOnChangeDate(date)} /> 
+                       
+                             <br/><br/>
+                        
+                  <select className="browser-default custom-select" name="category" value={placetFields.category} onChange={(e) => onChangeInput(e)}>   
+                    <option >Choose the place</option>
+                    <option>cafe</option>
+                    <option >restaurant</option>
+                    <option >entertainment</option>
+                    <option >concert</option>
+                  
+                 </select>
 
-                />
-
-                <MDBInput
-                  /* className='white-text'
-                  iconClass='white-text' */
-                  label='Location'
-                  name="location"
-                  onChange={(e) => onChangeInput(e)}
-                  value={placetFields.location}
-                />
-
-
-                <MDBInput
-                  /* className='white-text'
-                  iconClass='white-text' */
-                  label='working Hours'
-                  name="workingHours"
-                  value={placetFields.workingHours}
-                  onChange={(e) => onChangeInput(e)}
-
-                />
-
-
-                <DatePicker
-                  name="date"
-                  selected={startDate}
-                  value={placetFields.date}
-                  onChange={(date) => handleOnChangeDate(date)} />
-
-                <br /><br />
-
-                <select className="browser-default custom-select" name="category" value={placetFields.category} onChange={(e) => onChangeInput(e)}>
-                  <option >Choose the place</option>
-                  <option>cafe</option>
-                  <option >restaurant</option>
-                  <option >entertainment</option>
-                  <option >concert</option>
-
-                </select>
-
-                <div className='text-center mt-4 black-text'>
-                  <MDBBtn onClick={() => handleEdit(placeId)}>Edit</MDBBtn>
-                </div>
-              </MDBCardBody>
-            </MDBCard>
-          </MDBAnimation>
-        </MDBCol>
-      </MDBContainer>
-    </div>
-  )
+                      <div className='text-center mt-4 black-text'>
+                        <MDBBtn onClick={()=> handleEdit(placeId)}>Edit</MDBBtn>
+                      </div>
+                    </MDBCardBody>
+                  </MDBCard>
+                </MDBAnimation>
+              </MDBCol>
+              </MDBContainer>
+        </div>
+    )
 }

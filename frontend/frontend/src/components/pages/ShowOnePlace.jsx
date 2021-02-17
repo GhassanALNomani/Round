@@ -31,6 +31,7 @@ export default function (props) {
   const onChangeInput = ({ target: { name, value } }) => {
     setComment({ ...comment, [name]: value });
     console.log("comment", comment);
+
   };
   // git data
   useEffect(() => {
@@ -79,7 +80,6 @@ export default function (props) {
       console.log("Login first");
     }
   }
-
   const ratingChanged = (newRating) => {
     setScore(newRating)
   }

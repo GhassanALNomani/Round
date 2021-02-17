@@ -20,8 +20,8 @@ export default function (props) {
   const deleteplace = (plaicId) => {
     axios.delete(`http://localhost:5000/api/tovisit/${userId}/${plaicId}`)
       .then((res) => console.log(res))
-    setChange(true)
-    setPlacesToVisit(placesToVisit.filter(ele => ele._id != plaicId)
+      setChange(true)
+      setPlacesToVisit(placesToVisit.filter(ele => ele._id != plaicId)
     )
   }
 
@@ -43,4 +43,3 @@ export default function (props) {
     </>
   )
 }
-

@@ -7,7 +7,7 @@ export const Footer = () => {
         <>
             <div className="footer">
 
-                <footer className="footer-txt">&copy; Copyright 2021. <a href="https://git.generalassemb.ly/Finall-Battle/final_battle">Final-Battle </a> Team</footer>
+               <footer className="footer-txt">&copy; Copyright 2021. <a href="https://git.generalassemb.ly/Finall-Battle/final_battle">Final-Battle </a> Team</footer>
             </div>
 
         </>
