@@ -6,11 +6,16 @@ import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import Profile from "../pages/Profile"
 import API_URL from "../../apiConfig";
+//import { MDBDatePickerV5 } from 'mdbreact';
+//import NavBar from './components/NavBar';
+
+
 
 function valid(object) {
   let flag = true
   for (var key in object) {
     if (object[key] == " ") {
+
       flag = false
     }
   }
@@ -20,7 +25,10 @@ function valid(object) {
 export default function Create(props) {
   console.log(props)
   const history = useHistory();
+
   const [startDate, setStartDate] = useState(new Date());
+
+
   const [placeFields, setPlaceFields] = useState({
     name: " ",
     description: " ",
@@ -28,14 +36,20 @@ export default function Create(props) {
     category: "Choose the place",
     location: " ",
     workingHours: " ",
+
   });
 
+
+
   const handleOnChangeDate = (date) => {
+
     setStartDate(date)
+
     setPlaceFields((prevState) => ({
       ...prevState, date: date
     }))
   }
+
 
   const onSubmit = (e) => {
     console.log(placeFields);
@@ -43,12 +57,17 @@ export default function Create(props) {
     console.log(valid(placeFields))
     if (!valid(placeFields)) {
       alert("somting is missing ! ")
+
     } else {
+
       axios
         .post(`${API_URL}/api/place/create`, placeFields)
         .then((res) => {
+
           const place = res.data;
+
           console.log("response data: ", res.data)
+
           if (place) {
             alert("Place added successfully")
             history.push("/");
@@ -58,7 +77,9 @@ export default function Create(props) {
         })
         .catch((err) => console.log(err));
     }
+
   }
+
 
   const onChangeInput = (event) => {
     const { name, value } = event.target;
@@ -68,6 +89,10 @@ export default function Create(props) {
     });
     console.log(placeFields)
   };
+
+
+
+
 
   return (
     <>
@@ -84,7 +109,11 @@ export default function Create(props) {
                        ℂℝ𝔼𝔸𝕋𝔼
                       </h1>
                   <MDBCardBody className='white-text'>
+
                     <hr className='hr-light' />
+
+                   
+
                     <MDBInput
                       /* className='white-text'
                       iconClass='white-text' */
@@ -92,17 +121,21 @@ export default function Create(props) {
                       name="name"
                       onChange={(e) => onChangeInput(e)}
                     />
+
                     <MDBInput
                       /*    className='white-text'
                          iconClass='white-text' */
                       label='Description'
                       name="description"
                       onChange={(e) => onChangeInput(e)} />
+
                     <MDBInput
                       label='Image'
                       name="image"
                       /* onChange={(e) =>uploadImageHundler(e)} type="file" */
                       onChange={(e) => onChangeInput(e)} />
+
+
                     <MDBInput
                       /* className='white-text'
                       iconClass='white-text' */
@@ -110,6 +143,8 @@ export default function Create(props) {
                       name="location"
                       onChange={(e) => onChangeInput(e)}
                     />
+
+
                     <MDBInput
                       /* className='white-text'
                       iconClass='white-text' */
@@ -117,11 +152,14 @@ export default function Create(props) {
                       name="workingHours"
                       onChange={(e) => onChangeInput(e)}
                     />
+
                     <DatePicker
                       name="date"
                       selected={startDate}
                       onChange={(date) => handleOnChangeDate(date)} />
+
                     <br /><br />
+
                     <select className="browser-default custom-select" name="category" onChange={(e) => onChangeInput(e)}>
                       <option >Choose the place</option>
                       <option>cafe</option>
@@ -129,6 +167,8 @@ export default function Create(props) {
                       <option >entertainment</option>
                       <option >concert</option>
                     </select>
+
+
                     <div className='text-center mt-4 black-text'>
                       <MDBBtn gradient="blue" onClick={(e) => onSubmit(e)} >Submit</MDBBtn>
                     </div>
