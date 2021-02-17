@@ -3,6 +3,7 @@ import { MDBNavbar, MDBNavbarBrand, MDBRow, MDBAlert, MDBNavbarNav, MDBNavbarTog
 import axios from "axios";
 import { useParams } from "react-router-dom"
 import OneItemList from '../pages/OneItemList'
+import API_URL from '../../apiConfig';
 export default function (props) {
   const [placesToVisit, setPlacesToVisit] = useState([]);
   const [userId, setUserId] = useState(props.auth.currentUser._id);
@@ -10,7 +11,7 @@ export default function (props) {
 
 
 
-  useEffect(() => axios.get(`http://localhost:5000/api/tovisit/${userId}`)
+  useEffect(() => axios.get(`${API_URL}/api/tovisit/${userId}`)
     .then(data => {
       console.log("data.data.placesToVisit ----", data.data.placesToVisit)
       setPlacesToVisit(data.data.placesToVisit)
@@ -18,7 +19,7 @@ export default function (props) {
     , [])
 
   const deleteplace = (plaicId) => {
-    axios.delete(`http://localhost:5000/api/tovisit/${userId}/${plaicId}`)
+    axios.delete(`${API_URL}/api/tovisit/${userId}/${plaicId}`)
       .then((res) => console.log(res))
     setChange(true)
     setPlacesToVisit(placesToVisit.filter(ele => ele._id != plaicId)

@@ -4,6 +4,7 @@ import React, { useState } from "react";
 
 import { useHistory } from "react-router-dom";
 import NavBar from './NavBar'
+import API_URL from '../../apiConfig';
 //import API_URL from "../../apiConfig";
 
 
@@ -30,7 +31,7 @@ export default function Login(props) {
   const onSubmit = (event) => {
     event.preventDefault();
     axios
-      .post('http://localhost:5000/api/user/login', credentials)
+      .post(`${API_URL}/api/user/login`, credentials)
       .then((res) => {
         console.log("Express backend /login response", res);
 

@@ -3,7 +3,7 @@ import { MDBListGroup, MDBListGroupItem, MDBIcon, MDBBtn } from 'mdbreact';
 import { NavLink, Link } from 'react-router-dom';
 import { MDBCol, MDBCard, MDBCardImage, MDBCardBody, MDBContainer, MDBCardTitle, MDBRow, MDBMask } from "mdbreact";
 
-//import API_URL from "../../apiConfig";
+import API_URL from "../../apiConfig";
 import axios from 'axios'
 
 const Profile = (props) => {
@@ -12,7 +12,7 @@ const Profile = (props) => {
     const [flag, setFlag] = useState(false)
     
     useEffect(() => {
-        axios.get(`http://localhost:5000/api/place`)
+        axios.get(`${API_URL}/api/place`)
             .then(res => {
                 setPlaces(res.data.result)
                 console.log("place info:", places)
@@ -23,7 +23,7 @@ const Profile = (props) => {
     const handleDelete = (placeId) => {
         console.log("Delete", placeId)
 
-        axios.delete(`http://localhost:5000/api/place/${placeId}`) ///${props.user._id}
+        axios.delete(`${API_URL}/api/place/${placeId}`) ///${props.user._id}
             .then(data => {
                 console.log("delete data ", data)
 

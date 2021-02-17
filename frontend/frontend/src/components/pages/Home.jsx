@@ -13,7 +13,7 @@ export default function Home(props) {
     const [filterPlaces, setFilterPlaces] = useState([])
 
     useEffect(() => {
-        Axios.get("http://localhost:5000/api/place")
+        Axios.get(`${API_URL}/api/place`)
             .then(res => {
                 setPlaces(res.data.result)
                 setFilterPlaces(res.data.result)

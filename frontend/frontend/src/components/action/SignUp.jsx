@@ -69,7 +69,7 @@ export default function Signup() {
 
     } else {
       axios
-        .post("http://localhost:5000/api/user/signup", user)
+        .post(`${API_URL}/api/user/signup`, user)
         .then((res) => {
           const user = res.data.user;
           if (user) {

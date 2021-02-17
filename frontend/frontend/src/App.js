@@ -14,7 +14,7 @@ import jwt_decode from "jwt-decode";
 import React, { useState, useEffect } from "react";
 import EditPlace from "./components/action/EditPlace"
 import UserList from './components/pages/UserList'
-
+import API_URL from "./apiConfig";
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 
 function App() {
@@ -45,7 +45,7 @@ function App() {
 
   const getProfile = async (currentUser) => {
     console.log("get profile in App.js ======",currentUser)
-    const res = await axios.get(`http://localhost:5000/api/user/profile/${currentUser._id}`)
+    const res = await axios.get(`${API_URL}/api/user/profile/${currentUser._id}`)
     console.log('Loaded user profile: ', res)
     setUserProfile(res.data)
   }

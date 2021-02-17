@@ -36,7 +36,7 @@ export default function EditPlace(props) {
     const getPlace = () => {
         console.log(placeId);
         axios
-            .get(`http://localhost:5000/api/place/${placeId}`)
+            .get(`${API_URL}/api/place/${placeId}`)
             .then(data => {
                 setPlaceFields(data.data.pros);
                 console.log(data.data.pros)
@@ -59,7 +59,7 @@ export default function EditPlace(props) {
 
     //edit places
     const handleEdit = (placeId) => {
-      axios.put(`http://localhost:5000/api/place/${placeId}`, placetFields)
+      axios.put(`${API_URL}/api/place/${placeId}`, placetFields)
         .then(response => {
           console.log(response);
         })

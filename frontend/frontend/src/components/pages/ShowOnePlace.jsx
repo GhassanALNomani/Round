@@ -16,6 +16,7 @@ import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
 import ReactStars from 'react-stars';
+import API_URL from "../../apiConfig";
 export default function (props) {
   const [place, setPlaces] = useState([]) // you won't need the whole array of places when you get one place, and set the state "selectPlace" with its data
   const { id } = useParams()
@@ -34,7 +35,7 @@ export default function (props) {
   };
   // git data
   useEffect(() => {
-    axios.get(`http://localhost:5000/api/place/${id}`)
+    axios.get(`${API_URL}/api/place/${id}`)
       .then((res) => {
         setPlaces(res.data.pros); // this returns one place so why use the "places" state // refactor state naming to indicate what data they hold, "places" "toVisit" "onePlace"
         console.log("place info for comment", place)
@@ -50,7 +51,7 @@ export default function (props) {
 
   const addPlace = () => {
     console.log(props.user._id, place._id)
-    axios.put(`http://localhost:5000/api/tovisit/`, { userId: props.user._id, placeId: place._id })
+    axios.put(`${API_URL}/api/tovisit/`, { userId: props.user._id, placeId: place._id })
       .then(res => {
         console.log("added to list", res)
         setUserTovisit(res.data);// places: if it's all places,why set? if it's user's  places, use another name to indicate it, for example "userList", "toVisit"
@@ -66,7 +67,7 @@ export default function (props) {
         productId: id
       }
      
-      axios.post(`http://localhost:5000/api/place/review`, body)
+      axios.post(`${API_URL}/api/place/review`, body)
         .then(res => {
           console.log(res)
           console.log("reviewd done")
@@ -93,7 +94,7 @@ export default function (props) {
   //handle on click send comment 
   const handleComment = (event) => {
     event.preventDefault();
-    axios.post(`http://localhost:5000/api/comment/${place._id}/${props.user._id}`, comment)
+    axios.post(`${API_URL}/api/comment/${place._id}/${props.user._id}`, comment)
       .then(res => {
         console.log("comment info", res)
         // update the state to show the new added comment 
