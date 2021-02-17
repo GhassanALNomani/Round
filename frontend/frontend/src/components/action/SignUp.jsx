@@ -17,7 +17,7 @@ export default function Signup() {
 
 
     const history = useHistory();
-    const [register, setRegister] = useState(true);
+    //const [register, setRegister] = useState(true);
     const [user, setUser] = useState({});
 
     const onChangeInput = ({ target: { name, value } }) => {
