@@ -46,7 +46,7 @@ function App() {
     console.log('Loaded user profile: ', user)
     setUserProfile(user)
   }
-
+  
   useEffect(userLogin, []);
   useEffect(() => {
     if (userProfile.name) {

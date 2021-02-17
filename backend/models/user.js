@@ -16,8 +16,9 @@ const userSchema = new mongoose.Schema({
         required: true
     },
     userType: String, // check later if neede
-    
+
     comments: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Comment' }],
+
     placesToVisit: [{ type: mongoose.Schema.Types.ObjectId, ref: 'place' }]    
 }, {timestamps : true})
 

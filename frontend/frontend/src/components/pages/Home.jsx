@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react'
-import {Link, BrowserRouter } from "react-router-dom";
+import { Link, BrowserRouter } from "react-router-dom";
 import Axios from 'axios'
 import { MDBCard, MDBCardBody, MDBCardImage, MDBCardTitle, MDBIcon, MDBRow, MDBCol, MDBAlert, MDBContainer, MDBBtn } from 'mdbreact';
 import { MDBDropdown, MDBDropdownToggle, MDBDropdownMenu, MDBDropdownItem } from "mdbreact";
 import ShowOnePlace from './ShowOnePlace';
-
+import API_URL from "../../apiConfig";
 export default function Home(props) {
 
     const [places, setPlaces] = useState([])
@@ -13,7 +13,7 @@ export default function Home(props) {
     const [filterPlaces, setFilterPlaces] = useState([])
 
     useEffect(() => {
-        Axios.get("http://localhost:5000/api/place")
+        Axios.get(`${API_URL}api/place`)
             .then(res => {
                 setPlaces(res.data.result)
                 setFilterPlaces(res.data.result)
@@ -29,19 +29,19 @@ export default function Home(props) {
 
         return (
             <Link to={`/show/${place._id}`}>
-            <MDBCol className='placeItem' md="4" style={{ maxWidth: "20rem" }}>
-                <MDBCard reverse>
-                    <MDBCardImage className="cardPhoto" cascade style={{ height: '20rem', width: "100%" }} src={place.image} />
-                    <MDBCardBody cascade className="text-center">
-                        <MDBCardTitle>{place.name}</MDBCardTitle>
+                <MDBCol className='placeItem' md="4" style={{ maxWidth: "20rem" }}>
+                    <MDBCard reverse>
+                        <MDBCardImage className="cardPhoto" cascade style={{ height: '20rem', width: "100%" }} src={place.image} />
+                        <MDBCardBody cascade className="text-center">
+                            <MDBCardTitle>{place.name}</MDBCardTitle>
                             <p>
                                 Read more
                             <MDBIcon icon='angle-double-right' className='ml-2' />
                             </p>
-                        
-                    </MDBCardBody>
-                </MDBCard>
-            </MDBCol>
+
+                        </MDBCardBody>
+                    </MDBCard>
+                </MDBCol>
             </Link>
         )
     })
@@ -76,7 +76,7 @@ export default function Home(props) {
                 style={{ height: '100%', width: '100%', paddingTop: '10rem' }}
                 className='mt-5  d-flex justify-content-center align-items-center '
             >
-                <MDBDropdownToggle caret className="mt-3" gradient="deep-blue"  style={{color: "black"}}>
+                <MDBDropdownToggle caret className="mt-3" gradient="deep-blue" style={{ color: "black" }}>
                     Where - 2 - Go
          </MDBDropdownToggle>
                 <MDBDropdownMenu basic  >
@@ -84,7 +84,7 @@ export default function Home(props) {
                     {allSelect}
                 </MDBDropdownMenu>
             </MDBDropdown>
-            <MDBRow className="placesContainer" style={{margin: "0 auto"}}>
+            <MDBRow className="placesContainer" style={{ margin: "0 auto" }}>
                 {filteredPlaces}
             </MDBRow>
         </div>

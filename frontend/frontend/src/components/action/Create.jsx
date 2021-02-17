@@ -22,20 +22,20 @@ function valid(object) {
 
 
 export default function Create(props) {
-  console.log(props)
-  const history = useHistory();
+console.log(props)
+    const history = useHistory();
 
-  const [startDate, setStartDate] = useState(new Date());
+    const [startDate, setStartDate] = useState(new Date());
 
 
-  const [placeFields, setPlaceFields] = useState({
-    name: " ",
-    description: " ",
-    image: " ",
-    category: "Choose the place",
-    location: " ",
-    workingHours: " ",
-
+    const [placeFields, setPlaceFields] = useState({
+      name: "",
+      description: "",
+      image: "",
+      category: "Choose the place",
+      location: "",
+      workingHours : "",
+    
   });
 
 
@@ -56,6 +56,7 @@ const onSubmit = (e) => {
   console.log(valid(placeFields))
   if (!valid(placeFields)) {
     alert("somting is missing ! ")
+
   } else {
 
         axios
@@ -65,18 +66,15 @@ const onSubmit = (e) => {
                 const place = res.data;
 
                 console.log("response data: ", res.data)
-     
-          if (place) {
-            alert("Place added successfully")
-            history.push("/");
-          } else {
-            alert("Error! check your information and try again")
-          }
-        })
-        .catch((err) => console.log(err));
-    }
 
-  }
+                if (place) {
+                        history.push("/");
+                    } else {
+                    alert("Error! check your information and try again")
+                    }
+            })
+            .catch((err) => console.log(err));
+    }
 
 
     const onChangeInput = (event) => {
@@ -89,7 +87,11 @@ const onSubmit = (e) => {
   };
 
 
+
+
+
     return (
+      
 <>
 
 { props.user != null && props.user.email == "admin@admin.com"?      

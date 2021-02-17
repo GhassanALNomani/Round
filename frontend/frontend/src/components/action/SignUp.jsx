@@ -1,10 +1,9 @@
 import React, { useState } from 'react'
 import { useHistory } from 'react-router-dom'
 import { MDBAnimation, MDBBtn, MDBCard, MDBCardBody, MDBCol, MDBContainer, MDBIcon, MDBInput, MDBView, MDBAlert } from 'mdbreact';
-import { Formik, Form as FormikForm, Field, ErrorMessage } from 'formik';
 import axios from "axios";
-//import signup from '../assets/signup.jpg'
-
+import API_URL from "../../apiConfig";
+import { Formik, Form as FormikForm, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 const validtionSchima = Yup.object({
   name: Yup.string().required("Enter your Name please"),
